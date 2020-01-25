@@ -258,6 +258,91 @@ class Layout extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
+/***/ "./components/NewsList.js":
+/*!********************************!*\
+  !*** ./components/NewsList.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NewsList; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsList.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "state", {
+      articles: [],
+      refreshing: false
+    });
+
+    _defineProperty(this, "getNews", async () => {
+      this.setState({
+        refreshing: true
+      });
+      const url = "https://newsapi.org/v2/everything?q=mufg&from=2019-12-25&to=2020-01-24&sortBy=popularity&apiKey=30d451b495234aae8b35d83d68082817";
+
+      try {
+        const result = await fetch(url);
+        const json = await result.json(); // console.log(json);
+
+        this.setState({
+          articles: json.articles,
+          refreshing: false
+        });
+      } catch (e) {
+        this.setState({
+          refreshing: false
+        });
+        console.log(e);
+      }
+    });
+
+    _defineProperty(this, "componentDidMount", () => {
+      this.getNews();
+    });
+  }
+
+  render() {
+    const titleList = [];
+    this.state.articles.map(article => {
+      titleList.push(__jsx("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        },
+        __self: this
+      }, article['title']));
+    });
+    console.log(this.state.articles);
+    return __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39
+      },
+      __self: this
+    }, __jsx("ul", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 40
+      },
+      __self: this
+    }, titleList));
+  }
+
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js ***!
@@ -2199,9 +2284,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
+/* harmony import */ var _components_NewsList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/NewsList */ "./components/NewsList.js");
 var _jsxFileName = "/Users/thesugar/news-sharing/pages/index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (() => __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -2209,16 +2296,22 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
   title: "Top page",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 5
+    lineNumber: 6
   },
   __self: undefined
 }, __jsx("div", {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 6
+    lineNumber: 7
   },
   __self: undefined
-}, "Hello shohan!")));
+}, "Hello shohan!", __jsx(_components_NewsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 9
+  },
+  __self: undefined
+}))));
 
 /***/ }),
 
