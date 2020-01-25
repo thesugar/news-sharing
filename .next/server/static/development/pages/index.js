@@ -267,71 +267,70 @@ class Layout extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NewsList; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsList.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-  constructor(...args) {
-    super(...args);
 
-    _defineProperty(this, "state", {
-      articles: [],
-      refreshing: false
-    });
+
+
+class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
 
     _defineProperty(this, "getNews", async () => {
-      this.setState({
-        refreshing: true
-      }); // fill your API key!
-
-      const url = "https://newsapi.org/v2/everything?q=mufg&from=2019-12-25&to=2020-01-24&sortBy=popularity&apiKey=30d451b495234aae8b35d83d68082817";
-
-      try {
-        const result = await fetch(url);
-        const json = await result.json(); // console.log(json);
-
-        this.setState({
-          articles: json.articles,
-          refreshing: false
-        });
-      } catch (e) {
-        this.setState({
-          refreshing: false
-        });
-        console.log(e);
-      }
+      const url = "https://newsapi.org/v2/everything?q=mufg&sortBy=popularity&apiKey=30d451b495234aae8b35d83d68082817";
+      let self = this;
+      const result = await fetch(url);
+      const json = await result.json();
+      this.props.dispatch({
+        type: 'UPDATE_USER',
+        value: {
+          articles: json.articles
+        }
+      });
     });
+  } // get data from Firebase
 
-    _defineProperty(this, "componentDidMount", () => {
-      this.getNews();
-    });
-  }
 
   render() {
+    this.props.articles.length === 0 && this.getNews();
     const itemList = [];
-    this.state.articles.map(article => {
+    this.props.articles.map((article, index) => {
       itemList.push(__jsx("li", {
+        key: index.toString,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32
+        },
+        __self: this
+      }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/p/[id]",
+        as: `/p/${index}`,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33
+        },
+        __self: this
+      }, article['title']), __jsx("ul", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 36
         },
         __self: this
-      }, article['title'], __jsx("ul", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        },
-        __self: this
       }, __jsx("li", {
+        key: "0",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 37
         },
         __self: this
       }, __jsx("img", {
@@ -340,40 +339,44 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         height: "100",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 37
         },
         __self: this
       })), __jsx("li", {
+        key: "1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 38
         },
         __self: this
       }, article['description']), __jsx("li", {
+        key: "2",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 39
         },
         __self: this
       }, article['content']))));
     });
-    console.log(this.state.articles);
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 45
       },
       __self: this
     }, __jsx("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 46
       },
       __self: this
     }, itemList));
   }
 
 }
+
+NewsList = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(state => state)(NewsList);
+/* harmony default export */ __webpack_exports__["default"] = (NewsList);
 
 /***/ }),
 
@@ -2580,6 +2583,17 @@ module.exports = require("prop-types-exact");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
 
 /***/ }),
 

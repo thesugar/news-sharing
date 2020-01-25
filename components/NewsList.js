@@ -1,49 +1,47 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import Link from 'next/link';
 
-export default class NewsList extends Component {
+class NewsList extends Component {
 
-    state = {
-        articles: [],
-        refreshing: false,
+    constructor(props){
+        super(props);
     }
 
+    // get data from Firebase
     getNews = async () => {
-        this.setState({ refreshing: true });
         // fill your API key!
-        const url = "https://newsapi.org/v2/everything?q=mufg&from=2019-12-25&to=2020-01-24&sortBy=popularity&apiKey=*********";
-        try {
-            const result = await fetch(url);
-            const json = await result.json();
-            // console.log(json);
-            this.setState({
-                articles: json.articles,
-                refreshing: false
-            });
-        } catch (e) {
-            this.setState({ refreshing: false });
-            console.log(e);
-        }
-    }
+        const url = "https://newsapi.org/v2/everything?q=mufg&sortBy=popularity&apiKey=***";
+        let self = this;
 
-    componentDidMount = () => { 
-        this.getNews();
+        const result = await fetch(url);
+        const json = await result.json();
+
+        this.props.dispatch({
+            type : 'UPDATE_USER',
+            value : {
+                articles: json.articles
+            }
+        })
     }
 
     render() {
+        this.props.articles.length === 0 && this.getNews();
         const itemList = [];
-        this.state.articles.map(article => {
+        this.props.articles.map((article, index) => {
             itemList.push(
-            <li>
+            <li key={index.toString}>
+                <Link href="/p/[id]" as={`/p/${index}`}>
                 {article['title']}
+                </Link>
             <ul>
-                <li><img src={article['urlToImage']} width="100" height="100" /></li>
-                <li>{article['description']}</li>
-                <li>{article['content']}</li>
+                <li key="0"><img src={article['urlToImage']} width="100" height="100" /></li>
+                <li key="1">{article['description']}</li>
+                <li key="2">{article['content']}</li>
             </ul>
             </li>);
         })
-        
-        console.log(this.state.articles);
+
         return (
             <div>
             <ul>
@@ -53,3 +51,6 @@ export default class NewsList extends Component {
         );
     }
 }
+
+NewsList = connect((state) => state)(NewsList);
+export default NewsList;
