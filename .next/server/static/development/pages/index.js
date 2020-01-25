@@ -288,7 +288,8 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     _defineProperty(this, "getNews", async () => {
       this.setState({
         refreshing: true
-      });
+      }); // fill your API key!
+
       const url = "https://newsapi.org/v2/everything?q=mufg&from=2019-12-25&to=2020-01-24&sortBy=popularity&apiKey=30d451b495234aae8b35d83d68082817";
 
       try {
@@ -313,30 +314,63 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   }
 
   render() {
-    const titleList = [];
+    const itemList = [];
     this.state.articles.map(article => {
-      titleList.push(__jsx("li", {
+      itemList.push(__jsx("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34
+          lineNumber: 36
         },
         __self: this
-      }, article['title']));
+      }, article['title'], __jsx("ul", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        },
+        __self: this
+      }, __jsx("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        },
+        __self: this
+      }, __jsx("img", {
+        src: article['urlToImage'],
+        width: "100",
+        height: "100",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        },
+        __self: this
+      })), __jsx("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        },
+        __self: this
+      }, article['description']), __jsx("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 41
+        },
+        __self: this
+      }, article['content']))));
     });
     console.log(this.state.articles);
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 39
+        lineNumber: 48
       },
       __self: this
     }, __jsx("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40
+        lineNumber: 49
       },
       __self: this
-    }, titleList));
+    }, itemList));
   }
 
 }
