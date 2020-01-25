@@ -331,6 +331,7 @@ function (_Component) {
         __self: this
       }, __jsx("a", {
         href: this.props.articles[this.props.newsIndex]['url'],
+        target: "_blank",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 24

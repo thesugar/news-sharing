@@ -21,7 +21,7 @@ class NewsDetail extends Component {
                     <h1>{this.props.articles[this.props.newsIndex]['title']}</h1>
                     <img src={this.props.articles[this.props.newsIndex]['urlToImage']} />
                     <p>{this.props.articles[this.props.newsIndex]['description']}</p>
-                    <p><a href={this.props.articles[this.props.newsIndex]['url']}>全文を読む</a></p>
+                    <p><a href={this.props.articles[this.props.newsIndex]['url']} target="_blank">全文を読む</a></p>
                     </div>
                     }
                 </ul>

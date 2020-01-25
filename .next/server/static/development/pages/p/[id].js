@@ -335,6 +335,7 @@ class NewsDetail extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this
     }, __jsx("a", {
       href: this.props.articles[this.props.newsIndex]['url'],
+      target: "_blank",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 24
