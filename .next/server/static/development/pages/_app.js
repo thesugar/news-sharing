@@ -478,15 +478,20 @@ function createUrl(router) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
-/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
+/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _lib_redux_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/redux-store */ "./lib/redux-store.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/CssBaseline */ "@material-ui/core/CssBaseline");
+/* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _src_theme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../src/theme */ "./src/theme.js");
 var _jsxFileName = "/Users/thesugar/news-sharing/pages/_app.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -495,32 +500,99 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
-class _App extends next_app__WEBPACK_IMPORTED_MODULE_0___default.a {
+
+
+
+class _App extends next_app__WEBPACK_IMPORTED_MODULE_1___default.a {
+  componentDidMount() {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }
+
   render() {
     const {
       Component,
       pageProps,
       reduxStore
     } = this.props;
-    return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
+    return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__["ThemeProvider"], {
+      theme: _src_theme__WEBPACK_IMPORTED_MODULE_6__["default"],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      },
+      __self: this
+    }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_5___default.a, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25
+      },
+      __self: this
+    }), __jsx(react_redux__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
       store: reduxStore,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 26
       },
       __self: this
     }, __jsx(Component, _extends({}, pageProps, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 11
+        lineNumber: 27
       },
       __self: this
-    })));
+    })))));
   }
 
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(_lib_redux_store__WEBPACK_IMPORTED_MODULE_2__["default"])(_App));
+
+/***/ }),
+
+/***/ "./src/theme.js":
+/*!**********************!*\
+  !*** ./src/theme.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_colors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/colors */ "@material-ui/core/colors");
+/* harmony import */ var _material_ui_core_colors__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_colors__WEBPACK_IMPORTED_MODULE_1__);
+
+ // Create a theme instance.
+
+const theme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["createMuiTheme"])({
+  palette: {
+    primary: {
+      main: '#556cd6'
+    },
+    secondary: {
+      main: '#19857b'
+    },
+    error: {
+      main: _material_ui_core_colors__WEBPACK_IMPORTED_MODULE_1__["red"].A400
+    },
+    background: {
+      default: '#fff'
+    }
+  }
+});
+/* harmony default export */ __webpack_exports__["default"] = (theme);
 
 /***/ }),
 
@@ -574,6 +646,39 @@ function initStore(state = initial) {
 
 module.exports = __webpack_require__(/*! private-next-pages/_app.js */"./pages/_app.js");
 
+
+/***/ }),
+
+/***/ "@material-ui/core/CssBaseline":
+/*!************************************************!*\
+  !*** external "@material-ui/core/CssBaseline" ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/CssBaseline");
+
+/***/ }),
+
+/***/ "@material-ui/core/colors":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/colors" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/colors");
+
+/***/ }),
+
+/***/ "@material-ui/core/styles":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/styles" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
 
 /***/ }),
 

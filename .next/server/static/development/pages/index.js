@@ -88,110 +88,506 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./components/Footer.js":
-/*!******************************!*\
-  !*** ./components/Footer.js ***!
-  \******************************/
+/***/ "./components/Bar.js":
+/*!***************************!*\
+  !*** ./components/Bar.js ***!
+  \***************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PrimarySearchAppBar; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Footer.js";
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/AppBar */ "@material-ui/core/AppBar");
+/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "@material-ui/core/Toolbar");
+/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/IconButton */ "@material-ui/core/IconButton");
+/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_core_InputBase__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/InputBase */ "@material-ui/core/InputBase");
+/* harmony import */ var _material_ui_core_InputBase__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_InputBase__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Badge */ "@material-ui/core/Badge");
+/* harmony import */ var _material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/MenuItem */ "@material-ui/core/MenuItem");
+/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Menu */ "@material-ui/core/Menu");
+/* harmony import */ var _material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/icons/Menu */ "@material-ui/icons/Menu");
+/* harmony import */ var _material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/icons/Search */ "@material-ui/icons/Search");
+/* harmony import */ var _material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _material_ui_icons_AccountCircle__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/icons/AccountCircle */ "@material-ui/icons/AccountCircle");
+/* harmony import */ var _material_ui_icons_AccountCircle__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_AccountCircle__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/icons/Mail */ "@material-ui/icons/Mail");
+/* harmony import */ var _material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/icons/Notifications */ "@material-ui/icons/Notifications");
+/* harmony import */ var _material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/icons/MoreVert */ "@material-ui/icons/MoreVert");
+/* harmony import */ var _material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_15__);
+var _jsxFileName = "/Users/thesugar/news-sharing/components/Bar.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-  render() {
-    return __jsx("footer", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 6
-      },
-      __self: this
-    }, __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 7
-      },
-      __self: this
-    }, this.props.footer));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
+  grow: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block'
+    }
+  },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["fade"])(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["fade"])(theme.palette.common.white, 0.25)
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto'
+    }
+  },
+  searchIcon: {
+    width: theme.spacing(7),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  inputRoot: {
+    color: 'inherit'
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 7),
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: 200
+    }
+  },
+  sectionDesktop: {
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex'
+    }
+  },
+  sectionMobile: {
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'none'
+    }
   }
+}));
+function PrimarySearchAppBar() {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(null);
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  const handleProfileMenuOpen = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
+
+  const handleMobileMenuOpen = event => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const menuId = 'primary-search-account-menu';
+
+  const renderMenu = __jsx(_material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    anchorEl: anchorEl,
+    anchorOrigin: {
+      vertical: 'top',
+      horizontal: 'right'
+    },
+    id: menuId,
+    keepMounted: true,
+    transformOrigin: {
+      vertical: 'top',
+      horizontal: 'right'
+    },
+    open: isMenuOpen,
+    onClose: handleMenuClose,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 107
+    },
+    __self: this
+  }, __jsx(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    onClick: handleMenuClose,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 116
+    },
+    __self: this
+  }, "Profile"), __jsx(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    onClick: handleMenuClose,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 117
+    },
+    __self: this
+  }, "My account"));
+
+  const mobileMenuId = 'primary-search-account-menu-mobile';
+
+  const renderMobileMenu = __jsx(_material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    anchorEl: mobileMoreAnchorEl,
+    anchorOrigin: {
+      vertical: 'top',
+      horizontal: 'right'
+    },
+    id: mobileMenuId,
+    keepMounted: true,
+    transformOrigin: {
+      vertical: 'top',
+      horizontal: 'right'
+    },
+    open: isMobileMenuOpen,
+    onClose: handleMobileMenuClose,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 123
+    },
+    __self: this
+  }, __jsx(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 132
+    },
+    __self: this
+  }, __jsx(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    "aria-label": "show 4 new mails",
+    color: "inherit",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 133
+    },
+    __self: this
+  }, __jsx(_material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7___default.a, {
+    badgeContent: 4,
+    color: "secondary",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 134
+    },
+    __self: this
+  }, __jsx(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_13___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 135
+    },
+    __self: this
+  }))), __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 138
+    },
+    __self: this
+  }, "Messages")), __jsx(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 140
+    },
+    __self: this
+  }, __jsx(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    "aria-label": "show 11 new notifications",
+    color: "inherit",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 141
+    },
+    __self: this
+  }, __jsx(_material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7___default.a, {
+    badgeContent: 11,
+    color: "secondary",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 142
+    },
+    __self: this
+  }, __jsx(_material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_14___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 143
+    },
+    __self: this
+  }))), __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 146
+    },
+    __self: this
+  }, "Notifications")), __jsx(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    onClick: handleProfileMenuOpen,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 148
+    },
+    __self: this
+  }, __jsx(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    "aria-label": "account of current user",
+    "aria-controls": "primary-search-account-menu",
+    "aria-haspopup": "true",
+    color: "inherit",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 149
+    },
+    __self: this
+  }, __jsx(_material_ui_icons_AccountCircle__WEBPACK_IMPORTED_MODULE_12___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 155
+    },
+    __self: this
+  })), __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 157
+    },
+    __self: this
+  }, "Profile")));
+
+  return __jsx("div", {
+    className: classes.grow,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 163
+    },
+    __self: this
+  }, __jsx(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    position: "static",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 164
+    },
+    __self: this
+  }, __jsx(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 165
+    },
+    __self: this
+  }, __jsx(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    edge: "start",
+    className: classes.menuButton,
+    color: "inherit",
+    "aria-label": "open drawer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 166
+    },
+    __self: this
+  }, __jsx(_material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_10___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 172
+    },
+    __self: this
+  })), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_5___default.a, {
+    className: classes.title,
+    variant: "h6",
+    noWrap: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 174
+    },
+    __self: this
+  }, "Shohan News App"), __jsx("div", {
+    className: classes.search,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 177
+    },
+    __self: this
+  }, __jsx("div", {
+    className: classes.searchIcon,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 178
+    },
+    __self: this
+  }, __jsx(_material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_11___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 179
+    },
+    __self: this
+  })), __jsx(_material_ui_core_InputBase__WEBPACK_IMPORTED_MODULE_6___default.a, {
+    placeholder: "Search\u2026",
+    classes: {
+      root: classes.inputRoot,
+      input: classes.inputInput
+    },
+    inputProps: {
+      'aria-label': 'search'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 181
+    },
+    __self: this
+  })), __jsx("div", {
+    className: classes.grow,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 190
+    },
+    __self: this
+  }), __jsx("div", {
+    className: classes.sectionDesktop,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 191
+    },
+    __self: this
+  }, __jsx(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    "aria-label": "show 2 new notifications",
+    color: "inherit",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 192
+    },
+    __self: this
+  }, __jsx(_material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7___default.a, {
+    badgeContent: 2,
+    color: "secondary",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 193
+    },
+    __self: this
+  }, __jsx(_material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_14___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 194
+    },
+    __self: this
+  }))), __jsx(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    edge: "end",
+    "aria-label": "account of current user",
+    "aria-controls": menuId,
+    "aria-haspopup": "true",
+    onClick: handleProfileMenuOpen,
+    color: "inherit",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 197
+    },
+    __self: this
+  }, __jsx(_material_ui_icons_AccountCircle__WEBPACK_IMPORTED_MODULE_12___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 205
+    },
+    __self: this
+  }))), __jsx("div", {
+    className: classes.sectionMobile,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 208
+    },
+    __self: this
+  }, __jsx(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    "aria-label": "show more",
+    "aria-controls": mobileMenuId,
+    "aria-haspopup": "true",
+    onClick: handleMobileMenuOpen,
+    color: "inherit",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 209
+    },
+    __self: this
+  }, __jsx(_material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_15___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 216
+    },
+    __self: this
+  }))))), renderMobileMenu, renderMenu);
 }
-
-/* harmony default export */ __webpack_exports__["default"] = (Footer);
 
 /***/ }),
 
-/***/ "./components/Header.js":
-/*!******************************!*\
-  !*** ./components/Header.js ***!
-  \******************************/
+/***/ "./components/NewsCard.js":
+/*!********************************!*\
+  !*** ./components/NewsCard.js ***!
+  \********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NewsCard; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Header.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-  render() {
-    return __jsx("header", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 6
-      },
-      __self: this
-    }, __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 7
-      },
-      __self: this
-    }, this.props.header), __jsx("h1", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 8
-      },
-      __self: this
-    }, this.props.title));
-  }
-
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Header);
-
-/***/ }),
-
-/***/ "./components/Layout.js":
-/*!******************************!*\
-  !*** ./components/Layout.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/head */ "next/head");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header */ "./components/Header.js");
-/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Footer */ "./components/Footer.js");
-/* harmony import */ var _static_Style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../static/Style */ "./static/Style.js");
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Layout.js";
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Card */ "@material-ui/core/Card");
+/* harmony import */ var _material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/CardActionArea */ "@material-ui/core/CardActionArea");
+/* harmony import */ var _material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/CardActions */ "@material-ui/core/CardActions");
+/* harmony import */ var _material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/CardContent */ "@material-ui/core/CardContent");
+/* harmony import */ var _material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/CardMedia */ "@material-ui/core/CardMedia");
+/* harmony import */ var _material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Button */ "@material-ui/core/Button");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_9__);
+var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsCard.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -199,62 +595,98 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-class Layout extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-  render() {
-    return __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 10
-      },
-      __self: this
-    }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 11
-      },
-      __self: this
-    }, __jsx("title", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 12
-      },
-      __self: this
-    }, this.props.title), __jsx("meta", {
-      charSet: "utf-8",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 13
-      },
-      __self: this
-    }), __jsx("meta", {
-      name: "viewpoint",
-      content: "initial-scale=1.0, width=decide-width",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 14
-      },
-      __self: this
-    })), _static_Style__WEBPACK_IMPORTED_MODULE_4__["default"], __jsx(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      header: this.props.header,
-      title: this.props.title,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 18
-      },
-      __self: this
-    }), this.props.children, __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      footer: "copyright Shohan., inc.",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 21
-      },
-      __self: this
-    }));
+
+
+
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])({
+  card: {
+    maxWidth: 700
+  },
+  media: {
+    height: 300
   }
-
+});
+function NewsCard(props) {
+  const classes = useStyles();
+  return __jsx(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: classes.card,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: this
+  }, __jsx(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: this
+  }, __jsx(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6___default.a, {
+    className: classes.media,
+    image: props.image,
+    title: props.title,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
+    },
+    __self: this
+  }), __jsx(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: this
+  }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    gutterBottom: true,
+    variant: "h5",
+    component: "h2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33
+    },
+    __self: this
+  }, props.title), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8___default.a, {
+    variant: "body2",
+    color: "textSecondary",
+    component: "p",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    },
+    __self: this
+  }, props.description))), __jsx(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: this
+  }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7___default.a, {
+    size: "small",
+    color: "primary",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: this
+  }, "Share"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    href: "/p/[id]",
+    as: `/p/${props.index}`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45
+    },
+    __self: this
+  }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7___default.a, {
+    size: "small",
+    color: "primary",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46
+    },
+    __self: this
+  }, "\u8A73\u7D30\u3092\u898B\u308B"))));
 }
-
-/* harmony default export */ __webpack_exports__["default"] = (Layout);
 
 /***/ }),
 
@@ -273,10 +705,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_NewsCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/NewsCard */ "./components/NewsCard.js");
 var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsList.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -302,73 +736,44 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   } // get data from Firebase
 
 
+  /*
+          <li key={index.toString}>
+              <Link href="/p/[id]" as={`/p/${index}`}>
+              {article['title']}
+              </Link>
+          <ul>
+              <li key="0"><img src={article['urlToImage']} width="100" height="100" /></li>
+              <li key="1">{article['description']}</li>
+              <li key="2">{article['content']}</li>
+          </ul>
+          </li>);
+  */
   render() {
     this.props.articles.length === 0 && this.getNews();
     const itemList = [];
     this.props.articles.map((article, index) => {
-      itemList.push(__jsx("li", {
-        key: index.toString,
+      itemList.push(__jsx(_components_NewsCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        title: article['title'],
+        image: article['urlToImage'],
+        description: article['description'],
+        index: index,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33
+          lineNumber: 47
         },
         __self: this
-      }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        href: "/p/[id]",
-        as: `/p/${index}`,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 34
-        },
-        __self: this
-      }, article['title']), __jsx("ul", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 37
-        },
-        __self: this
-      }, __jsx("li", {
-        key: "0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        },
-        __self: this
-      }, __jsx("img", {
-        src: article['urlToImage'],
-        width: "100",
-        height: "100",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        },
-        __self: this
-      })), __jsx("li", {
-        key: "1",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 39
-        },
-        __self: this
-      }, article['description']), __jsx("li", {
-        key: "2",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 40
-        },
-        __self: this
-      }, article['content']))));
+      }));
     });
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 52
       },
       __self: this
     }, __jsx("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 53
       },
       __self: this
     }, itemList));
@@ -2317,46 +2722,112 @@ if (false) {} else {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Index; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _components_NewsList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/NewsList */ "./components/NewsList.js");
+/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/Container */ "@material-ui/core/Container");
+/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_Box__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Box */ "@material-ui/core/Box");
+/* harmony import */ var _material_ui_core_Box__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Link */ "@material-ui/core/Link");
+/* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _src_ProTip__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../src/ProTip */ "./src/ProTip.js");
+/* harmony import */ var _src_Link__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../src/Link */ "./src/Link.js");
+/* harmony import */ var _components_NewsList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/NewsList */ "./components/NewsList.js");
+/* harmony import */ var _components_Bar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Bar */ "./components/Bar.js");
 var _jsxFileName = "/Users/thesugar/news-sharing/pages/index.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (() => __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
-  header: "aaaa",
-  title: "Top page",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 6
-  },
-  __self: undefined
-}, __jsx("div", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 7
-  },
-  __self: undefined
-}, "Hello shohan!", __jsx(_components_NewsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 9
-  },
-  __self: undefined
-}))));
+
+
+
+
+
+
+
+function Copyright() {
+  return __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    variant: "body2",
+    color: "textSecondary",
+    align: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: this
+  }, 'Copyright © ', __jsx(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    color: "inherit",
+    href: "https://material-ui.com/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    },
+    __self: this
+  }, "Shohan Corporation."), ' ', new Date().getFullYear(), '.');
+}
+
+function Index() {
+  return __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    disableGutters: true,
+    maxWidth: false,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: this
+  }, __jsx(_components_Bar__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
+    },
+    __self: this
+  }), __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    my: 4,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: this
+  }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    variant: "h4",
+    component: "h1",
+    gutterBottom: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  }, "Shohan News App", __jsx(_components_NewsList__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
+  })), __jsx(_src_ProTip__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33
+    },
+    __self: this
+  }), __jsx(Copyright, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34
+    },
+    __self: this
+  })));
+}
 
 /***/ }),
 
-/***/ "./static/Style.js":
-/*!*************************!*\
-  !*** ./static/Style.js ***!
-  \*************************/
+/***/ "./src/Link.js":
+/*!*********************!*\
+  !*** ./src/Link.js ***!
+  \*********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2364,119 +2835,218 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/thesugar/news-sharing/static/Style.js";
-
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! clsx */ "clsx");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(clsx__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Link */ "@material-ui/core/Link");
+/* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_5__);
+var _jsxFileName = "/Users/thesugar/news-sharing/src/Link.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-/* harmony default export */ __webpack_exports__["default"] = (__jsx("style", {
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+/* eslint-disable jsx-a11y/anchor-has-content */
+
+
+
+
+
+
+const NextComposed = react__WEBPACK_IMPORTED_MODULE_0___default.a.forwardRef(function NextComposed(props, ref) {
+  const {
+    as,
+    href,
+    prefetch
+  } = props,
+        other = _objectWithoutProperties(props, ["as", "href", "prefetch"]);
+
+  return __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    href: href,
+    prefetch: prefetch,
+    as: as,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: this
+  }, __jsx("a", _extends({
+    ref: ref
+  }, other, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
+  })));
+});
+NextComposed.propTypes = {
+  as: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object]),
+  href: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object]),
+  prefetch: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
+}; // A styled version of the Next.js Link component:
+// https://nextjs.org/docs/#with-link
+
+function Link(props) {
+  const {
+    href,
+    activeClassName = 'active',
+    className: classNameProps,
+    innerRef,
+    naked
+  } = props,
+        other = _objectWithoutProperties(props, ["href", "activeClassName", "className", "innerRef", "naked"]);
+
+  const router = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["useRouter"])();
+  const pathname = typeof href === 'string' ? href : href.pathname;
+  const className = clsx__WEBPACK_IMPORTED_MODULE_2___default()(classNameProps, {
+    [activeClassName]: router.pathname === pathname && activeClassName
+  });
+
+  if (naked) {
+    return __jsx(NextComposed, _extends({
+      className: className,
+      ref: innerRef,
+      href: href
+    }, other, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 44
+      },
+      __self: this
+    }));
+  }
+
+  return __jsx(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_5___default.a, _extends({
+    component: NextComposed,
+    className: className,
+    ref: innerRef,
+    href: href
+  }, other, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: this
+  }));
+}
+
+Link.propTypes = {
+  activeClassName: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  as: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object]),
+  className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  href: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object]),
+  innerRef: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object]),
+  naked: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+  onClick: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+  prefetch: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
+};
+/* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_0___default.a.forwardRef((props, ref) => __jsx(Link, _extends({}, props, {
+  innerRef: ref,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 3
+    lineNumber: 63
   },
   __self: undefined
-}, `
-    body{
-        margin; 10px;
-        padding: 5px:
-        color: #669;
-    }
-
-    header {
-        font-size: 64pt;
-        font-weight: bold;
-        text-align: right;
-        letter-spacing: -8px;
-        color: #ddddff;
-        margin: -32px 5px;
-    }
-
-    footer {
-        color: #99c;
-        font-size: 12pt;
-        text-align: right;
-        border-bottom: 1px solid #99c;
-        margin; 50px 0px 10px 0px;
-        position: relative;
-        bottom: 10px;
-        right: 10px;
-        left: 10px;
-    }
-
-    h1 {
-        font-size: 22pt;
-        font-weight: bold;
-        text-align: left;
-        letter-spacing: 0px;
-        color: #77a;
-        margin: -50px 0px 50px 0px;
-    }
-
-    p {
-        margin: 0px;
-        color: #669;
-        font-size: 16pt;
-    }
-
-    tr {
-        margin: 0px;
-    }
-
-    th {
-        font-size: 14pt;
-        font-weight: plain;
-        text-align: left;
-        padding: 0px 20px;
-        margin: 0px;
-    }
-
-    td {
-        font-size: 14pt;
-        font-weight: plain;
-        text-align: left;
-        padding: 0px 20px;
-        margin: 0px;
-    }
-
-    .label {
-        font-size: 14pt;
-        margin: 20px 5px;
-    }
-
-    .login {
-        text-align: right;
-    }
-
-    .account {
-        cursor: pointer;
-        font-size: 12pt;
-        padding: 5px 10px;
-        color: gray;
-        border: 2px solid lightgray;
-    }
-
-    fieldset {
-        margin: 0px 0px 30px 0px;
-    }
-
-    input{
-        border: 0px solid white;
-        border-bottom: 1px solid gray;
-        font-size: 14pt;
-    }
-
-    button {
-        font-size: 14pt;
-        padding: 0px 20px;
-    }
-
-    li {
-        font-size: 14pt;
-        cursor: pointer;
-    }
-`));
+}))));
 
 /***/ }),
 
-/***/ 3:
+/***/ "./src/ProTip.js":
+/*!***********************!*\
+  !*** ./src/ProTip.js ***!
+  \***********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ProTip; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Link */ "@material-ui/core/Link");
+/* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_SvgIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/SvgIcon */ "@material-ui/core/SvgIcon");
+/* harmony import */ var _material_ui_core_SvgIcon__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_SvgIcon__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "/Users/thesugar/news-sharing/src/ProTip.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+
+
+
+function LightBulbIcon(props) {
+  return __jsx(_material_ui_core_SvgIcon__WEBPACK_IMPORTED_MODULE_3___default.a, _extends({}, props, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    },
+    __self: this
+  }), __jsx("path", {
+    d: "M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10
+    },
+    __self: this
+  }));
+}
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
+  root: {
+    margin: theme.spacing(6, 0, 3)
+  },
+  lightBulb: {
+    verticalAlign: 'middle',
+    marginRight: theme.spacing(1)
+  }
+}));
+function ProTip() {
+  const classes = useStyles();
+  return __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    className: classes.root,
+    color: "textSecondary",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: this
+  }, __jsx(LightBulbIcon, {
+    className: classes.lightBulb,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  }), "Pro tip: See more", ' ', __jsx(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "https://material-ui.com/getting-started/templates/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
+  }, "templates"), " on the Material-UI documentation.");
+}
+
+/***/ }),
+
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -2485,6 +3055,292 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 module.exports = __webpack_require__(/*! /Users/thesugar/news-sharing/pages/index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "@material-ui/core/AppBar":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/AppBar" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/AppBar");
+
+/***/ }),
+
+/***/ "@material-ui/core/Badge":
+/*!******************************************!*\
+  !*** external "@material-ui/core/Badge" ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Badge");
+
+/***/ }),
+
+/***/ "@material-ui/core/Box":
+/*!****************************************!*\
+  !*** external "@material-ui/core/Box" ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Box");
+
+/***/ }),
+
+/***/ "@material-ui/core/Button":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/Button" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Button");
+
+/***/ }),
+
+/***/ "@material-ui/core/Card":
+/*!*****************************************!*\
+  !*** external "@material-ui/core/Card" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Card");
+
+/***/ }),
+
+/***/ "@material-ui/core/CardActionArea":
+/*!***************************************************!*\
+  !*** external "@material-ui/core/CardActionArea" ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/CardActionArea");
+
+/***/ }),
+
+/***/ "@material-ui/core/CardActions":
+/*!************************************************!*\
+  !*** external "@material-ui/core/CardActions" ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/CardActions");
+
+/***/ }),
+
+/***/ "@material-ui/core/CardContent":
+/*!************************************************!*\
+  !*** external "@material-ui/core/CardContent" ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/CardContent");
+
+/***/ }),
+
+/***/ "@material-ui/core/CardMedia":
+/*!**********************************************!*\
+  !*** external "@material-ui/core/CardMedia" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/CardMedia");
+
+/***/ }),
+
+/***/ "@material-ui/core/Container":
+/*!**********************************************!*\
+  !*** external "@material-ui/core/Container" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Container");
+
+/***/ }),
+
+/***/ "@material-ui/core/IconButton":
+/*!***********************************************!*\
+  !*** external "@material-ui/core/IconButton" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/IconButton");
+
+/***/ }),
+
+/***/ "@material-ui/core/InputBase":
+/*!**********************************************!*\
+  !*** external "@material-ui/core/InputBase" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/InputBase");
+
+/***/ }),
+
+/***/ "@material-ui/core/Link":
+/*!*****************************************!*\
+  !*** external "@material-ui/core/Link" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Link");
+
+/***/ }),
+
+/***/ "@material-ui/core/Menu":
+/*!*****************************************!*\
+  !*** external "@material-ui/core/Menu" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Menu");
+
+/***/ }),
+
+/***/ "@material-ui/core/MenuItem":
+/*!*********************************************!*\
+  !*** external "@material-ui/core/MenuItem" ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/MenuItem");
+
+/***/ }),
+
+/***/ "@material-ui/core/SvgIcon":
+/*!********************************************!*\
+  !*** external "@material-ui/core/SvgIcon" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/SvgIcon");
+
+/***/ }),
+
+/***/ "@material-ui/core/Toolbar":
+/*!********************************************!*\
+  !*** external "@material-ui/core/Toolbar" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Toolbar");
+
+/***/ }),
+
+/***/ "@material-ui/core/Typography":
+/*!***********************************************!*\
+  !*** external "@material-ui/core/Typography" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Typography");
+
+/***/ }),
+
+/***/ "@material-ui/core/styles":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/styles" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
+/***/ "@material-ui/icons/AccountCircle":
+/*!***************************************************!*\
+  !*** external "@material-ui/icons/AccountCircle" ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/AccountCircle");
+
+/***/ }),
+
+/***/ "@material-ui/icons/Mail":
+/*!******************************************!*\
+  !*** external "@material-ui/icons/Mail" ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/Mail");
+
+/***/ }),
+
+/***/ "@material-ui/icons/Menu":
+/*!******************************************!*\
+  !*** external "@material-ui/icons/Menu" ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/Menu");
+
+/***/ }),
+
+/***/ "@material-ui/icons/MoreVert":
+/*!**********************************************!*\
+  !*** external "@material-ui/icons/MoreVert" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/MoreVert");
+
+/***/ }),
+
+/***/ "@material-ui/icons/Notifications":
+/*!***************************************************!*\
+  !*** external "@material-ui/icons/Notifications" ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/Notifications");
+
+/***/ }),
+
+/***/ "@material-ui/icons/Search":
+/*!********************************************!*\
+  !*** external "@material-ui/icons/Search" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/Search");
+
+/***/ }),
+
+/***/ "clsx":
+/*!***********************!*\
+  !*** external "clsx" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("clsx");
 
 /***/ }),
 
@@ -2543,14 +3399,14 @@ module.exports = require("core-js/library/fn/weak-map");
 
 /***/ }),
 
-/***/ "next/head":
-/*!****************************!*\
-  !*** external "next/head" ***!
-  \****************************/
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("next/head");
+module.exports = require("next/router");
 
 /***/ }),
 
