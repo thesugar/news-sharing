@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Link from 'next/link';
+import NewsCard from '../components/NewsCard';
 
 class NewsList extends Component {
 
@@ -11,7 +12,7 @@ class NewsList extends Component {
     // get data from Firebase
     getNews = async () => {
         // fill your API key!
-        const url = "https://newsapi.org/v2/everything?q=mufg&sortBy=popularity&apiKey=30d451b495234aae8b35d83d68082817";
+        const url = "https://newsapi.org/v2/everything?q=mufg&sortBy=popularity&apiKey=***";
         let self = this;
 
         const result = await fetch(url);
@@ -24,12 +25,8 @@ class NewsList extends Component {
             }
         })
     }
-
-    render() {
-        this.props.articles.length === 0 && this.getNews();
-        const itemList = [];
-        this.props.articles.map((article, index) => {
-            itemList.push(
+    
+    /*
             <li key={index.toString}>
                 <Link href="/p/[id]" as={`/p/${index}`}>
                 {article['title']}
@@ -40,6 +37,15 @@ class NewsList extends Component {
                 <li key="2">{article['content']}</li>
             </ul>
             </li>);
+    */
+
+    render() {
+        this.props.articles.length === 0 && this.getNews();
+        const itemList = [];
+        this.props.articles.map((article, index) => {
+            itemList.push(
+                <NewsCard title={article['title']} image={article['urlToImage']} description={article['description']} index={index} />
+            );
         })
 
         return (
