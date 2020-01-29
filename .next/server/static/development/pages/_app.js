@@ -600,7 +600,7 @@ const theme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["crea
 /*!******************!*\
   !*** ./store.js ***!
   \******************/
-/*! exports provided: initStore */
+/*! exports provided: default, initStore */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -610,8 +610,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-thunk */ "redux-thunk");
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_thunk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase */ "firebase");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_2__);
 
- // reducer
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA5tM4PcANnpIJk-vYnYnL-q26QBhZR4zk",
+  authDomain: "polished-leaf-256709.firebaseapp.com",
+  databaseURL: "https://polished-leaf-256709.firebaseio.com",
+  projectId: "polished-leaf-256709",
+  storageBucket: "polished-leaf-256709.appspot.com",
+  messagingSenderId: "766279430691",
+  appId: "1:766279430691:web:153ad2000da94cc7617796",
+  measurementId: "G-6M2NQ68H20"
+}; // Initialize Firebase
+
+let fireapp;
+
+try {
+  fireapp = firebase__WEBPACK_IMPORTED_MODULE_2___default.a.initializeApp(firebaseConfig);
+  firebase__WEBPACK_IMPORTED_MODULE_2___default.a.analytics();
+} catch (error) {
+  console.log(error.message);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (fireapp); // reducer
 
 function reducer(state = initial, action) {
   switch (action.type) {
@@ -679,6 +703,17 @@ module.exports = require("@material-ui/core/colors");
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
+/***/ "firebase":
+/*!***************************!*\
+  !*** external "firebase" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("firebase");
 
 /***/ }),
 

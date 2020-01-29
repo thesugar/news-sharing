@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -739,8 +739,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_ShareNews__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/ShareNews */ "./components/ShareNews.js");
 var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsDetail.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -757,44 +759,44 @@ class NewsDetail extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 17
+        lineNumber: 18
       },
       __self: this
     }, __jsx("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 18
+        lineNumber: 19
       },
       __self: this
     }, __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 21
       },
       __self: this
     }, __jsx("h1", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
+        lineNumber: 22
       },
       __self: this
     }, this.props.articles[this.props.newsIndex]['title']), __jsx("img", {
       src: this.props.articles[this.props.newsIndex]['urlToImage'],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 23
       },
       __self: this
     }), __jsx("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 24
       },
       __self: this
     }, this.props.articles[this.props.newsIndex]['description']), __jsx("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 25
       },
       __self: this
     }, __jsx("a", {
@@ -802,16 +804,161 @@ class NewsDetail extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       target: "_blank",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 25
       },
       __self: this
-    }, "\u5168\u6587\u3092\u8AAD\u3080")))));
+    }, "\u5168\u6587\u3092\u8AAD\u3080")), __jsx(_components_ShareNews__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      article: this.props.articles[this.props.newsIndex],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: this
+    }))));
   }
 
 }
 
 NewsDetail = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(state => state)(NewsDetail);
 /* harmony default export */ __webpack_exports__["default"] = (NewsDetail);
+
+/***/ }),
+
+/***/ "./components/ShareNews.js":
+/*!*********************************!*\
+  !*** ./components/ShareNews.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase */ "firebase");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_3__);
+var _jsxFileName = "/Users/thesugar/news-sharing/components/ShareNews.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+class ShareNews extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "doAction", (article, e) => {
+      console.log('inside doAction');
+      console.log(article);
+      let db = firebase__WEBPACK_IMPORTED_MODULE_3___default.a.firestore(); // Firestore の登録処理
+
+      db.collection('share').add({
+        title: article.title,
+        description: article.description,
+        image: article.urlToImage,
+        url: article.url //sharedFrom: firebase.auth().currentUser.uid,
+        //sharedTo :
+
+      }).then(doc => {
+        console.log(`共有しました`);
+      }).catch(error => {
+        console.log(`共有に失敗しました。リトライしてください。`);
+      });
+      this.setState({
+        title: '',
+        description: '',
+        image: '',
+        url: ''
+      });
+    });
+
+    if (this.props.login == false) {
+      next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/address');
+    }
+
+    this.state = {
+      title: '',
+      description: '',
+      url: '',
+      image: ''
+    };
+    this.logined = this.logined.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeDetail = this.onChangeDetail.bind(this);
+    this.onChangeDeadline = this.onChangeDeadline.bind(this);
+    this.onChangeConcerns = this.onChangeConcerns.bind(this);
+    this.doAction = this.doAction.bind(this);
+  } // login, logout 処理
+
+
+  logined() {
+    console.log('logined.');
+  }
+
+  logouted() {
+    next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/');
+  } // フィールド入力処理
+
+
+  onChangeTitle(e) {
+    this.setState({
+      title: e.target.value
+    });
+  }
+
+  onChangeDetail(e) {
+    this.setState({
+      detail: e.target.value
+    });
+  }
+
+  onChangeDeadline(e) {
+    this.setState({
+      deadline: e.target.value
+    });
+  }
+
+  onChangeConcerns(e) {
+    this.setState({
+      concerns: e.target.value
+    });
+  } // データの登録処理
+
+
+  render() {
+    const article = this.props.article;
+    return __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 88
+      },
+      __self: this
+    }, __jsx("button", {
+      onClick: e => this.doAction(article, e),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 89
+      },
+      __self: this
+    }, "\u5171\u6709\u3059\u308B")) // article情報は親ページからpropsで受け取ればいい?
+    // 受け取ったarticleをいちいちsetStateとかしないとだめ？
+    // doActionにarticleを引数としてわたせる？
+    // 共有先はここでモーダル（ポータル）を表示して選べるようにする
+    ;
+  }
+
+}
+
+ShareNews = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(state => state)(ShareNews);
+/* harmony default export */ __webpack_exports__["default"] = (ShareNews);
 
 /***/ }),
 
@@ -3087,7 +3234,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!*******************************!*\
   !*** multi ./pages/p/[id].js ***!
   \*******************************/
@@ -3360,6 +3507,17 @@ module.exports = require("core-js/library/fn/symbol/iterator");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/weak-map");
+
+/***/ }),
+
+/***/ "firebase":
+/*!***************************!*\
+  !*** external "firebase" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("firebase");
 
 /***/ }),
 
