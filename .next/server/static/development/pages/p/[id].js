@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -809,6 +809,7 @@ class NewsDetail extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this
     }, "\u5168\u6587\u3092\u8AAD\u3080")), __jsx(_components_ShareNews__WEBPACK_IMPORTED_MODULE_4__["default"], {
       article: this.props.articles[this.props.newsIndex],
+      userid: this.props.userid,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 26
@@ -841,6 +842,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase */ "firebase");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__);
 var _jsxFileName = "/Users/thesugar/news-sharing/components/ShareNews.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -851,19 +854,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 class ShareNews extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
     super(props);
 
-    _defineProperty(this, "doAction", (article, e) => {
+    _defineProperty(this, "doAction", (article, userid, e) => {
+      console.log('doActionの中');
+      console.log('userid is');
+      console.log(userid);
       let db = firebase__WEBPACK_IMPORTED_MODULE_3___default.a.firestore(); // Firestore の登録処理
 
       db.collection('share').add({
         title: article.title,
         description: article.description,
         image: article.urlToImage,
-        url: article.url //sharedFrom: firebase.auth().currentUser.uid,
-        //sharedTo :
+        url: article.url,
+        sharedFrom: userid //sharedTo : 
 
       }).then(doc => {
         console.log(`共有しました`);
@@ -933,17 +940,18 @@ class ShareNews extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
   render() {
     const article = this.props.article;
+    const userid = this.props.userid;
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 85
+        lineNumber: 89
       },
       __self: this
     }, __jsx("button", {
-      onClick: e => this.doAction(article, e),
+      onClick: e => this.doAction(article, userid, e),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 86
+        lineNumber: 90
       },
       __self: this
     }, "\u5171\u6709\u3059\u308B")) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
@@ -3229,7 +3237,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /*!*******************************!*\
   !*** multi ./pages/p/[id].js ***!
   \*******************************/
@@ -3238,6 +3246,17 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 module.exports = __webpack_require__(/*! /Users/thesugar/news-sharing/pages/p/[id].js */"./pages/p/[id].js");
 
+
+/***/ }),
+
+/***/ "@material-ui/core":
+/*!************************************!*\
+  !*** external "@material-ui/core" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core");
 
 /***/ }),
 

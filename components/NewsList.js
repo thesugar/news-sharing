@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import Link from 'next/link';
 import NewsCard from '../components/NewsCard';
+import Account from '../components/Account';
+import firebase from "firebase";
 
 class NewsList extends Component {
 
     constructor(props){
+        console.log('NewsListのconstructor');
         super(props);
+        this.logined = this.logined.bind(this);
     }
 
     // get data from Firebase
@@ -25,6 +30,15 @@ class NewsList extends Component {
             }
         })
     }
+
+    logined(){
+        console.log('loginしました');
+        //this.getFireData();
+    }
+
+    logouted(){
+        console.log('logoutしました');
+    }
     
     /*
             <li key={index.toString}>
@@ -40,6 +54,9 @@ class NewsList extends Component {
     */
 
     render() {
+        console.log('NewsListのrender()');
+        console.log('今のthis.propsは');
+        console.log(this.props);
         this.props.articles.length === 0 && this.getNews();
         const itemList = [];
         this.props.articles.map((article, index) => {
@@ -50,6 +67,7 @@ class NewsList extends Component {
 
         return (
             <div>
+                <Account onLogined={this.logined} onLogouted={this.logouted}/>
             <ul>
                 {itemList}
             </ul>

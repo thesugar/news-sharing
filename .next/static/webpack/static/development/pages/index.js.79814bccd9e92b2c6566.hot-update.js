@@ -20,10 +20,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _components_NewsCard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/NewsCard */ "./components/NewsCard.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _components_NewsCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/NewsCard */ "./components/NewsCard.js");
+/* harmony import */ var _components_Account__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/Account */ "./components/Account.js");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.cjs.js");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_14__);
 
 
 
@@ -39,6 +44,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
 
 
 
+
+
+
 var NewsList =
 /*#__PURE__*/
 function (_Component) {
@@ -49,6 +57,7 @@ function (_Component) {
 
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, NewsList);
 
+    console.log('NewsListのconstructor');
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(NewsList).call(this, props));
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "getNews", function _callee() {
@@ -86,13 +95,21 @@ function (_Component) {
       });
     });
 
+    _this.logined = _this.logined.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this));
     return _this;
   } // get data from Firebase
 
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(NewsList, [{
-    key: "render",
-
+    key: "logined",
+    value: function logined() {
+      console.log('loginしました'); //this.getFireData();
+    }
+  }, {
+    key: "logouted",
+    value: function logouted() {
+      console.log('logoutしました');
+    }
     /*
             <li key={index.toString}>
                 <Link href="/p/[id]" as={`/p/${index}`}>
@@ -105,18 +122,24 @@ function (_Component) {
             </ul>
             </li>);
     */
+
+  }, {
+    key: "render",
     value: function render() {
+      console.log('NewsListのrender()');
+      console.log('今のthis.propsは');
+      console.log(this.props);
       this.props.articles.length === 0 && this.getNews();
       var itemList = [];
       this.props.articles.map(function (article, index) {
-        itemList.push(__jsx(_components_NewsCard__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        itemList.push(__jsx(_components_NewsCard__WEBPACK_IMPORTED_MODULE_12__["default"], {
           title: article['title'],
           image: article['urlToImage'],
           description: article['description'],
           index: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 47
+            lineNumber: 64
           },
           __self: this
         }));
@@ -124,13 +147,21 @@ function (_Component) {
       return __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 69
         },
         __self: this
-      }, __jsx("ul", {
+      }, __jsx(_components_Account__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        onLogined: this.logined,
+        onLogouted: this.logouted,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 70
+        },
+        __self: this
+      }), __jsx("ul", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 71
         },
         __self: this
       }, itemList));
@@ -140,7 +171,7 @@ function (_Component) {
   return NewsList;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 
-NewsList = Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(function (state) {
+NewsList = Object(react_redux__WEBPACK_IMPORTED_MODULE_10__["connect"])(function (state) {
   return state;
 })(NewsList);
 /* harmony default export */ __webpack_exports__["default"] = (NewsList);
@@ -148,4 +179,4 @@ NewsList = Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(function 
 /***/ })
 
 })
-//# sourceMappingURL=index.js.fc29cb6e19e769c45fcb.hot-update.js.map
+//# sourceMappingURL=index.js.79814bccd9e92b2c6566.hot-update.js.map

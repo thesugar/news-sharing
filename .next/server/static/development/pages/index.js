@@ -88,10 +88,140 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./components/Account.js":
+/*!*******************************!*\
+  !*** ./components/Account.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase */ "firebase");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/Users/thesugar/news-sharing/components/Account.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+class Account extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    console.log('Account.jsのconstructor');
+    super(props);
+
+    _defineProperty(this, "style", {
+      fontSize: "12pt",
+      padding: "5px 10px"
+    });
+
+    _defineProperty(this, "match_user", result => {
+      let db = firebase__WEBPACK_IMPORTED_MODULE_2___default.a.firestore(); // メールアドレスをもとに、マッチするユーザーを探してユーザーIDを取得
+      // 下のブロックの中でもresult.userは生きてるので他の認証情報とかを取ってくることもできる
+
+      db.collection("news-user").where('email', '==', result.user.email).get().then(querySnapshot => {
+        // success
+        console.log(querySnapshot.docs[0].data());
+        this.props.dispatch({
+          type: 'UPDATE_USER',
+          value: {
+            login: true,
+            userid: querySnapshot.docs[0].data().userid,
+            articles: this.props.articles
+          }
+        });
+      }).catch(error => {
+        console.log(error);
+      });
+    });
+
+    this.login_check = this.login_check.bind(this);
+    this.match_user = this.match_user.bind(this);
+  }
+
+  login() {
+    console.log('Account.jsのlogin()');
+    let provider = new firebase__WEBPACK_IMPORTED_MODULE_2___default.a.auth.GoogleAuthProvider();
+    let self = this;
+    let db = firebase__WEBPACK_IMPORTED_MODULE_2___default.a.firestore();
+    firebase__WEBPACK_IMPORTED_MODULE_2___default.a.auth().setPersistence(firebase__WEBPACK_IMPORTED_MODULE_2___default.a.auth.Auth.Persistence.LOCAL);
+    firebase__WEBPACK_IMPORTED_MODULE_2___default.a.auth().signInWithPopup(provider).then(result => {
+      this.match_user(result);
+      this.props.onLogined();
+    });
+  }
+
+  logout() {
+    console.log("logout");
+    firebase__WEBPACK_IMPORTED_MODULE_2___default.a.auth().signOut();
+    this.props.dispatch({
+      type: 'UPDATE_USER',
+      value: {
+        login: false,
+        username: '(click here!)',
+        email: '',
+        articles: this.props.articles
+      }
+    });
+    this.props.onLogouted();
+  } // check if user is logged in or logged out
+
+
+  login_check() {
+    console.log('Account.jsのlogin_check()');
+
+    if (this.props.login === undefined || this.props.login == false) {
+      this.login();
+    } else {
+      this.logout();
+    }
+  }
+
+  render() {
+    console.log('Account.jsのrender()');
+    firebase__WEBPACK_IMPORTED_MODULE_2___default.a.auth().onAuthStateChanged(user => {
+      if (user) {
+        // User is signed in.
+        this.username_ = user.displayName;
+      } else {// No user is signed in.
+      }
+    });
+    return __jsx("p", {
+      className: "login",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 90
+      },
+      __self: this
+    }, __jsx("span", {
+      className: "acount",
+      onClick: this.login_check,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 91
+      },
+      __self: this
+    }, "LOGINED: ", this.props.userid));
+  }
+
+}
+
+Account = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(state => state)(Account);
+/* harmony default export */ __webpack_exports__["default"] = (Account);
+
+/***/ }),
 
 /***/ "./components/Bar.js":
 /*!***************************!*\
@@ -701,11 +831,16 @@ function NewsCard(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_NewsCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/NewsCard */ "./components/NewsCard.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "react-dom");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_NewsCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/NewsCard */ "./components/NewsCard.js");
+/* harmony import */ var _components_Account__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Account */ "./components/Account.js");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! firebase */ "firebase");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_6__);
 var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsList.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -716,8 +851,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
+
 class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
+    console.log('NewsListのconstructor');
     super(props);
 
     _defineProperty(this, "getNews", async () => {
@@ -733,9 +872,18 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         }
       });
     });
+
+    this.logined = this.logined.bind(this);
   } // get data from Firebase
 
 
+  logined() {
+    console.log('loginしました'); //this.getFireData();
+  }
+
+  logouted() {
+    console.log('logoutしました');
+  }
   /*
           <li key={index.toString}>
               <Link href="/p/[id]" as={`/p/${index}`}>
@@ -748,18 +896,23 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
           </ul>
           </li>);
   */
+
+
   render() {
+    console.log('NewsListのrender()');
+    console.log('今のthis.propsは');
+    console.log(this.props);
     this.props.articles.length === 0 && this.getNews();
     const itemList = [];
     this.props.articles.map((article, index) => {
-      itemList.push(__jsx(_components_NewsCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      itemList.push(__jsx(_components_NewsCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
         title: article['title'],
         image: article['urlToImage'],
         description: article['description'],
         index: index,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47
+          lineNumber: 64
         },
         __self: this
       }));
@@ -767,13 +920,21 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 52
+        lineNumber: 69
       },
       __self: this
-    }, __jsx("ul", {
+    }, __jsx(_components_Account__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      onLogined: this.logined,
+      onLogouted: this.logouted,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 53
+        lineNumber: 70
+      },
+      __self: this
+    }), __jsx("ul", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 71
       },
       __self: this
     }, itemList));
@@ -781,7 +942,7 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 }
 
-NewsList = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(state => state)(NewsList);
+NewsList = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(state => state)(NewsList);
 /* harmony default export */ __webpack_exports__["default"] = (NewsList);
 
 /***/ }),
@@ -3046,7 +3207,7 @@ function ProTip() {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -3399,6 +3560,17 @@ module.exports = require("core-js/library/fn/weak-map");
 
 /***/ }),
 
+/***/ "firebase":
+/*!***************************!*\
+  !*** external "firebase" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("firebase");
+
+/***/ }),
+
 /***/ "next/router":
 /*!******************************!*\
   !*** external "next/router" ***!
@@ -3440,6 +3612,17 @@ module.exports = require("prop-types-exact");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-dom":
+/*!****************************!*\
+  !*** external "react-dom" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-dom");
 
 /***/ }),
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Router from 'next/router';
 import firebase from "firebase";
+import { useRadioGroup } from '@material-ui/core';
 
 class ShareNews extends Component {
 
@@ -51,8 +52,10 @@ class ShareNews extends Component {
     }
 
     // データの登録処理
-    doAction = (article, e) => {    
-
+    doAction = (article, userid, e) => {    
+        console.log('doActionの中');
+        console.log('userid is');
+        console.log(userid);
         let db = firebase.firestore();
         // Firestore の登録処理
 
@@ -61,8 +64,8 @@ class ShareNews extends Component {
             description: article.description,
             image: article.urlToImage,
             url: article.url,
-            //sharedFrom: firebase.auth().currentUser.uid,
-            //sharedTo :
+            sharedFrom: userid,
+            //sharedTo : 
         })
         .then((doc) => {
             console.log(`共有しました`);
@@ -81,9 +84,10 @@ class ShareNews extends Component {
 
     render(){
         const article = this.props.article;
+        const userid = this.props.userid;
         return (
             <div>
-                <button onClick={(e) => this.doAction(article, e)}>共有する</button>
+                <button onClick={(e) => this.doAction(article, userid, e)}>共有する</button>
             </div>
             // 共有先はここでモーダル（ポータル）を表示して選べるようにする
         );
