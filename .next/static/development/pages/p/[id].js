@@ -875,8 +875,6 @@ function (_Component) {
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(ShareNews).call(this, props));
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "doAction", function (article, e) {
-      console.log('inside doAction');
-      console.log(article);
       var db = firebase__WEBPACK_IMPORTED_MODULE_10___default.a.firestore(); // Firestore の登録処理
 
       db.collection('share').add({
@@ -969,7 +967,7 @@ function (_Component) {
       return __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88
+          lineNumber: 85
         },
         __self: this
       }, __jsx("button", {
@@ -978,13 +976,10 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 86
         },
         __self: this
-      }, "\u5171\u6709\u3059\u308B")) // article情報は親ページからpropsで受け取ればいい?
-      // 受け取ったarticleをいちいちsetStateとかしないとだめ？
-      // doActionにarticleを引数としてわたせる？
-      // 共有先はここでモーダル（ポータル）を表示して選べるようにする
+      }, "\u5171\u6709\u3059\u308B")) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
       ;
     }
   }]);
@@ -87455,7 +87450,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /*!*****************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js ***!
   \*****************************************************************************************************************************************/
@@ -87478,5 +87473,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[3,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[id].js.map
