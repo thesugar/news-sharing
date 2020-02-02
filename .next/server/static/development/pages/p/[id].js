@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -740,8 +740,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_ShareNews__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/ShareNews */ "./components/ShareNews.js");
+/* harmony import */ var _components_SelectWho__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SelectWho */ "./components/SelectWho.js");
 var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsDetail.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -759,44 +761,44 @@ class NewsDetail extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 18
+        lineNumber: 19
       },
       __self: this
     }, __jsx("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19
+        lineNumber: 20
       },
       __self: this
     }, __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
+        lineNumber: 22
       },
       __self: this
     }, __jsx("h1", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 23
       },
       __self: this
     }, this.props.articles[this.props.newsIndex]['title']), __jsx("img", {
       src: this.props.articles[this.props.newsIndex]['urlToImage'],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 24
       },
       __self: this
     }), __jsx("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 25
       },
       __self: this
     }, this.props.articles[this.props.newsIndex]['description']), __jsx("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 26
       },
       __self: this
     }, __jsx("a", {
@@ -804,15 +806,15 @@ class NewsDetail extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       target: "_blank",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 26
       },
       __self: this
-    }, "\u5168\u6587\u3092\u8AAD\u3080")), __jsx(_components_ShareNews__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, "\u5168\u6587\u3092\u8AAD\u3080")), __jsx(_components_SelectWho__WEBPACK_IMPORTED_MODULE_5__["default"], {
       article: this.props.articles[this.props.newsIndex],
       userid: this.props.userid,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 27
       },
       __self: this
     }))));
@@ -822,6 +824,168 @@ class NewsDetail extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 NewsDetail = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(state => state)(NewsDetail);
 /* harmony default export */ __webpack_exports__["default"] = (NewsDetail);
+
+/***/ }),
+
+/***/ "./components/SelectWho.js":
+/*!*********************************!*\
+  !*** ./components/SelectWho.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase */ "firebase");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_3__);
+var _jsxFileName = "/Users/thesugar/news-sharing/components/SelectWho.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "getUserList", (self = this) => {
+      let db = firebase__WEBPACK_IMPORTED_MODULE_3___default.a.firestore(); // firestore のオブジェクト取得
+
+      db.collection('news-user').get().then(function (querySnapshot) {
+        let userList = [];
+        querySnapshot.forEach(doc => {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+          userList.push(__jsx("li", {
+            key: doc.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 54
+            },
+            __self: this
+          }, __jsx("input", {
+            type: "checkbox",
+            onChange: e => self.onChecked(doc.data().userid, e),
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 54
+            },
+            __self: this
+          }), doc.data().userid));
+        });
+        console.log('userlistがとれてるかてすと');
+        console.log(userList);
+        self.setState({
+          userList: userList
+        });
+      });
+    });
+
+    _defineProperty(this, "doAction", (article, userid, e) => {
+      console.log('doActionの中');
+      console.log('userid is');
+      console.log(userid);
+      let db = firebase__WEBPACK_IMPORTED_MODULE_3___default.a.firestore(); // Firestore の登録処理
+
+      db.collection('share').add({
+        title: article.title,
+        description: article.description,
+        image: article.urlToImage,
+        url: article.url,
+        sharedFrom: userid,
+        sharedTo: this.state.currentSelectedUsers
+      }).then(doc => {
+        console.log(`共有しました`);
+      }).catch(error => {
+        console.log(`共有に失敗しました。リトライしてください。`);
+      });
+      this.setState({
+        title: '',
+        description: '',
+        image: '',
+        url: ''
+      });
+    });
+
+    if (this.props.login == false) {
+      next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/');
+    }
+
+    this.state = {
+      userList: []
+    };
+    this.logined = this.logined.bind(this);
+    this.onChecked = this.onChecked.bind(this);
+    this.doAction = this.doAction.bind(this);
+  } // login, logout 処理
+
+
+  logined() {
+    console.log('logined.');
+  }
+
+  logouted() {
+    next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/');
+  }
+
+  onChecked(userid, e) {
+    const currentSelectedUsers = this.state.currentSelectedUsers ? this.state.currentSelectedUsers : [];
+    currentSelectedUsers.push(userid); // はまりポイント：
+    // 以下で {currentSelectedUsers : currentSelectedUsers.push(userid)}としたら
+    // currentSelectedUsers に 1 という数字が入って配列じゃないためpushできないという現象
+    // Array.push は 戻り値として length を返すため
+
+    e.target.checked ? this.setState({
+      currentSelectedUsers: currentSelectedUsers
+    }) : this.setState({
+      currentSelectedUsers: currentSelectedUsers.filter(elem => elem !== userid)
+    });
+  }
+
+  render() {
+    const article = this.props.article;
+    const userid = this.props.userid;
+    (this.state.userList.length === 0 || this.state.userList === undefined) && this.getUserList();
+    const userList = this.state.userList;
+    console.log('renderの中でuserListがとれてるか!?');
+    console.log(userList);
+    return __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 101
+      },
+      __self: this
+    }, __jsx("ul", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102
+      },
+      __self: this
+    }, userList), __jsx("button", {
+      onClick: e => this.doAction(article, userid, e),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 103
+      },
+      __self: this
+    }, "\u78BA\u5B9A")) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
+    ;
+  }
+
+}
+
+SelectWho = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(state => state)(SelectWho);
+/* harmony default export */ __webpack_exports__["default"] = (SelectWho);
 
 /***/ }),
 
@@ -842,13 +1006,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase */ "firebase");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__);
 var _jsxFileName = "/Users/thesugar/news-sharing/components/ShareNews.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -886,7 +1047,7 @@ class ShareNews extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     });
 
     if (this.props.login == false) {
-      next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/address');
+      next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/');
     }
 
     this.state = {
@@ -896,10 +1057,6 @@ class ShareNews extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       image: ''
     };
     this.logined = this.logined.bind(this);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDetail = this.onChangeDetail.bind(this);
-    this.onChangeDeadline = this.onChangeDeadline.bind(this);
-    this.onChangeConcerns = this.onChangeConcerns.bind(this);
     this.doAction = this.doAction.bind(this);
   } // login, logout 処理
 
@@ -910,31 +1067,6 @@ class ShareNews extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
   logouted() {
     next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/');
-  } // フィールド入力処理
-
-
-  onChangeTitle(e) {
-    this.setState({
-      title: e.target.value
-    });
-  }
-
-  onChangeDetail(e) {
-    this.setState({
-      detail: e.target.value
-    });
-  }
-
-  onChangeDeadline(e) {
-    this.setState({
-      deadline: e.target.value
-    });
-  }
-
-  onChangeConcerns(e) {
-    this.setState({
-      concerns: e.target.value
-    });
   } // データの登録処理
 
 
@@ -944,14 +1076,14 @@ class ShareNews extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89
+        lineNumber: 67
       },
       __self: this
     }, __jsx("button", {
       onClick: e => this.doAction(article, userid, e),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 90
+        lineNumber: 68
       },
       __self: this
     }, "\u5171\u6709\u3059\u308B")) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
@@ -3237,7 +3369,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!*******************************!*\
   !*** multi ./pages/p/[id].js ***!
   \*******************************/
@@ -3246,17 +3378,6 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 module.exports = __webpack_require__(/*! /Users/thesugar/news-sharing/pages/p/[id].js */"./pages/p/[id].js");
 
-
-/***/ }),
-
-/***/ "@material-ui/core":
-/*!************************************!*\
-  !*** external "@material-ui/core" ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core");
 
 /***/ }),
 

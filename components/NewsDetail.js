@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Router from 'next/router';
 import Link from 'next/link';
 import ShareNews from '../components/ShareNews'
+import SelectWho from '../components/SelectWho'
 
 class NewsDetail extends Component {
 
@@ -23,7 +24,7 @@ class NewsDetail extends Component {
                     <img src={this.props.articles[this.props.newsIndex]['urlToImage']} />
                     <p>{this.props.articles[this.props.newsIndex]['description']}</p>
                     <p><a href={this.props.articles[this.props.newsIndex]['url']} target="_blank">全文を読む</a></p>
-                    <ShareNews article={this.props.articles[this.props.newsIndex]} userid={this.props.userid}/>
+                    <SelectWho article={this.props.articles[this.props.newsIndex]} userid={this.props.userid}/>
                     </div>
                     }
                 </ul>

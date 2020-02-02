@@ -2,14 +2,13 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Router from 'next/router';
 import firebase from "firebase";
-import { useRadioGroup } from '@material-ui/core';
 
 class ShareNews extends Component {
 
     constructor(props){
         super(props);
         if (this.props.login == false) {
-            Router.push('/address');
+            Router.push('/');
         }
         this.state = {
             title: '',
@@ -18,10 +17,6 @@ class ShareNews extends Component {
             image: '',
         }
         this.logined = this.logined.bind(this);
-        this.onChangeTitle = this.onChangeTitle.bind(this);
-        this.onChangeDetail = this.onChangeDetail.bind(this);
-        this.onChangeDeadline = this.onChangeDeadline.bind(this);
-        this.onChangeConcerns = this.onChangeConcerns.bind(this);
         this.doAction = this.doAction.bind(this);
     }
 
@@ -32,23 +27,6 @@ class ShareNews extends Component {
 
     logouted(){
         Router.push('/');
-    }
-
-    // フィールド入力処理
-    onChangeTitle(e) {
-        this.setState({title: e.target.value});
-    }
-
-    onChangeDetail(e){
-        this.setState({detail: e.target.value});
-    }
-
-    onChangeDeadline(e){
-        this.setState({deadline: e.target.value});
-    }
-
-    onChangeConcerns(e){
-        this.setState({concerns: e.target.value});
     }
 
     // データの登録処理
