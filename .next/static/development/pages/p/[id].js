@@ -1056,8 +1056,16 @@ function (_Component) {
 
         _this.setState({
           success: true,
-          afterClicked: true
+          afterClicked: true,
+          textAreaValue: ''
         });
+
+        setTimeout(function () {
+          _this.setState({
+            success: false,
+            afterClicked: false
+          });
+        }, 2000);
       })["catch"](function (error) {
         console.log("\u5171\u6709\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u3002\u30EA\u30C8\u30E9\u30A4\u3057\u3066\u304F\u3060\u3055\u3044\u3002");
 
@@ -1065,6 +1073,13 @@ function (_Component) {
           success: false,
           afterClicked: true
         });
+
+        setTimeout(function () {
+          _this.setState({
+            success: false,
+            afterClicked: false
+          });
+        }, 2000);
       });
 
       _this.setState({
@@ -1137,19 +1152,19 @@ function (_Component) {
       return __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 115
+          lineNumber: 117
         },
         __self: this
       }, __jsx("ul", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 116
+          lineNumber: 118
         },
         __self: this
       }, userList), __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 117
+          lineNumber: 119
         },
         __self: this
       }, __jsx("textarea", {
@@ -1157,7 +1172,7 @@ function (_Component) {
         onChange: this.onChangeText,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118
+          lineNumber: 120
         },
         __self: this
       })), __jsx("button", {
@@ -1166,31 +1181,31 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 120
+          lineNumber: 122
         },
         __self: this
       }, "\u78BA\u5B9A"), this.state.afterClicked && this.state.success ? __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 122
+          lineNumber: 124
         },
         __self: this
       }, __jsx("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 123
+          lineNumber: 125
         },
         __self: this
       }, "\u5171\u6709\u3057\u307E\u3057\u305F")) : this.state.afterClicked && !this.state.success ? __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 127
+          lineNumber: 129
         },
         __self: this
       }, __jsx("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 128
+          lineNumber: 130
         },
         __self: this
       }, "\u5171\u6709\u306B\u5931\u6557\u3057\u307E\u3057\u305F")) : null) // 共有先はここでモーダル（ポータル）を表示して選べるようにする

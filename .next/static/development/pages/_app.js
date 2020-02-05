@@ -74725,7 +74725,8 @@ function reducer() {
 }
 
 var initial = {
-  articles: []
+  articles: [],
+  userid: 'annonymous'
 }; // initStore function
 
 function initStore() {

@@ -38,7 +38,8 @@ function reducer (state = initial, action) {
 }
 
 const initial = { 
-    articles : []
+    articles : [],
+    userid : 'annonymous'
 }
 
 // initStore function

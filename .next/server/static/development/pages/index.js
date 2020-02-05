@@ -868,7 +868,8 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       this.props.dispatch({
         type: 'UPDATE_USER',
         value: {
-          articles: json.articles
+          articles: json.articles,
+          userid: this.props.userid
         }
       });
     });
@@ -912,7 +913,7 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         index: index,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 65
         },
         __self: this
       }));
@@ -920,7 +921,7 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 69
+        lineNumber: 70
       },
       __self: this
     }, __jsx(_components_Account__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -928,13 +929,13 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       onLogouted: this.logouted,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 70
+        lineNumber: 71
       },
       __self: this
     }), __jsx("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71
+        lineNumber: 72
       },
       __self: this
     }, itemList));

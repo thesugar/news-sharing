@@ -837,7 +837,8 @@ function (_Component) {
               _this.props.dispatch({
                 type: 'UPDATE_USER',
                 value: {
-                  articles: json.articles
+                  articles: json.articles,
+                  userid: _this.props.userid
                 }
               });
 
@@ -893,7 +894,7 @@ function (_Component) {
           index: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 64
+            lineNumber: 65
           },
           __self: this
         }));
@@ -901,7 +902,7 @@ function (_Component) {
       return __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 69
+          lineNumber: 70
         },
         __self: this
       }, __jsx(_components_Account__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -909,13 +910,13 @@ function (_Component) {
         onLogouted: this.logouted,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 70
+          lineNumber: 71
         },
         __self: this
       }), __jsx("ul", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71
+          lineNumber: 72
         },
         __self: this
       }, itemList));

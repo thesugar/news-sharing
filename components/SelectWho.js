@@ -86,11 +86,13 @@ class SelectWho extends Component {
         })
         .then((doc) => {
             console.log(`共有しました`);
-            this.setState({success: true, afterClicked: true})
+            this.setState({success: true, afterClicked: true, textAreaValue: ''});
+            setTimeout(() => {this.setState({success: false, afterClicked: false})}, 2000);
         })
         .catch((error) => {
             console.log(`共有に失敗しました。リトライしてください。`);
-            this.setState({success: false, afterClicked: true})
+            this.setState({success: false, afterClicked: true});
+            setTimeout(() => {this.setState({success: false, afterClicked: false})}, 2000);
         });
 
         this.setState({
