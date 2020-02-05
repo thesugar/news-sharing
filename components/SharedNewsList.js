@@ -26,13 +26,15 @@ class SharedNewsList extends Component {
         let db = firebase.firestore();
         db.collection('share').where('sharedTo', 'array-contains', this.props.userid).get().then((querySnapshot) => {
             // success
+            console.log('getNewsSharedByFriends のなか')
             console.log(querySnapshot.docs[0].data()); // doc[i] を全部まわす必要があると思われる（たぶん）．
             this.props.dispatch({
                 type: 'UPDATE_USER',
                 value: {
                     login: true,
                     userid : this.props.userid,
-                    articles : this.props.articles
+                    articles : this.props.articles,
+                    articlesSharedByFriends : ['dummy']
                 }
             });
         }).catch(error => {
@@ -49,30 +51,20 @@ class SharedNewsList extends Component {
         console.log('logoutしました');
     }
     
-    /*
-            <li key={index.toString}>
-                <Link href="/p/[id]" as={`/p/${index}`}>
-                {article['title']}
-                </Link>
-            <ul>
-                <li key="0"><img src={article['urlToImage']} width="100" height="100" /></li>
-                <li key="1">{article['description']}</li>
-                <li key="2">{article['content']}</li>
-            </ul>
-            </li>);
-    */
-
     render() {
-        console.log('NewsListのrender()');
+        console.log('SharedNewsListのrender()');
         console.log('今のthis.propsは');
         console.log(this.props);
-        this.props.articles.length === 0 && this.getNews();
+        (this.props.articlesSharedByFriends === undefined || this.props.articlesSharedByFriends.length === 0) && this.getNewsSharedByFriends();
+        /*
         const itemList = [];
         this.props.articles.map((article, index) => {
             itemList.push(
                 <NewsCard title={article['title']} image={article['urlToImage']} description={article['description']} index={index} />
             );
         })
+        */
+       const itemList = 'hoge---'
 
         return (
             <div>

@@ -7,6 +7,7 @@ import ProTip from '../src/ProTip';
 import Link from '../src/Link';
 import NewsList from '../components/NewsList';
 import Bar from '../components/Bar';
+import SharedNewsList from '../components/SharedNewsList';
 
 function Copyright() {
     return (
@@ -28,6 +29,7 @@ function Copyright() {
         <Box my={4}>
           <Typography variant="h4" component="h1" gutterBottom>
             Shohan News App
+            <SharedNewsList />
             <NewsList />
           </Typography>
           <ProTip />
