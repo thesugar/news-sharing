@@ -1009,7 +1009,7 @@ function (_Component) {
             key: doc.id,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 60
+              lineNumber: 59
             },
             __self: this
           }, __jsx("input", {
@@ -1019,7 +1019,7 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 60
+              lineNumber: 59
             },
             __self: this
           }), doc.data().userid));
@@ -1042,6 +1042,14 @@ function (_Component) {
       console.log(userid);
       var db = firebase__WEBPACK_IMPORTED_MODULE_10___default.a.firestore(); // Firestore の登録処理
 
+      if (_this.state.currentSelectedUsers.length === 0 || _this.state.currentSelectedUsers === null || _this.state.currentSelectedUsers === undefined) {
+        _this.setState({
+          message: '共有する相手を1人以上選択してください'
+        });
+
+        return null;
+      }
+
       db.collection('share').add({
         title: article.title,
         description: article.description,
@@ -1055,29 +1063,26 @@ function (_Component) {
         console.log("\u5171\u6709\u3057\u307E\u3057\u305F");
 
         _this.setState({
-          success: true,
-          afterClicked: true,
+          message: '共有しました！続けて別の人やグループに共有することもできます。',
           textAreaValue: ''
         });
 
         setTimeout(function () {
           _this.setState({
-            success: false,
-            afterClicked: false
+            message: null
           });
         }, 2000);
       })["catch"](function (error) {
         console.log("\u5171\u6709\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u3002\u30EA\u30C8\u30E9\u30A4\u3057\u3066\u304F\u3060\u3055\u3044\u3002");
 
         _this.setState({
-          success: false,
-          afterClicked: true
+          message: '共有に失敗しました。リトライしてください。',
+          textAreaValue: ''
         });
 
         setTimeout(function () {
           _this.setState({
-            success: false,
-            afterClicked: false
+            message: null
           });
         }, 2000);
       });
@@ -1100,8 +1105,7 @@ function (_Component) {
     _this.state = {
       userList: [],
       textAreaValue: '',
-      success: true,
-      afterClicked: false
+      message: null
     };
     _this.logined = _this.logined.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     _this.onChecked = _this.onChecked.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
@@ -1152,19 +1156,19 @@ function (_Component) {
       return __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 117
+          lineNumber: 121
         },
         __self: this
       }, __jsx("ul", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118
+          lineNumber: 122
         },
         __self: this
       }, userList), __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 119
+          lineNumber: 123
         },
         __self: this
       }, __jsx("textarea", {
@@ -1172,7 +1176,7 @@ function (_Component) {
         onChange: this.onChangeText,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 120
+          lineNumber: 124
         },
         __self: this
       })), __jsx("button", {
@@ -1181,34 +1185,16 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 122
+          lineNumber: 126
         },
         __self: this
-      }, "\u78BA\u5B9A"), this.state.afterClicked && this.state.success ? __jsx("div", {
+      }, "\u78BA\u5B9A"), __jsx("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 124
+          lineNumber: 127
         },
         __self: this
-      }, __jsx("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 125
-        },
-        __self: this
-      }, "\u5171\u6709\u3057\u307E\u3057\u305F")) : this.state.afterClicked && !this.state.success ? __jsx("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 129
-        },
-        __self: this
-      }, __jsx("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 130
-        },
-        __self: this
-      }, "\u5171\u6709\u306B\u5931\u6557\u3057\u307E\u3057\u305F")) : null) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
+      }, this.state.message)) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
       ;
     }
   }]);

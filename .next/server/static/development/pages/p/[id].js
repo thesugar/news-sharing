@@ -981,7 +981,7 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
             key: doc.id,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 60
+              lineNumber: 59
             },
             __self: this
           }, __jsx("input", {
@@ -989,7 +989,7 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
             onChange: e => self.onChecked(doc.data().userid, e),
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 60
+              lineNumber: 59
             },
             __self: this
           }), doc.data().userid));
@@ -1012,6 +1012,13 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       console.log(userid);
       let db = firebase__WEBPACK_IMPORTED_MODULE_3___default.a.firestore(); // Firestore の登録処理
 
+      if (this.state.currentSelectedUsers.length === 0 || this.state.currentSelectedUsers === null || this.state.currentSelectedUsers === undefined) {
+        this.setState({
+          message: '共有する相手を1人以上選択してください'
+        });
+        return null;
+      }
+
       db.collection('share').add({
         title: article.title,
         description: article.description,
@@ -1024,26 +1031,23 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       }).then(doc => {
         console.log(`共有しました`);
         this.setState({
-          success: true,
-          afterClicked: true,
+          message: '共有しました！続けて別の人やグループに共有することもできます。',
           textAreaValue: ''
         });
         setTimeout(() => {
           this.setState({
-            success: false,
-            afterClicked: false
+            message: null
           });
         }, 2000);
       }).catch(error => {
         console.log(`共有に失敗しました。リトライしてください。`);
         this.setState({
-          success: false,
-          afterClicked: true
+          message: '共有に失敗しました。リトライしてください。',
+          textAreaValue: ''
         });
         setTimeout(() => {
           this.setState({
-            success: false,
-            afterClicked: false
+            message: null
           });
         }, 2000);
       });
@@ -1065,8 +1069,7 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     this.state = {
       userList: [],
       textAreaValue: '',
-      success: true,
-      afterClicked: false
+      message: null
     };
     this.logined = this.logined.bind(this);
     this.onChecked = this.onChecked.bind(this);
@@ -1107,19 +1110,19 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 117
+        lineNumber: 121
       },
       __self: this
     }, __jsx("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 118
+        lineNumber: 122
       },
       __self: this
     }, userList), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 119
+        lineNumber: 123
       },
       __self: this
     }, __jsx("textarea", {
@@ -1127,41 +1130,23 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       onChange: this.onChangeText,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 120
+        lineNumber: 124
       },
       __self: this
     })), __jsx("button", {
       onClick: e => this.doAction(article, userid, e),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 122
+        lineNumber: 126
       },
       __self: this
-    }, "\u78BA\u5B9A"), this.state.afterClicked && this.state.success ? __jsx("div", {
+    }, "\u78BA\u5B9A"), __jsx("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 124
+        lineNumber: 127
       },
       __self: this
-    }, __jsx("p", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 125
-      },
-      __self: this
-    }, "\u5171\u6709\u3057\u307E\u3057\u305F")) : this.state.afterClicked && !this.state.success ? __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 129
-      },
-      __self: this
-    }, __jsx("p", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 130
-      },
-      __self: this
-    }, "\u5171\u6709\u306B\u5931\u6557\u3057\u307E\u3057\u305F")) : null) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
+    }, this.state.message)) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
     ;
   }
 

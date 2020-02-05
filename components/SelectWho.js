@@ -14,8 +14,7 @@ class SelectWho extends Component {
         this.state = {
             userList : [],
             textAreaValue : '',
-            success : true,
-            afterClicked : false
+            message : null
         }
 
         this.logined = this.logined.bind(this);
@@ -75,6 +74,11 @@ class SelectWho extends Component {
         let db = firebase.firestore();
         // Firestore の登録処理
 
+        if (this.state.currentSelectedUsers.length === 0 || this.state.currentSelectedUsers === null || this.state.currentSelectedUsers === undefined){
+            this.setState({message : '共有する相手を1人以上選択してください'});
+            return null;
+        }
+
         db.collection('share').add({
             title: article.title,
             description: article.description,
@@ -86,13 +90,13 @@ class SelectWho extends Component {
         })
         .then((doc) => {
             console.log(`共有しました`);
-            this.setState({success: true, afterClicked: true, textAreaValue: ''});
-            setTimeout(() => {this.setState({success: false, afterClicked: false})}, 2000);
+            this.setState({message: '共有しました！続けて別の人やグループに共有することもできます。', textAreaValue: ''});
+            setTimeout(() => {this.setState({message: null})}, 2000);
         })
         .catch((error) => {
             console.log(`共有に失敗しました。リトライしてください。`);
-            this.setState({success: false, afterClicked: true});
-            setTimeout(() => {this.setState({success: false, afterClicked: false})}, 2000);
+            this.setState({message: '共有に失敗しました。リトライしてください。', textAreaValue: ''});
+            setTimeout(() => {this.setState({message: null})}, 2000);
         });
 
         this.setState({
@@ -120,18 +124,7 @@ class SelectWho extends Component {
                 <textarea value={this.state.textAreaValue} onChange={this.onChangeText} />
                 </div>
                 <button onClick={(e) => this.doAction(article, userid, e)}>確定</button>
-                {this.state.afterClicked && this.state.success ? 
-                <div>
-                    <p>共有しました</p>
-                </div>
-                :
-                this.state.afterClicked && !this.state.success ?
-                <div>
-                    <p>共有に失敗しました</p>
-                </div>
-                :
-                null
-                }
+                <p>{this.state.message}</p>
             </div>
             // 共有先はここでモーダル（ポータル）を表示して選べるようにする
         );
