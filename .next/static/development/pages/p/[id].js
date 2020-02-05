@@ -702,6 +702,112 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./components/Modal.js":
+/*!*****************************!*\
+  !*** ./components/Modal.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SimpleModal; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var _material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Modal */ "./node_modules/@material-ui/core/esm/Modal/index.js");
+
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Modal.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+ // reference: https://material-ui.com/ja/components/modal/
+
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  var top = 50 + rand();
+  var left = 50 + rand();
+  return {
+    top: "".concat(top, "%"),
+    left: "".concat(left, "%"),
+    transform: "translate(-".concat(top, "%, -").concat(left, "%)")
+  };
+}
+
+var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["makeStyles"])(function (theme) {
+  return {
+    paper: {
+      position: 'absolute',
+      width: 400,
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3)
+    }
+  };
+});
+function SimpleModal(props) {
+  var classes = useStyles(); // getModalStyle is not a pure function, we roll the style only on the first render
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1___default.a.useState(getModalStyle),
+      _React$useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_React$useState, 1),
+      modalStyle = _React$useState2[0];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1___default.a.useState(false),
+      _React$useState4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_React$useState3, 2),
+      open = _React$useState4[0],
+      setOpen = _React$useState4[1];
+
+  var handleOpen = function handleOpen() {
+    setOpen(true);
+    props.onClickProcess && props.onClickProcess();
+  };
+
+  var handleClose = function handleClose() {
+    setOpen(false);
+  };
+
+  return __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49
+    },
+    __self: this
+  }, __jsx("button", {
+    type: "button",
+    onClick: handleOpen,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50
+    },
+    __self: this
+  }, props.buttonText), __jsx(_material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    "aria-labelledby": "simple-modal-title",
+    "aria-describedby": "simple-modal-description",
+    open: open,
+    onClose: handleClose,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53
+    },
+    __self: this
+  }, __jsx("div", {
+    style: modalStyle,
+    className: classes.paper,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59
+    },
+    __self: this
+  }, props.content)));
+}
+
+/***/ }),
+
 /***/ "./components/NewsDetail.js":
 /*!**********************************!*\
   !*** ./components/NewsDetail.js ***!
@@ -725,6 +831,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _components_ShareNews__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/ShareNews */ "./components/ShareNews.js");
 /* harmony import */ var _components_SelectWho__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/SelectWho */ "./components/SelectWho.js");
+/* harmony import */ var _components_Modal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/Modal */ "./components/Modal.js");
 
 
 
@@ -732,6 +839,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/NewsDetail.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
+
 
 
 
@@ -758,44 +866,44 @@ function (_Component) {
       return __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19
+          lineNumber: 20
         },
         __self: this
       }, __jsx("ul", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 21
         },
         __self: this
       }, __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 23
         },
         __self: this
       }, __jsx("h1", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 24
         },
         __self: this
       }, this.props.articles[this.props.newsIndex]['title']), __jsx("img", {
         src: this.props.articles[this.props.newsIndex]['urlToImage'],
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 25
         },
         __self: this
       }), __jsx("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 26
         },
         __self: this
       }, this.props.articles[this.props.newsIndex]['description']), __jsx("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 27
         },
         __self: this
       }, __jsx("a", {
@@ -803,15 +911,23 @@ function (_Component) {
         target: "_blank",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 27
         },
         __self: this
-      }, "\u5168\u6587\u3092\u8AAD\u3080")), __jsx(_components_SelectWho__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        article: this.props.articles[this.props.newsIndex],
-        userid: this.props.userid,
+      }, "\u5168\u6587\u3092\u8AAD\u3080")), __jsx(_components_Modal__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        buttonText: "\u5171\u6709\u3059\u308B",
+        content: __jsx(_components_SelectWho__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          article: this.props.articles[this.props.newsIndex],
+          userid: this.props.userid,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 28
+          },
+          __self: this
+        }),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 28
         },
         __self: this
       }))));
@@ -851,6 +967,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.cjs.js");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _components_Modal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/Modal */ "./components/Modal.js");
 
 
 
@@ -860,6 +977,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/SelectWho.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
+
 
 
 
@@ -891,7 +1009,7 @@ function (_Component) {
             key: doc.id,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 57
+              lineNumber: 58
             },
             __self: this
           }, __jsx("input", {
@@ -901,7 +1019,7 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 57
+              lineNumber: 58
             },
             __self: this
           }), doc.data().userid));
@@ -943,7 +1061,10 @@ function (_Component) {
         title: '',
         description: '',
         image: '',
-        url: ''
+        url: '',
+        sharedFrom: '',
+        sharedTo: '',
+        comment: ''
       });
     });
 
@@ -1004,33 +1125,39 @@ function (_Component) {
       return __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107
+          lineNumber: 111
         },
         __self: this
       }, __jsx("ul", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108
+          lineNumber: 112
         },
         __self: this
-      }, userList), __jsx("textarea", {
+      }, userList), __jsx("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 113
+        },
+        __self: this
+      }, __jsx("textarea", {
         value: this.state.textAreaValue,
         onChange: this.onChangeText,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 109
+          lineNumber: 114
         },
         __self: this
-      }), __jsx("button", {
+      })), __jsx("button", {
         onClick: function onClick(e) {
           return _this2.doAction(article, userid, e);
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 110
+          lineNumber: 116
         },
         __self: this
-      }, "\u78BA\u5B9A")) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
+      }, "\u78BA\u5B9A\uFF08Not\u3000Modal\uFF09")) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
       ;
     }
   }]);
@@ -87641,7 +87768,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /*!*******************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js ***!
   \*******************************************************************************************************************************************/
@@ -87664,5 +87791,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[3,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[id].js.map

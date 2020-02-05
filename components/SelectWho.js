@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Router from 'next/router';
 import firebase from "firebase";
+import SimpleModal from '../components/Modal'
 
 class SelectWho extends Component {
 
@@ -12,7 +13,7 @@ class SelectWho extends Component {
         }
         this.state = {
             userList : [],
-            textAreaValue : ''
+            textAreaValue : '',
         }
 
         this.logined = this.logined.bind(this);
@@ -93,6 +94,9 @@ class SelectWho extends Component {
             description: '',
             image: '',
             url: '',
+            sharedFrom : '',
+            sharedTo : '',
+            comment : ''
         })
     }
 
@@ -106,8 +110,10 @@ class SelectWho extends Component {
         return (
             <div>
                 <ul>{userList}</ul>
+                <div>
                 <textarea value={this.state.textAreaValue} onChange={this.onChangeText} />
-                <button onClick={(e) => this.doAction(article, userid, e)}>確定</button>
+                </div>
+                <button onClick={(e) => this.doAction(article, userid, e)}>確定（Not　Modal）</button>
             </div>
             // 共有先はここでモーダル（ポータル）を表示して選べるようにする
         );
