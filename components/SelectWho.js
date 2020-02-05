@@ -11,12 +11,14 @@ class SelectWho extends Component {
             Router.push('/');
         }
         this.state = {
-            userList : []
+            userList : [],
+            textAreaValue : ''
         }
 
         this.logined = this.logined.bind(this);
         this.onChecked = this.onChecked.bind(this);
         this.doAction = this.doAction.bind(this);
+        this.onChangeText = this.onChangeText.bind(this);
     }
 
     // login, logout 処理
@@ -42,6 +44,7 @@ class SelectWho extends Component {
     }
 
     getUserList = (self = this) => {
+        console.log('now inside getUserList function');
         let db = firebase.firestore(); // firestore のオブジェクト取得
     
         db.collection('news-user')
@@ -53,10 +56,12 @@ class SelectWho extends Component {
             console.log(doc.id, " => ", doc.data());
             userList.push(<li key={doc.id}><input type="checkbox" onChange={(e) => self.onChecked(doc.data().userid, e)} />{doc.data().userid}</li>);
             })
-            console.log('userlistがとれてるかてすと')
-            console.log(userList);
             self.setState({userList: userList});
         });
+    }
+
+    onChangeText = e => {
+        this.setState({textAreaValue: e.target.value});
     }
 
     // データの登録処理
@@ -73,7 +78,8 @@ class SelectWho extends Component {
             image: article.urlToImage,
             url: article.url,
             sharedFrom: userid,
-            sharedTo : this.state.currentSelectedUsers
+            sharedTo : this.state.currentSelectedUsers,
+            comment : this.state.textAreaValue // コメントへの返信を実装するときにはcommentを配列にする（か都度フィールドを追加する？），コメントへのいいねを実装するならネストJSONにする?
         })
         .then((doc) => {
             console.log(`共有しました`);
@@ -95,11 +101,12 @@ class SelectWho extends Component {
         const userid = this.props.userid;
         (this.state.userList.length === 0 || this.state.userList === undefined) && this.getUserList();
         const userList = this.state.userList;
-        console.log('renderの中でuserListがとれてるか!?')
+        console.log('renderの中でuserListがとれてるか')
         console.log(userList);
         return (
             <div>
                 <ul>{userList}</ul>
+                <textarea value={this.state.textAreaValue} onChange={this.onChangeText} />
                 <button onClick={(e) => this.doAction(article, userid, e)}>確定</button>
             </div>
             // 共有先はここでモーダル（ポータル）を表示して選べるようにする

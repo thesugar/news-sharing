@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_14__);
 /* harmony import */ var _material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/icons/MoreVert */ "@material-ui/icons/MoreVert");
 /* harmony import */ var _material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_15__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Bar.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Bar.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -568,7 +568,7 @@ function PrimarySearchAppBar() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Footer.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Footer.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -606,7 +606,7 @@ class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Header.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -655,7 +655,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header */ "./components/Header.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Footer */ "./components/Footer.js");
 /* harmony import */ var _static_Style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../static/Style */ "./static/Style.js");
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Layout.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -741,7 +741,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_ShareNews__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/ShareNews */ "./components/ShareNews.js");
 /* harmony import */ var _components_SelectWho__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SelectWho */ "./components/SelectWho.js");
-var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsDetail.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/NewsDetail.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -844,7 +844,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase */ "firebase");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/SelectWho.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/SelectWho.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -859,6 +859,7 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     super(props);
 
     _defineProperty(this, "getUserList", (self = this) => {
+      console.log('now inside getUserList function');
       let db = firebase__WEBPACK_IMPORTED_MODULE_3___default.a.firestore(); // firestore のオブジェクト取得
 
       db.collection('news-user').get().then(function (querySnapshot) {
@@ -870,7 +871,7 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
             key: doc.id,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 54
+              lineNumber: 57
             },
             __self: this
           }, __jsx("input", {
@@ -878,16 +879,20 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
             onChange: e => self.onChecked(doc.data().userid, e),
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 54
+              lineNumber: 57
             },
             __self: this
           }), doc.data().userid));
         });
-        console.log('userlistがとれてるかてすと');
-        console.log(userList);
         self.setState({
           userList: userList
         });
+      });
+    });
+
+    _defineProperty(this, "onChangeText", e => {
+      this.setState({
+        textAreaValue: e.target.value
       });
     });
 
@@ -903,7 +908,9 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         image: article.urlToImage,
         url: article.url,
         sharedFrom: userid,
-        sharedTo: this.state.currentSelectedUsers
+        sharedTo: this.state.currentSelectedUsers,
+        comment: this.state.textAreaValue // コメントへの返信を実装するときにはcommentを配列にする（か都度フィールドを追加する？），コメントへのいいねを実装するならネストJSONにする?
+
       }).then(doc => {
         console.log(`共有しました`);
       }).catch(error => {
@@ -922,11 +929,13 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     }
 
     this.state = {
-      userList: []
+      userList: [],
+      textAreaValue: ''
     };
     this.logined = this.logined.bind(this);
     this.onChecked = this.onChecked.bind(this);
     this.doAction = this.doAction.bind(this);
+    this.onChangeText = this.onChangeText.bind(this);
   } // login, logout 処理
 
 
@@ -957,25 +966,33 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     const userid = this.props.userid;
     (this.state.userList.length === 0 || this.state.userList === undefined) && this.getUserList();
     const userList = this.state.userList;
-    console.log('renderの中でuserListがとれてるか!?');
+    console.log('renderの中でuserListがとれてるか');
     console.log(userList);
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 101
+        lineNumber: 107
       },
       __self: this
     }, __jsx("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 102
+        lineNumber: 108
       },
       __self: this
-    }, userList), __jsx("button", {
+    }, userList), __jsx("textarea", {
+      value: this.state.textAreaValue,
+      onChange: this.onChangeText,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 109
+      },
+      __self: this
+    }), __jsx("button", {
       onClick: e => this.doAction(article, userid, e),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 103
+        lineNumber: 110
       },
       __self: this
     }, "\u78BA\u5B9A")) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
@@ -1006,7 +1023,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase */ "firebase");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/ShareNews.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/ShareNews.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -3053,7 +3070,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Bar__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Bar */ "./components/Bar.js");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_11__);
-var _jsxFileName = "/Users/thesugar/news-sharing/pages/p/[id].js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/pages/p/[id].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -3180,7 +3197,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_SvgIcon__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_SvgIcon__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/Users/thesugar/news-sharing/src/ProTip.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/src/ProTip.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3257,7 +3274,7 @@ function ProTip() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/thesugar/news-sharing/static/Style.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/static/Style.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /* harmony default export */ __webpack_exports__["default"] = (__jsx("style", {
@@ -3376,7 +3393,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/thesugar/news-sharing/pages/p/[id].js */"./pages/p/[id].js");
+module.exports = __webpack_require__(/*! /Users/RyoheiSato/news-sharing/pages/p/[id].js */"./pages/p/[id].js");
 
 
 /***/ }),

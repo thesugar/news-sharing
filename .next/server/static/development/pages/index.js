@@ -108,7 +108,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase */ "firebase");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Account.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Account.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -265,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_14__);
 /* harmony import */ var _material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/icons/MoreVert */ "@material-ui/icons/MoreVert");
 /* harmony import */ var _material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_15__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Bar.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Bar.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -717,7 +717,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_9__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsCard.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/NewsCard.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -841,7 +841,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Account__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Account */ "./components/Account.js");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! firebase */ "firebase");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsList.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/NewsList.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -861,7 +861,7 @@ class NewsList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
     _defineProperty(this, "getNews", async () => {
       // fill your API key!
-      const url = "https://newsapi.org/v2/everything?q=mufg&sortBy=popularity&apiKey=30d451b495234aae8b35d83d68082817";
+      const url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=30d451b495234aae8b35d83d68082817";
       let self = this;
       const result = await fetch(url);
       const json = await result.json();
@@ -2898,7 +2898,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_Link__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../src/Link */ "./src/Link.js");
 /* harmony import */ var _components_NewsList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/NewsList */ "./components/NewsList.js");
 /* harmony import */ var _components_Bar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Bar */ "./components/Bar.js");
-var _jsxFileName = "/Users/thesugar/news-sharing/pages/index.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -3006,7 +3006,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Link */ "@material-ui/core/Link");
 /* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_5__);
-var _jsxFileName = "/Users/thesugar/news-sharing/src/Link.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/src/Link.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3141,7 +3141,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_SvgIcon__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_SvgIcon__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/Users/thesugar/news-sharing/src/ProTip.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/src/ProTip.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3214,7 +3214,7 @@ function ProTip() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/thesugar/news-sharing/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! /Users/RyoheiSato/news-sharing/pages/index.js */"./pages/index.js");
 
 
 /***/ }),

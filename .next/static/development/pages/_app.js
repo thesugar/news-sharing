@@ -47,7 +47,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/lib/redux-store.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/lib/redux-store.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement;
 
@@ -74555,7 +74555,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/pages/_app.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/pages/_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
 
 
@@ -74745,7 +74745,7 @@ function initStore() {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! next-client-pages-loader?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js!./");
-module.exports = __webpack_require__(/*! /Users/thesugar/news-sharing/node_modules/next/dist/client/router.js */"./node_modules/next/dist/client/router.js");
+module.exports = __webpack_require__(/*! /Users/RyoheiSato/news-sharing/node_modules/next/dist/client/router.js */"./node_modules/next/dist/client/router.js");
 
 
 /***/ }),

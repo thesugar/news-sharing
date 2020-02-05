@@ -17,7 +17,7 @@ class NewsList extends Component {
     // get data from Firebase
     getNews = async () => {
         // fill your API key!
-        const url = "https://newsapi.org/v2/everything?q=mufg&sortBy=popularity&apiKey=30d451b495234aae8b35d83d68082817";
+        const url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=30d451b495234aae8b35d83d68082817";
         let self = this;
 
         const result = await fetch(url);

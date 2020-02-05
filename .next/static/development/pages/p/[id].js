@@ -37,7 +37,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_17__);
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Bar.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Bar.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
@@ -486,7 +486,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Footer.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Footer.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 
 
@@ -548,7 +548,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Header.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 
 
@@ -621,7 +621,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Layout.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 
 
@@ -730,7 +730,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsDetail.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/NewsDetail.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 
 
@@ -858,7 +858,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/components/SelectWho.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/SelectWho.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
 
@@ -879,6 +879,7 @@ function (_Component) {
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "getUserList", function () {
       var self = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this);
+      console.log('now inside getUserList function');
       var db = firebase__WEBPACK_IMPORTED_MODULE_10___default.a.firestore(); // firestore のオブジェクト取得
 
       db.collection('news-user').get().then(function (querySnapshot) {
@@ -890,7 +891,7 @@ function (_Component) {
             key: doc.id,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 54
+              lineNumber: 57
             },
             __self: this
           }, __jsx("input", {
@@ -900,16 +901,20 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 54
+              lineNumber: 57
             },
             __self: this
           }), doc.data().userid));
         });
-        console.log('userlistがとれてるかてすと');
-        console.log(userList);
         self.setState({
           userList: userList
         });
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "onChangeText", function (e) {
+      _this.setState({
+        textAreaValue: e.target.value
       });
     });
 
@@ -925,7 +930,9 @@ function (_Component) {
         image: article.urlToImage,
         url: article.url,
         sharedFrom: userid,
-        sharedTo: _this.state.currentSelectedUsers
+        sharedTo: _this.state.currentSelectedUsers,
+        comment: _this.state.textAreaValue // コメントへの返信を実装するときにはcommentを配列にする（か都度フィールドを追加する？），コメントへのいいねを実装するならネストJSONにする?
+
       }).then(function (doc) {
         console.log("\u5171\u6709\u3057\u307E\u3057\u305F");
       })["catch"](function (error) {
@@ -945,11 +952,13 @@ function (_Component) {
     }
 
     _this.state = {
-      userList: []
+      userList: [],
+      textAreaValue: ''
     };
     _this.logined = _this.logined.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     _this.onChecked = _this.onChecked.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     _this.doAction = _this.doAction.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
+    _this.onChangeText = _this.onChangeText.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     return _this;
   } // login, logout 処理
 
@@ -990,27 +999,35 @@ function (_Component) {
       var userid = this.props.userid;
       (this.state.userList.length === 0 || this.state.userList === undefined) && this.getUserList();
       var userList = this.state.userList;
-      console.log('renderの中でuserListがとれてるか!?');
+      console.log('renderの中でuserListがとれてるか');
       console.log(userList);
       return __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 101
+          lineNumber: 107
         },
         __self: this
       }, __jsx("ul", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 102
+          lineNumber: 108
         },
         __self: this
-      }, userList), __jsx("button", {
+      }, userList), __jsx("textarea", {
+        value: this.state.textAreaValue,
+        onChange: this.onChangeText,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 109
+        },
+        __self: this
+      }), __jsx("button", {
         onClick: function onClick(e) {
           return _this2.doAction(article, userid, e);
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 103
+          lineNumber: 110
         },
         __self: this
       }, "\u78BA\u5B9A")) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
@@ -1058,7 +1075,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/components/ShareNews.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/ShareNews.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
 
@@ -76938,10 +76955,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js!./":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js ***!
-  \*************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js!./":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js ***!
+  \***************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -87410,7 +87427,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_ProTip__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../src/ProTip */ "./src/ProTip.js");
 /* harmony import */ var _components_Bar__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Bar */ "./components/Bar.js");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
-var _jsxFileName = "/Users/thesugar/news-sharing/pages/p/[id].js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/pages/p/[id].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -87535,7 +87552,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_SvgIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/SvgIcon */ "./node_modules/@material-ui/core/esm/SvgIcon/index.js");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
 
-var _jsxFileName = "/Users/thesugar/news-sharing/src/ProTip.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/src/ProTip.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
@@ -87611,7 +87628,7 @@ function ProTip() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/thesugar/news-sharing/static/Style.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/static/Style.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /* harmony default export */ __webpack_exports__["default"] = (__jsx("style", {
@@ -87625,13 +87642,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /***/ }),
 
 /***/ 2:
-/*!*****************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js ***!
-  \*****************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5Bid%5D&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Fp%2F%5Bid%5D.js!./");
 
 
 /***/ }),

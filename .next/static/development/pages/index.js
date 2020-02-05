@@ -28,7 +28,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Account.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Account.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
 
@@ -201,7 +201,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_17__);
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/components/Bar.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/Bar.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
@@ -651,7 +651,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_9__);
-var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsCard.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/NewsCard.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -791,7 +791,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/components/NewsList.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/components/NewsList.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
 
 
@@ -821,7 +821,7 @@ function (_Component) {
           switch (_context.prev = _context.next) {
             case 0:
               // fill your API key!
-              url = "https://newsapi.org/v2/everything?q=mufg&sortBy=popularity&apiKey=30d451b495234aae8b35d83d68082817";
+              url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=30d451b495234aae8b35d83d68082817";
               self = Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this);
               _context.next = 4;
               return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(fetch(url));
@@ -77530,10 +77530,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Findex.js!./":
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Findex.js ***!
-  \******************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Findex.js!./":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Findex.js ***!
+  \********************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -87594,7 +87594,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_Link__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../src/Link */ "./src/Link.js");
 /* harmony import */ var _components_NewsList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/NewsList */ "./components/NewsList.js");
 /* harmony import */ var _components_Bar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Bar */ "./components/Bar.js");
-var _jsxFileName = "/Users/thesugar/news-sharing/pages/index.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -87706,7 +87706,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/thesugar/news-sharing/src/Link.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/src/Link.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
 /* eslint-disable jsx-a11y/anchor-has-content */
@@ -87830,7 +87830,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_SvgIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/SvgIcon */ "./node_modules/@material-ui/core/esm/SvgIcon/index.js");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
 
-var _jsxFileName = "/Users/thesugar/news-sharing/src/ProTip.js";
+var _jsxFileName = "/Users/RyoheiSato/news-sharing/src/ProTip.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
@@ -87896,13 +87896,13 @@ function ProTip() {
 /***/ }),
 
 /***/ 1:
-/*!**********************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Findex.js ***!
-  \**********************************************************************************************************************/
+/*!************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Findex.js ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fthesugar%2Fnews-sharing%2Fpages%2Findex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2FRyoheiSato%2Fnews-sharing%2Fpages%2Findex.js!./");
 
 
 /***/ }),
