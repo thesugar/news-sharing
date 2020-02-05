@@ -6,29 +6,37 @@ import NewsCard from '../components/NewsCard';
 import Account from '../components/Account';
 import firebase from "firebase";
 
-class NewsList extends Component {
+/*
+ MEMO: db.collection('share').where(<ShareTo に userid（要マッチング処理） が含まれる>) で，共有されたニュースを read する．
+    あるいは，Shareするとき，別途 user から辿れるコレクションを作る仕組みにしてもいい．
+    ShareFrom で，自分が share したやつも read して，共有相手の反応などを確認できるようにする．（これはコンポーネントを分けてもいい）
+*/
+
+class SharedNewsList extends Component {
 
     constructor(props){
-        console.log('NewsListのconstructor');
+        console.log('SharedNewsListのconstructor');
         super(props);
         this.logined = this.logined.bind(this);
     }
 
     // get data from Firebase
-    getNews = async () => {
-        // fill your API key!
-        const url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=***";
-        let self = this;
-
-        const result = await fetch(url);
-        const json = await result.json();
-
-        this.props.dispatch({
-            type : 'UPDATE_USER',
-            value : {
-                articles: json.articles,
-                userid : this.props.userid
-            }
+    getNewsSharedByFriends = () => {
+        
+        let db = firebase.firestore();
+        db.collection('share').where('sharedTo', 'array-contains', this.props.userid).get().then((querySnapshot) => {
+            // success
+            console.log(querySnapshot.docs[0].data()); // doc[i] を全部まわす必要があると思われる（たぶん）．
+            this.props.dispatch({
+                type: 'UPDATE_USER',
+                value: {
+                    login: true,
+                    userid : this.props.userid,
+                    articles : this.props.articles
+                }
+            });
+        }).catch(error => {
+            console.log(error);
         })
     }
 
@@ -77,5 +85,5 @@ class NewsList extends Component {
     }
 }
 
-NewsList = connect((state) => state)(NewsList);
-export default NewsList;
+SharedNewsList = connect((state) => state)(SharedNewsList);
+export default SharedNewsList;
