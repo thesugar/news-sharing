@@ -1009,7 +1009,7 @@ function (_Component) {
             key: doc.id,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 58
+              lineNumber: 60
             },
             __self: this
           }, __jsx("input", {
@@ -1019,7 +1019,7 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 58
+              lineNumber: 60
             },
             __self: this
           }), doc.data().userid));
@@ -1053,8 +1053,18 @@ function (_Component) {
 
       }).then(function (doc) {
         console.log("\u5171\u6709\u3057\u307E\u3057\u305F");
+
+        _this.setState({
+          success: true,
+          afterClicked: true
+        });
       })["catch"](function (error) {
         console.log("\u5171\u6709\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u3002\u30EA\u30C8\u30E9\u30A4\u3057\u3066\u304F\u3060\u3055\u3044\u3002");
+
+        _this.setState({
+          success: false,
+          afterClicked: true
+        });
       });
 
       _this.setState({
@@ -1074,7 +1084,9 @@ function (_Component) {
 
     _this.state = {
       userList: [],
-      textAreaValue: ''
+      textAreaValue: '',
+      success: true,
+      afterClicked: false
     };
     _this.logined = _this.logined.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     _this.onChecked = _this.onChecked.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
@@ -1125,19 +1137,19 @@ function (_Component) {
       return __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 111
+          lineNumber: 115
         },
         __self: this
       }, __jsx("ul", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 112
+          lineNumber: 116
         },
         __self: this
       }, userList), __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 113
+          lineNumber: 117
         },
         __self: this
       }, __jsx("textarea", {
@@ -1145,7 +1157,7 @@ function (_Component) {
         onChange: this.onChangeText,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 114
+          lineNumber: 118
         },
         __self: this
       })), __jsx("button", {
@@ -1154,10 +1166,34 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 116
+          lineNumber: 120
         },
         __self: this
-      }, "\u78BA\u5B9A\uFF08Not\u3000Modal\uFF09")) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
+      }, "\u78BA\u5B9A"), this.state.afterClicked && this.state.success ? __jsx("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 122
+        },
+        __self: this
+      }, __jsx("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 123
+        },
+        __self: this
+      }, "\u5171\u6709\u3057\u307E\u3057\u305F")) : this.state.afterClicked && !this.state.success ? __jsx("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 127
+        },
+        __self: this
+      }, __jsx("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 128
+        },
+        __self: this
+      }, "\u5171\u6709\u306B\u5931\u6557\u3057\u307E\u3057\u305F")) : null) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
       ;
     }
   }]);

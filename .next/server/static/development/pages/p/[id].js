@@ -981,7 +981,7 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
             key: doc.id,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 58
+              lineNumber: 60
             },
             __self: this
           }, __jsx("input", {
@@ -989,7 +989,7 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
             onChange: e => self.onChecked(doc.data().userid, e),
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 58
+              lineNumber: 60
             },
             __self: this
           }), doc.data().userid));
@@ -1023,8 +1023,16 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
       }).then(doc => {
         console.log(`共有しました`);
+        this.setState({
+          success: true,
+          afterClicked: true
+        });
       }).catch(error => {
         console.log(`共有に失敗しました。リトライしてください。`);
+        this.setState({
+          success: false,
+          afterClicked: true
+        });
       });
       this.setState({
         title: '',
@@ -1043,7 +1051,9 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
     this.state = {
       userList: [],
-      textAreaValue: ''
+      textAreaValue: '',
+      success: true,
+      afterClicked: false
     };
     this.logined = this.logined.bind(this);
     this.onChecked = this.onChecked.bind(this);
@@ -1084,19 +1094,19 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111
+        lineNumber: 115
       },
       __self: this
     }, __jsx("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 112
+        lineNumber: 116
       },
       __self: this
     }, userList), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 113
+        lineNumber: 117
       },
       __self: this
     }, __jsx("textarea", {
@@ -1104,17 +1114,41 @@ class SelectWho extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       onChange: this.onChangeText,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 114
+        lineNumber: 118
       },
       __self: this
     })), __jsx("button", {
       onClick: e => this.doAction(article, userid, e),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 116
+        lineNumber: 120
       },
       __self: this
-    }, "\u78BA\u5B9A\uFF08Not\u3000Modal\uFF09")) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
+    }, "\u78BA\u5B9A"), this.state.afterClicked && this.state.success ? __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 122
+      },
+      __self: this
+    }, __jsx("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 123
+      },
+      __self: this
+    }, "\u5171\u6709\u3057\u307E\u3057\u305F")) : this.state.afterClicked && !this.state.success ? __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 127
+      },
+      __self: this
+    }, __jsx("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 128
+      },
+      __self: this
+    }, "\u5171\u6709\u306B\u5931\u6557\u3057\u307E\u3057\u305F")) : null) // 共有先はここでモーダル（ポータル）を表示して選べるようにする
     ;
   }
 

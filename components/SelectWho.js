@@ -14,6 +14,8 @@ class SelectWho extends Component {
         this.state = {
             userList : [],
             textAreaValue : '',
+            success : true,
+            afterClicked : false
         }
 
         this.logined = this.logined.bind(this);
@@ -84,9 +86,11 @@ class SelectWho extends Component {
         })
         .then((doc) => {
             console.log(`共有しました`);
+            this.setState({success: true, afterClicked: true})
         })
         .catch((error) => {
             console.log(`共有に失敗しました。リトライしてください。`);
+            this.setState({success: false, afterClicked: true})
         });
 
         this.setState({
@@ -113,7 +117,19 @@ class SelectWho extends Component {
                 <div>
                 <textarea value={this.state.textAreaValue} onChange={this.onChangeText} />
                 </div>
-                <button onClick={(e) => this.doAction(article, userid, e)}>確定（Not　Modal）</button>
+                <button onClick={(e) => this.doAction(article, userid, e)}>確定</button>
+                {this.state.afterClicked && this.state.success ? 
+                <div>
+                    <p>共有しました</p>
+                </div>
+                :
+                this.state.afterClicked && !this.state.success ?
+                <div>
+                    <p>共有に失敗しました</p>
+                </div>
+                :
+                null
+                }
             </div>
             // 共有先はここでモーダル（ポータル）を表示して選べるようにする
         );
