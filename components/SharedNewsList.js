@@ -27,16 +27,24 @@ class SharedNewsList extends Component {
         db.collection('share').where('sharedTo', 'array-contains', this.props.userid).get().then((querySnapshot) => {
             // success
             console.log('getNewsSharedByFriends のなか')
-            console.log(querySnapshot.docs[0].data()); // doc[i] を全部まわす必要があると思われる（たぶん）．
-            this.props.dispatch({
-                type: 'UPDATE_USER',
-                value: {
-                    login: true,
-                    userid : this.props.userid,
-                    articles : this.props.articles,
-                    articlesSharedByFriends : ['dummy']
-                }
-            });
+
+            let sharedObject;
+
+            querySnapshot.forEach(doc => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+                sharedObject = sharedObject ? Object.assign(sharedObject, {[doc.id] : JSON.parse(JSON.stringify(doc.data()))}) : {[doc.id] : JSON.parse(JSON.stringify(doc.data()))};
+            
+                this.props.dispatch({
+                    type: 'UPDATE_USER',
+                    value: {
+                        login: true,
+                        userid : this.props.userid,
+                        articles : this.props.articles,
+                        articlesSharedByFriends : sharedObject,
+                    }
+                });
+            })
         }).catch(error => {
             console.log(error);
         })
@@ -64,13 +72,20 @@ class SharedNewsList extends Component {
             );
         })
         */
-       const itemList = 'hoge---'
+       const sharedNews = this.props.articlesSharedByFriends;
+       let msg = [];
+       // ここで処理すると，最初のが取得できてレンダリングしたあとに取得したsharedNewsは変更したとみなされない？render()の外に記述したらいける？
+       if (sharedNews){
+            for (let key in sharedNews){
+                msg.push(<li key={key}>{sharedNews[key]['SharedFrom']}さんから{sharedNews[key]['title']}がシェアされました！</li>);
+            }
+       }
 
         return (
             <div>
                 <Account onLogined={this.logined} onLogouted={this.logouted}/>
             <ul>
-                {itemList}
+                {sharedNews ? msg : null}
             </ul>
             </div>
         );
