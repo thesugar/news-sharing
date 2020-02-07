@@ -50,6 +50,14 @@ class SharedNewsList extends Component {
         })
     }
 
+    makeTitleList = sharedNews => {
+        const msg = [];
+        for (let key in sharedNews) {
+            msg.push(<li key={key}>{sharedNews[key]['sharedFrom']}さんから{sharedNews[key]['title'].split(' - ')[0]}がシェアされました！</li>)
+        }
+        return msg;
+    }
+
     logined(){
         console.log('loginしました');
         //this.getFireData();
@@ -74,11 +82,8 @@ class SharedNewsList extends Component {
         */
        const sharedNews = this.props.articlesSharedByFriends;
        let msg = [];
-       // ここで処理すると，最初のが取得できてレンダリングしたあとに取得したsharedNewsは変更したとみなされない？render()の外に記述したらいける？
        if (sharedNews){
-            for (let key in sharedNews){
-                msg.push(<li key={key}>{sharedNews[key]['SharedFrom']}さんから{sharedNews[key]['title']}がシェアされました！</li>);
-            }
+            msg = this.makeTitleList(sharedNews);
        }
 
         return (
