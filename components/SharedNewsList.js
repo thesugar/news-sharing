@@ -28,12 +28,14 @@ class SharedNewsList extends Component {
             // success
             console.log('getNewsSharedByFriends のなか')
 
-            let sharedObject;
+            let sharedObject = {};
 
             querySnapshot.forEach(doc => {
                 // doc.data() is never undefined for query doc snapshots
                 console.log(doc.id, " => ", doc.data());
-                sharedObject = sharedObject ? Object.assign(sharedObject, {[doc.id] : JSON.parse(JSON.stringify(doc.data()))}) : {[doc.id] : JSON.parse(JSON.stringify(doc.data()))};
+                // はまりポイント: ここでObejct.assign({}, JSON...)とやらないと，reduxがstateの変更を検知してくれない．
+                // 参考：https://redux.js.org/faq/immutable-data/
+                sharedObject = Object.assign({}, JSON.parse(JSON.stringify(sharedObject)), {[doc.id] : JSON.parse(JSON.stringify(doc.data()))});
             
                 this.props.dispatch({
                     type: 'UPDATE_USER',
@@ -52,9 +54,12 @@ class SharedNewsList extends Component {
 
     makeTitleList = sharedNews => {
         const msg = [];
-        for (let key in sharedNews) {
+        Object.keys(sharedNews).map(key => 
             msg.push(<li key={key}>{sharedNews[key]['sharedFrom']}さんから{sharedNews[key]['title'].split(' - ')[0]}がシェアされました！</li>)
-        }
+        );
+        //for (let key in sharedNews) {
+        //    msg.push(<li key={key}>{sharedNews[key]['sharedFrom']}さんから{sharedNews[key]['title'].split(' - ')[0]}がシェアされました！</li>)
+        //}
         return msg;
     }
 
@@ -80,15 +85,15 @@ class SharedNewsList extends Component {
             );
         })
         */
-       const sharedNews = this.props.articlesSharedByFriends;
+       let sharedNews = this.props.articlesSharedByFriends;
        let msg = [];
+       // finished フラグを見ないと，共有されたニュースを取りきってない段階でレンダリングされてそれっきりになる（？
        if (sharedNews){
             msg = this.makeTitleList(sharedNews);
        }
 
         return (
             <div>
-                <Account onLogined={this.logined} onLogouted={this.logouted}/>
             <ul>
                 {sharedNews ? msg : null}
             </ul>

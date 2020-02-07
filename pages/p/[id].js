@@ -9,6 +9,7 @@ import MuiLink from '@material-ui/core/Link';
 import ProTip from '../../src/ProTip';
 //import Link from '../../src/Link';
 import Bar from '../../components/Bar';
+import Button from '@material-ui/core/Button';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 
 function Copyright() {
@@ -32,10 +33,10 @@ export default () => {
     <Container disableGutters={true} maxWidth='false'>
     <Bar />
     <Box my={4}>
-      <Typography variant="h5" component="h5" gutterBottom>
+      <Typography variant="body" gutterBottom>
         <NewsDetail newsIndex={router.query.id} />
         <Link href="/">
-                <button>back</button>
+                <Button variant="contained" color="primary">back</Button>
         </Link>
       </Typography>
       <ProTip />

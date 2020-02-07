@@ -46,7 +46,8 @@ class Account extends Component {
         firebase.auth().signInWithPopup(provider)
         .then((result) => {
             this.match_user(result);
-            this.props.onLogined();
+            //ログイン後に処理を行う場合，以下コメントアウトを解除（onLogined()を呼び出し元でちゃんと定義したうえで）
+            //this.props.onLogined();
         });
     }
 
@@ -62,7 +63,8 @@ class Account extends Component {
                 articles: this.props.articles
             }
         });
-        this.props.onLogouted();
+        //ログアウト後に処理を行いたい場合（トップページに戻るなど），以下コメントアウトを解除(onLogouted()を呼び出し元で定義したうえで)
+        //this.props.onLogouted();
     }
 
     // check if user is logged in or logged out
@@ -90,7 +92,7 @@ class Account extends Component {
             <p className="login">
                 <span className="acount"
                 onClick={this.login_check}>
-                    LOGINED: {this.props.userid}
+                    {this.props.userid}
                 </span>
             </p>
         );

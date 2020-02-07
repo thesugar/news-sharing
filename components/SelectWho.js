@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Router from 'next/router';
 import firebase from "firebase";
-import SimpleModal from '../components/Modal'
+import Button from '@material-ui/core/Button'
 
 class SelectWho extends Component {
 
@@ -115,15 +115,13 @@ class SelectWho extends Component {
         const userid = this.props.userid;
         (this.state.userList.length === 0 || this.state.userList === undefined) && this.getUserList();
         const userList = this.state.userList;
-        console.log('renderの中でuserListがとれてるか')
-        console.log(userList);
         return (
             <div>
                 <ul>{userList}</ul>
                 <div>
                 <textarea value={this.state.textAreaValue} onChange={this.onChangeText} />
                 </div>
-                <button onClick={(e) => this.doAction(article, userid, e)}>確定</button>
+                <Button variant="contained" color="primary" onClick={(e) => this.doAction(article, userid, e)}>確定</Button>
                 <p>{this.state.message}</p>
             </div>
             // 共有先はここでモーダル（ポータル）を表示して選べるようにする

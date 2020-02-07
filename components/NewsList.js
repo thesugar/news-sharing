@@ -68,7 +68,6 @@ class NewsList extends Component {
 
         return (
             <div>
-                <Account onLogined={this.logined} onLogouted={this.logouted}/>
             <ul>
                 {itemList}
             </ul>

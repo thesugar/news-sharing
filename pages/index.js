@@ -27,8 +27,7 @@ function Copyright() {
       <Container disableGutters={true} maxWidth={false}>
         <Bar />
         <Box my={4}>
-          <Typography variant="h4" component="h1" gutterBottom>
-            Shohan News App
+          <Typography variant="body" color="textPrimary" gutterBottom>
             <SharedNewsList />
             <NewsList />
           </Typography>
