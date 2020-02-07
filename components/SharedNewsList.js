@@ -55,7 +55,7 @@ class SharedNewsList extends Component {
     makeTitleList = sharedNews => {
         const msg = [];
         Object.keys(sharedNews).map(key => 
-            msg.push(<li key={key}>{sharedNews[key]['sharedFrom']}さんから{sharedNews[key]['title'].split(' - ')[0]}がシェアされました！</li>)
+        msg.push(<li key={key}>{sharedNews[key]['sharedFrom']}さんから<Link href="/share/[shareid]" as={`/share/${key}`}>{sharedNews[key]['title'].split(' - ')[0]}</Link>がシェアされました！</li>)
         );
         //for (let key in sharedNews) {
         //    msg.push(<li key={key}>{sharedNews[key]['sharedFrom']}さんから{sharedNews[key]['title'].split(' - ')[0]}がシェアされました！</li>)
@@ -77,17 +77,9 @@ class SharedNewsList extends Component {
         console.log('今のthis.propsは');
         console.log(this.props);
         (this.props.articlesSharedByFriends === undefined || this.props.articlesSharedByFriends.length === 0) && this.getNewsSharedByFriends();
-        /*
-        const itemList = [];
-        this.props.articles.map((article, index) => {
-            itemList.push(
-                <NewsCard title={article['title']} image={article['urlToImage']} description={article['description']} index={index} />
-            );
-        })
-        */
+
        let sharedNews = this.props.articlesSharedByFriends;
        let msg = [];
-       // finished フラグを見ないと，共有されたニュースを取りきってない段階でレンダリングされてそれっきりになる（？
        if (sharedNews){
             msg = this.makeTitleList(sharedNews);
        }
