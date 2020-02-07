@@ -11,7 +11,7 @@ import Link from 'next/link';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 700,
+    maxWidth: 500,
   },
   media: {
     height: 300,
@@ -30,10 +30,10 @@ export default function NewsCard(props) {
           title={props.title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="body2" component="p">
             {props.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body" color="textSecondary" component="p">
             {props.description}
           </Typography>
         </CardContent>
