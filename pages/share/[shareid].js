@@ -35,7 +35,7 @@ export default () => {
       <Typography variant="body" gutterBottom>
         <ShareInfo shareId={shareid} />
         <Link href="/">
-                <Button variant="contained" color="primary">back</Button>
+                <Button variant="contained" color="secondary">back</Button>
         </Link>
       </Typography>
       <ProTip />

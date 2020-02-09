@@ -36,7 +36,7 @@ export default () => {
       <Typography variant="body" gutterBottom>
         <NewsDetail newsIndex={router.query.id} />
         <Link href="/">
-                <Button variant="contained" color="primary">back</Button>
+                <Button variant="contained" color="secondary">back</Button>
         </Link>
       </Typography>
       <ProTip />

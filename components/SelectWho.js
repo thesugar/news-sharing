@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Router from 'next/router';
 import firebase from "firebase";
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 class SelectWho extends Component {
 
@@ -72,6 +75,7 @@ class SelectWho extends Component {
         console.log('userid is');
         console.log(userid);
         let db = firebase.firestore();
+        const date = firebase.firestore.Timestamp.fromDate(new Date());
         // Firestore の登録処理
 
         if (this.state.currentSelectedUsers.length === 0 || this.state.currentSelectedUsers === null || this.state.currentSelectedUsers === undefined){
@@ -86,7 +90,18 @@ class SelectWho extends Component {
             url: article.url,
             sharedFrom: userid,
             sharedTo : this.state.currentSelectedUsers,
-            comment : this.state.textAreaValue // コメントへの返信を実装するときにはcommentを配列にする（か都度フィールドを追加する？），コメントへのいいねを実装するならネストJSONにする?
+            comment : 
+            {
+                // 同時に複数ユーザーからコメントがあっても上書きされないように
+                // key はタイムスタンプ（1970-01-01 0時からの経過秒数）+ userid にしている
+                // 別案：date.nanoseconds を使えば + userid としなくてもかぶることは基本的にないだろうとは思われる
+                [date.seconds+userid]: 
+                    {
+                        speaker: userid,
+                        text: this.state.textAreaValue,
+                        date: date
+                    }
+            }
         })
         .then((doc) => {
             console.log(`共有しました`);
@@ -118,13 +133,29 @@ class SelectWho extends Component {
         return (
             <div>
                 <ul>{userList}</ul>
-                <div>
-                <textarea value={this.state.textAreaValue} onChange={this.onChangeText} />
-                </div>
-                <Button variant="contained" color="primary" onClick={(e) => this.doAction(article, userid, e)}>確定</Button>
+                <Grid container spacing={1} alignItems="center">
+                    <Grid item>
+                        <AccountCircle />
+                    </Grid>
+                    <Grid item>
+                    <TextField
+                    id="outlined-multiline-flexible"
+                    label="Comment"
+                    placeholder="コメントを入力（任意）"
+                    multiline
+                    rowsMax="5"
+                    size="medium"
+                    value={this.state.textAreaValue}
+                    onChange={this.onChangeText}
+                    variant="outlined"
+                    />
+                    </Grid>
+                    <Grid item>
+                        <Button variant="contained" color="primary" onClick={(e) => this.doAction(article, userid, e)}>確定</Button>
+                    </Grid>
+                </Grid>
                 <p>{this.state.message}</p>
             </div>
-            // 共有先はここでモーダル（ポータル）を表示して選べるようにする
         );
     }
 }

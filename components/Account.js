@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import firebase from "firebase";
 
 class Account extends Component {
-    style = {
-        fontSize: "12pt",
-        padding: "5px 10px"
-    }
 
     constructor(props){
         console.log('Account.jsのconstructor')
@@ -89,12 +85,10 @@ class Account extends Component {
           });
 
         return (
-            <p className="login">
                 <span className="acount"
                 onClick={this.login_check}>
                     {this.props.userid}
                 </span>
-            </p>
         );
     }
 }

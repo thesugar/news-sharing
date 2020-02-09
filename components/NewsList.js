@@ -68,9 +68,7 @@ class NewsList extends Component {
 
         return (
             <div>
-            <ul>
-                {itemList}
-            </ul>
+            {itemList}
             </div>
         );
     }
