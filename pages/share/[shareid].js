@@ -29,13 +29,13 @@ export default () => {
   const { shareid } = router.query
 
   return (
-    <Container disableGutters={true} maxWidth='false'>
+    <Container disableGutters={true} maxWidth='lg'>
     <Bar />
     <Box my={4}>
       <Typography variant="body" gutterBottom>
         <ShareInfo shareId={shareid} />
         <Link href="/">
-                <Button variant="contained" color="primary">back</Button>
+                <Button variant="contained" color="secondary">back</Button>
         </Link>
       </Typography>
       <ProTip />

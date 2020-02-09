@@ -30,13 +30,13 @@ export default () => {
 
   // 以下の title の部分は書き換えが必要（追加したやつがErrorになる）
   return (
-    <Container disableGutters={true} maxWidth='false'>
+    <Container disableGutters={true} maxWidth='lg'>
     <Bar />
     <Box my={4}>
       <Typography variant="body" gutterBottom>
         <NewsDetail newsIndex={router.query.id} />
         <Link href="/">
-                <Button variant="contained" color="primary">back</Button>
+                <Button variant="contained" color="secondary">back</Button>
         </Link>
       </Typography>
       <ProTip />

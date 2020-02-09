@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button';
 
 // reference: https://material-ui.com/ja/components/modal/
 
@@ -47,9 +48,9 @@ export default function SimpleModal(props) {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
+      <Button  variant="contained" color="primary" onClick={handleOpen}>
         {props.buttonText}
-      </button>
+      </Button>
       <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"

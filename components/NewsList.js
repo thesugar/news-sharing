@@ -5,6 +5,7 @@ import Link from 'next/link';
 import NewsCard from '../components/NewsCard';
 import Account from '../components/Account';
 import firebase from "firebase";
+import Grid from '@material-ui/core/Grid';
 
 class NewsList extends Component {
 
@@ -62,15 +63,13 @@ class NewsList extends Component {
         const itemList = [];
         this.props.articles.map((article, index) => {
             itemList.push(
-                <NewsCard title={article['title']} image={article['urlToImage']} description={article['description']} index={index} />
+                <Grid item xs={4}><NewsCard title={article['title']} image={article['urlToImage']} description={article['description']} index={index} /></Grid>
             );
         })
 
         return (
             <div>
-            <ul>
-                {itemList}
-            </ul>
+                <Grid container spacing={6}>{itemList}</Grid>
             </div>
         );
     }
