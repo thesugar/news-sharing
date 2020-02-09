@@ -31,7 +31,7 @@ class SelectWho extends Component {
         }
 
         this.logined = this.logined.bind(this);
-        this.onChecked = this.onChecked.bind(this);
+        //this.onChecked = this.onChecked.bind(this);
         this.doAction = this.doAction.bind(this);
         this.onChangeText = this.onChangeText.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
@@ -46,6 +46,7 @@ class SelectWho extends Component {
         Router.push('/');
     }
 
+    /*　自前で書いたけど、handleToggleで代用できるから不要になった。
     onChecked(userid, e) {
         const currentSelectedUsers = this.state.currentSelectedUsers ? this.state.currentSelectedUsers : [];
         currentSelectedUsers.push(userid)
@@ -58,6 +59,7 @@ class SelectWho extends Component {
         :
         this.setState({currentSelectedUsers : currentSelectedUsers.filter(elem => elem !== userid)})
     }
+    */
 
     handleToggle = userid => () => {
         const currentIndex = this.state.currentSelectedUsers.indexOf(userid);
