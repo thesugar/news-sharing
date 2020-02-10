@@ -1,6 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import firebase from "firebase";
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { emphasize } from '@material-ui/core';
 
 const firebaseConfig = {
     apiKey: "AIzaSyA5tM4PcANnpIJk-vYnYnL-q26QBhZR4zk",
@@ -38,13 +42,24 @@ function reducer (state = initial, action) {
 }
 
 const initial = { 
+    login : false,
     articles : [],
-    userid : 'annonymous'
+    userid : 'annonymous',
+    email : ''
 }
+
+const persistConfig = {
+    key: 'primary',
+    storage,
+    whitelist: ['login', 'articles', 'userid', 'email'], // place to select which state you want to persist
+  }
+  
+const persistedReducer = persistReducer(persistConfig, reducer)
+  
 
 // initStore function
 function initStore(state = initial) {
-    return createStore(reducer, state,
-        applyMiddleware(thunkMiddleware));}
+    return createStore(persistedReducer, state,
+        composeWithDevTools(applyMiddleware()));}
 
 export { initStore };

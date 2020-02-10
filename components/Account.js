@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from "firebase";
+import Router from "next/router";
 
 class Account extends Component {
 
@@ -30,6 +31,7 @@ class Account extends Component {
             });
         }).catch(error => {
             console.log(error);
+            Router.push('/register')
         })
     }
 
@@ -54,7 +56,7 @@ class Account extends Component {
             type: 'UPDATE_USER',
             value: {
                 login: false,
-                username: '(click here!)',
+                userid : 'annonymous',
                 email: '',
                 articles: this.props.articles
             }
