@@ -1,0 +1,118 @@
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import Router from 'next/router';
+import firebase from "firebase";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+
+class Register extends Component {
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            textAreaValue : '',
+            message : null,
+            ok : false
+        }
+
+        this.doAction = this.doAction.bind(this);
+        this.onChangeText = this.onChangeText.bind(this);
+        
+    }
+
+    onChangeText = e => {
+        this.setState({textAreaValue: e.target.value});
+        this.checkId(e.target.value);
+    }
+
+    // データの登録処理
+    doAction = (userid, e) => {    
+
+        let db = firebase.firestore();
+
+        // Firestore の登録処理
+        db.collection('news-user').doc(userid).set({
+            userid : userid,
+            email : firebase.auth().currentUser.email
+        })
+        .then((doc) => {
+            this.setState({message: 'ID登録が完了しました', textAreaValue: ''});
+            this.props.dispatch({
+                type: 'UPDATE_USER',
+                value: {
+                    login: true,
+                    userid: userid,
+                    email: firebase.auth().currentUser.email,
+                    articles: this.props.articles
+                }
+            });
+            setTimeout(() => {Router.push('/')}, 2000);
+        })
+        .catch((error) => {
+            console.log(`登録に失敗しました。リトライしてください。`);
+            this.setState({message: 'ID登録に失敗しました。リトライしてください。', textAreaValue: ''});
+            setTimeout(() => {this.setState({message: null})}, 2000);
+        });
+    }
+
+    checkId = userId => {
+
+        console.log('I am in the checkId')
+        console.log('userId is')
+        console.log(userId)
+        if (userId === '' || userId === undefined || userId === null){
+            return null;
+        }
+        let db = firebase.firestore();
+        
+        // 入力のたびに Firestore に照会行くのやばい？
+        // 一回だけユーザーリスト取得しきって，あとはアプリ内でチェックすると DBアクセス的には優しい
+        // でも上記のやり方だと，規模が大きくなったら，そうしてる間にIDの衝突が発生しそう．
+        db.collection("news-user").where("userid", "==", userId)
+        .get().then((querySnapshot) => {
+
+            if (querySnapshot.docs[0].id === undefined){
+                this.setState({message : userId + 'はユーザーIDとして登録できます。', ok:true})
+            } else {
+                this.setState({message : userId + 'はすでに存在します。', ok: false})
+            }
+        }).catch(error => {
+            console.log(error);
+            this.setState({message : userId + 'はユーザーIDとして登録できます。', ok:true})
+        })
+    }
+
+
+    render(){
+
+        return (
+            <div>
+                <Typography variant="body1" gutterBottom>ユーザー登録</Typography>
+                <Grid container spacing={3} alignItems="center">
+                    <Grid item>メールアドレス：</Grid>
+                    <Grid item>{firebase.auth().currentUser.email}</Grid>
+                </Grid>
+                <br />
+                <Grid container spacing={3} alignItems="center">
+                    <Grid item>
+                    <form className='id-box' noValidate autoComplete="off">
+                    <TextField id="filled-basic" label="ID" variant="filled" size="small"
+                    value={this.state.textAreaValue} onChange={this.onChangeText}/>
+                    </form>
+                    {this.state.message}
+                    </Grid>
+                    <Grid item>
+                    <Button variant="contained" color="primary" onClick={(e) => this.doAction(this.state.textAreaValue, e)}>登録</Button>
+                    </Grid>
+                </Grid>
+            </div>
+        );
+    }
+}
+
+Register = connect((state) => state) (Register);
+export default Register;
