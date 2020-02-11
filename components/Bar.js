@@ -15,8 +15,12 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Account from '../components/Account';
+import Link from '@material-ui/core/Link';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
+
   grow: {
     flexGrow: 1,
   },
@@ -115,9 +119,11 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem><Account /></MenuItem>
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}><Account /></MenuItem>
+      {//メニューを追加するときはここを変更
+      //<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      //<MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      }
     </Menu>
   );
 
@@ -132,6 +138,7 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      {/* 画面を縮めたときのメニューの出し方はここを変更
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
@@ -148,6 +155,7 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
+      */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -155,9 +163,21 @@ export default function PrimarySearchAppBar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+        <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        spacing={1}
+        >
+          <Grid item><AccountCircle fontSize="middle"/></Grid>
+          <Grid item>
+            <Typography variant="subtitle1" gutterBottom align="center">
+              <Account />
+            </Typography>
+          </Grid>
+        </Grid>
         </IconButton>
-        <p>Profile</p>
       </MenuItem>
     </Menu>
   );
@@ -175,7 +195,9 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
+            <Link href='/' color='inherit' underline='none'>
             Shohan News App
+            </Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -192,20 +214,37 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 2 new notifications" color="inherit">
-              <Badge badgeContent={2} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+            <IconButton aria-label="githubicon" color="inherit">
+              <Link href='https://github.com/thesugar/news-sharing' target="_blank" rel="noopener">
+              {//<Badge badgeContent={2} color="secondary">
+              }
+                <GitHubIcon color='action' edge='end' fontSize='small'/>
+              </Link>
+              {//</Badge>
+              }
             </IconButton>
             <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              //onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+                spacing={1}
+              >
+                <Grid item><AccountCircle fontSize="middle"/></Grid>
+                <Grid item>
+                  <Typography variant="subtitle1" gutterBottom align="center">
+                    <Account />
+                  </Typography>
+                </Grid>
+              </Grid>
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

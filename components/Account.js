@@ -76,20 +76,13 @@ class Account extends Component {
     }
 
     render(){
-        console.log('Account.jsのrender()');
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-              // User is signed in.
-              this.username_ = user.displayName;
-            } else {
-              // No user is signed in.
-            }
-          });
-
         return (
                 <span className="acount"
                 onClick={this.login_check}>
-                    {this.props.userid}
+                    {(this.props.userid === 'annonymous' || this.props.userid === undefined || this.props.userid === null) ?
+                    "login / sign up"
+                    :this.props.userid + "logout"
+                    }
                 </span>
         );
     }
