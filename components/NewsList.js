@@ -60,6 +60,7 @@ class NewsList extends Component {
         this.props.dispatch({
             type : 'UPDATE_USER',
             value : {
+                login: this.props.login,
                 articles: json.articles,
                 userid : this.props.userid,
                 itemList : itemList
