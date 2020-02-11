@@ -15,7 +15,6 @@ import firebase from "firebase";
 class SharedNewsList extends Component {
 
     constructor(props){
-        console.log('SharedNewsListのconstructor');
         super(props);
         this.logined = this.logined.bind(this);
     }
@@ -24,25 +23,23 @@ class SharedNewsList extends Component {
     getNewsSharedByFriends = () => {
         
         let db = firebase.firestore();
-        db.collection('share').where('sharedTo', 'array-contains', this.props.userid).get().then((querySnapshot) => {
+        db.collection('share').where('sharedTo', 'array-contains', this.props.userid)
+        .get().then((querySnapshot) => {
             // success
-            console.log('getNewsSharedByFriends のなか')
-
             let sharedObject = {};
 
             querySnapshot.forEach(doc => {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
                 // はまりポイント: ここでObejct.assign({}, JSON...)とやらないと，reduxがstateの変更を検知してくれない．
                 // 参考：https://redux.js.org/faq/immutable-data/
                 sharedObject = Object.assign({}, JSON.parse(JSON.stringify(sharedObject)), {[doc.id] : JSON.parse(JSON.stringify(doc.data()))});
-            
+
                 this.props.dispatch({
                     type: 'UPDATE_USER',
                     value: {
                         login: true,
                         userid : this.props.userid,
                         articles : this.props.articles,
+                        itemList : this.props.itemList,
                         articlesSharedByFriends : sharedObject,
                     }
                 });
@@ -53,13 +50,37 @@ class SharedNewsList extends Component {
     }
 
     makeTitleList = sharedNews => {
+        let sharedNewsForDisp = []
+        Object.keys(sharedNews).map(key =>{
+
+            // コメントが新しい順に並び替えて表示するために、引数で受け取ったニュースのリスト（これはFirestoreから引っ張ってきた順番で、
+            // ソートはされていない）をもとに新しいオブジェクトを作っている。
+            // その新しいオブジェクトの中でdateという項目を持たせて、後続で並び替え処理を行っている。
+            // まったくもってスマートじゃない気がするので、修正したほうがよいかも。
+            // もともとのFirestor側のデータで、latestUpdate みたいなキーを持たせて、新規共有やコメント追加があるたびそこを書き換えて
+            // そこを見てorderBy（Firestore純正の機能）すれば一発なのではないか
+            // もしくは、コメント追加時にコメントをObjのObjにしてるけど、arrayUnion（Firestoreの機能）を使ってオブジェクトの配列にすればもうちょい楽かも
+            // （今回の実装も、結局ObjのObjを以下sharedNewsForDisp.push()で配列に直してるわけだし。。。）
+            sharedNewsForDisp.push(
+                {
+                    key : key,
+                    date : Number(String(Object.keys(sharedNews[key].comment)[Object.keys(sharedNews[key].comment).length - 1]).slice(0, 10)),
+                    sharedFrom : sharedNews[key]['sharedFrom'],
+                    title : sharedNews[key]['title'],
+                }
+            );
+        })
+
+        sharedNewsForDisp.sort((a, b) => {
+            if (a.date < b.date) return 1;
+            if (a.date > b.date) return -1;
+            return 0;
+        });
+
         const msg = [];
-        Object.keys(sharedNews).map(key => 
-        msg.push(<li key={key}>{sharedNews[key]['sharedFrom']}さんから<Link href="/share/[shareid]" as={`/share/${key}`}>{sharedNews[key]['title'].split(' - ')[0]}</Link>がシェアされました！</li>)
+        sharedNewsForDisp.map(news => 
+        msg.push(<li key={news.key}>{news['sharedFrom']}さんから<Link href="/share/[shareid]" as={`/share/${news.key}`}>{news['title'].split(' - ')[0]}</Link>がシェアされました！</li>)
         );
-        //for (let key in sharedNews) {
-        //    msg.push(<li key={key}>{sharedNews[key]['sharedFrom']}さんから{sharedNews[key]['title'].split(' - ')[0]}がシェアされました！</li>)
-        //}
         return msg;
     }
 

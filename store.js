@@ -45,7 +45,8 @@ const initial = {
     login : false,
     articles : [],
     userid : 'annonymous',
-    email : ''
+    email : '',
+    itemList : []
 }
 
 const persistConfig = {

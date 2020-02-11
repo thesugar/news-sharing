@@ -26,7 +26,8 @@ class Account extends Component {
                 value: {
                     login: true,
                     userid : querySnapshot.docs[0].data().userid,
-                    articles : this.props.articles
+                    articles : this.props.articles,
+                    itemList : this.props.itemList
                 }
             });
         }).catch(error => {
@@ -58,7 +59,8 @@ class Account extends Component {
                 login: false,
                 userid : 'annonymous',
                 email: '',
-                articles: this.props.articles
+                articles: this.props.articles,
+                itemList : this.props.itemList
             }
         });
         //ログアウト後に処理を行いたい場合（トップページに戻るなど），以下コメントアウトを解除(onLogouted()を呼び出し元で定義したうえで)
@@ -81,7 +83,7 @@ class Account extends Component {
                 onClick={this.login_check}>
                     {(this.props.userid === 'annonymous' || this.props.userid === undefined || this.props.userid === null) ?
                     "login / sign up"
-                    :this.props.userid + "logout"
+                    :this.props.userid + " / logout"
                     }
                 </span>
         );

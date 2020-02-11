@@ -47,7 +47,8 @@ class Register extends Component {
                     login: true,
                     userid: userid,
                     email: firebase.auth().currentUser.email,
-                    articles: this.props.articles
+                    articles: this.props.articles,
+                    itemList : this.props.itemList
                 }
             });
             setTimeout(() => {Router.push('/')}, 2000);
@@ -97,18 +98,25 @@ class Register extends Component {
                     <Grid item>{firebase.auth().currentUser.email}</Grid>
                 </Grid>
                 <br />
-                <Grid container spacing={3} alignItems="center">
+                <Typography variant="body1" color="primary" gutterBottom>このアプリで使うIDを登録しよう！</Typography>
+                <br />
+                <Grid container spacing={8} alignItems="center">
                     <Grid item>
                     <form className='id-box' noValidate autoComplete="off">
                     <TextField id="filled-basic" label="ID" variant="filled" size="small"
                     value={this.state.textAreaValue} onChange={this.onChangeText}/>
                     </form>
-                    {this.state.message}
                     </Grid>
                     <Grid item>
-                    <Button variant="contained" color="primary" onClick={(e) => this.doAction(this.state.textAreaValue, e)}>登録</Button>
+                        {this.state.ok ? 
+                        <Button variant="contained" color="primary" onClick={(e) => this.doAction(this.state.textAreaValue, e)}>登録</Button>
+                        :
+                        <Button variant="contained" disabled>登録</Button>}
                     </Grid>
                 </Grid>
+                <Typography variant="body1" color={this.state.ok ? "textPrimary" : "error"} gutterBottom>
+                {this.state.message}
+                </Typography>
             </div>
         );
     }
