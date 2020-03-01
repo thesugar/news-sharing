@@ -1,2 +1,4 @@
+# Firebase cache
+.firebase/
 node_modules
-.next
+.DS_Store

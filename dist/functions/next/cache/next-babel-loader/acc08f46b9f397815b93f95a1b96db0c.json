@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React, { Component } from 'react';\n\nclass Header extends Component {\n  render() {\n    return __jsx(\"header\", null, __jsx(\"div\", null, this.props.header), __jsx(\"h1\", null, this.props.title));\n  }\n\n}\n\nexport default Header;","map":null,"metadata":{},"sourceType":"module"}
