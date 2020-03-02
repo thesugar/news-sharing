@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: 'none',
+    display: 'block', // 'none'
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -156,11 +156,6 @@ export default function PrimarySearchAppBar() {
         <p>Notifications</p>
       </MenuItem>
       */}
-      <Typography className={classes.title} variant="h6" noWrap>
-        <Link href='/' color='inherit' underline='none'>
-        Shohan News App
-        </Link>
-      </Typography>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
