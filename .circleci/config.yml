@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  deploy_dev: # job name
+    docker:
+      - image: circleci/node:8.13.0 # Docker image on job-processing env.
+    steps:
+      - checkout
+      - run:
+          name: npm install
+          command: npm i
+      - run:
+          name: build
+          command: npm run build
+      - run:
+          name: deploy to Firebase Hosting
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN # deploy with firebase-tools on this project
+
+workflows:
+  version: 2
+  deploy_dev: # workflow name
+    jobs:
+      - deploy_dev: # designate the job defined above
+          filters:
+            branches:
+              only: develop # monitor only the develop branch
