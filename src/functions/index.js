@@ -13,7 +13,7 @@ var app = next({
 
 const app = next({
   dev: false,
-  conf: { distDir: `${path.relative(process.cwd(), __dirname)}/../next` }
+  conf: { distDir: `${path.relative(process.cwd(), __dirname)}/next` }
 });
 var handle = app.getRequestHandler()
 
