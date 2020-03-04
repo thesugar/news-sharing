@@ -11,11 +11,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import { Typography } from '@material-ui/core';
+import Hidden from '@material-ui/core/Hidden';
 
 class NewsList extends Component {
 
     constructor(props){
-        console.log('NewsListのconstructor');
         super(props);
         this.logined = this.logined.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,9 +31,7 @@ class NewsList extends Component {
 
     }
 
-    // get data from Firebase
     getNews = async () => {
-        // fill your API key!
 
         let url;
         url = this.state.getHeadline ?
@@ -43,9 +41,6 @@ class NewsList extends Component {
             "https://newsapi.org/v2/top-headlines?country="+this.state.country+"&apiKey=30d451b495234aae8b35d83d68082817&pageSize="+this.state.pageSize+"&sortBy="+this.state.sortBy+"&category="+this.state.category:
             // query指定あるとき（検索時）（country指定はできない）
             "https://newsapi.org/v2/everything?q="+this.state.query+"&apiKey=30d451b495234aae8b35d83d68082817&pageSize="+this.state.pageSize+"&sortBy="+this.state.sortBy;
-
-        console.log('inside getNews')
-        console.log(url);
         
         const result = await fetch(url);
         const json = await result.json();
@@ -63,7 +58,8 @@ class NewsList extends Component {
                 login: this.props.login,
                 articles: json.articles,
                 userid : this.props.userid,
-                itemList : itemList
+                itemList : itemList,
+                articlesSharedByFriends : this.props.articlesSharedByFriends,
             }
         })
 
@@ -79,37 +75,20 @@ class NewsList extends Component {
         console.log('logoutしました');
     }
     
-    /*
-            <li key={index.toString}>
-                <Link href="/p/[id]" as={`/p/${index}`}>
-                {article['title']}
-                </Link>
-            <ul>
-                <li key="0"><img src={article['urlToImage']} width="100" height="100" /></li>
-                <li key="1">{article['description']}</li>
-                <li key="2">{article['content']}</li>
-            </ul>
-            </li>);
-    */
-
     handleSubmit = event => {
         event.preventDefault();
         this.setState({query: this.state.value, value: '', getHeadline:false, category: false, fetch:true})
     }
 
     render() {
-        console.log('NewsListのrender()');
-        console.log('今のthis.propsは');
-        console.log(this.props);
-        this.state.fetch && this.getNews();
 
-        let category;
-        let getHeadline;
+        this.state.fetch && this.getNews();
 
         return (
             <>
             <div>
-            <Grid container direction="row" justify="center" alignItems="center" spacing={5}>
+            <Hidden xsDown> {/* モバイル以下なら以下を隠す */}
+            <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
                 <Grid item><Chip clickable color={this.state.getHeadline? "primary" : "inherit"} label="Headline" onClick={() =>this.setState({getHeadline:true, fetch:true, query: '', category: false})}/></Grid>
                 <Grid item><Chip clickable color={this.state.category === "technology" ? "primary" : "inherit"} label="Technology" onClick={() =>this.setState({category :'technology', getHeadline: false, fetch: true, query: ''})}/></Grid>
                 <Grid item><Chip clickable color={this.state.category === "business"   ? "primary" : "inherit"} label="Business" onClick={() =>this.setState({category :'business', getHeadline: false, fetch: true, query: ''})}/></Grid>
@@ -132,6 +111,7 @@ class NewsList extends Component {
                 </div>
                 </Grid>
             </Grid>
+            </Hidden>
             </div>
             <div>
                 <Typography variant="body2" color='primary' gutterBottom>
