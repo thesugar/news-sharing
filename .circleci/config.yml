@@ -22,7 +22,7 @@ jobs:
           command: yarn predeploy
       - run:
           name: deploy to Firebase Hosting
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN # deploy with firebase-tools on this project
+          command: NODE_ENV=production ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN # deploy with firebase-tools on this project
 
 workflows:
   version: 2
