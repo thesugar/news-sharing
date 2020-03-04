@@ -58,7 +58,8 @@ class NewsList extends Component {
                 login: this.props.login,
                 articles: json.articles,
                 userid : this.props.userid,
-                itemList : itemList
+                itemList : itemList,
+                articlesSharedByFriends : this.props.articlesSharedByFriends,
             }
         })
 
