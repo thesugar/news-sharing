@@ -9,7 +9,13 @@ jobs:
           name: yarn install
           command: yarn install
       - run:
-          name: yarn build
+          name: yarn build-public
+          command: yarn build-public
+      - run:
+          name: yarn build-funcs
+          command: yarn build-funcs
+      - run:
+          name: yarn build-app
           command: yarn build-app
       - run:
           name: predeploy
