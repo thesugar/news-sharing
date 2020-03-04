@@ -6,14 +6,23 @@ jobs:
     steps:
       - checkout
       - run:
-          name: npm install
-          command: npm i
+          name: yarn install
+          command: yarn install
       - run:
-          name: build
-          command: npm run build
+          name: yarn build-public
+          command: yarn build-public
+      - run:
+          name: yarn build-funcs
+          command: yarn build-funcs
+      - run:
+          name: yarn build-app
+          command: yarn build-app
+      - run:
+          name: predeploy
+          command: yarn predeploy
       - run:
           name: deploy to Firebase Hosting
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN # deploy with firebase-tools on this project
+          command: NODE_ENV=production ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN # deploy with firebase-tools on this project
 
 workflows:
   version: 2
