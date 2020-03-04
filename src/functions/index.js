@@ -4,17 +4,11 @@ const next = require('next')
 
 var dev = process.env.NODE_ENV !== 'production'
 
-/*
 var app = next({
   dev,
   conf: { distDir: `${path.relative(process.cwd(), __dirname)}/next` },
 })
-*/
 
-const app = next({
-  dev: false,
-  conf: { distDir: `${path.relative(process.cwd(), __dirname)}/functions/.next` }
-});
 var handle = app.getRequestHandler()
 
 exports.next = functions.https.onRequest((req, res) => {
