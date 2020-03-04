@@ -8,6 +8,7 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
+          <title>Shohan News App</title>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link

@@ -8,6 +8,7 @@ import Link from '../src/Link';
 import NewsList from '../components/NewsList';
 import Bar from '../components/Bar';
 import SharedNewsList from '../components/SharedNewsList';
+import { connect } from 'react-redux';
 
 function Copyright() {
     return (
@@ -22,7 +23,7 @@ function Copyright() {
     );
   }
   
-  export default function Index() {
+ const Index = () => {
     return (
       <Container disableGutters={true} maxWidth='lg'>
         <Bar />
@@ -37,3 +38,5 @@ function Copyright() {
       </Container>
     );
   }
+
+  export default connect((state) => state)(Index);

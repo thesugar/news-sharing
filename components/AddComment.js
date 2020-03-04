@@ -62,7 +62,7 @@ class AddComment extends Component {
         )
         .then((doc) => {
             console.log(`コメントを追加しました`);
-            this.setState({message: '返信しました！続けて別の人やグループに共有することもできます。', textAreaValue: ''});
+            this.setState({message: '返信しました！', textAreaValue: ''});
             setTimeout(() => {this.setState({message: null})}, 2000);
         })
         .catch((error) => {
