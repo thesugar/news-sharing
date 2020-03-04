@@ -18,6 +18,8 @@ import Account from '../components/Account';
 import Link from '@material-ui/core/Link';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Grid from '@material-ui/core/Grid';
+import {connect} from 'react-redux';
+import MyDrawer from '../components/Drawer';
 
 const useStyles = makeStyles(theme => ({
 
@@ -25,6 +27,10 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   menuButton: {
+    display: 'none',
+    [theme.breakpoints.down('xs')]: {
+      display: 'flex'
+    },
     marginRight: theme.spacing(2),
   },
   title: {
@@ -82,7 +88,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+const PrimarySearchAppBar = () => {
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -182,6 +188,7 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
+
   return (
     <div className={classes.grow}>
       <AppBar position="static">
@@ -192,11 +199,11 @@ export default function PrimarySearchAppBar() {
             color="inherit"
             aria-label="open drawer"
           >
-            <MenuIcon />
+            <MyDrawer />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             <Link href='/' color='inherit' underline='none'>
-            Shohan News App
+              Shohan News App
             </Link>
           </Typography>
 
@@ -253,3 +260,5 @@ export default function PrimarySearchAppBar() {
     </div>
   );
 }
+
+export default connect((state) => state)(PrimarySearchAppBar);
