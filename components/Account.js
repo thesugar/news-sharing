@@ -28,7 +28,8 @@ class Account extends Component {
                     userid : querySnapshot.docs[0].data().userid,
                     articles : this.props.articles,
                     itemList : this.props.itemList,
-                    articlesSharedByFriends: this.props.articlesSharedByFriends
+                    articlesSharedByFriends: this.props.articlesSharedByFriends,
+                    articlesSharedToFriends: this.props.articlesSharedToFriends
                 }
             });
         }).catch(error => {

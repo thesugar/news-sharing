@@ -81,7 +81,8 @@ class MyDrawer extends Component {
                 articles: json.articles,
                 userid : this.props.userid,
                 itemList : itemList,
-                articlesSharedByFriends : this.props.articlesSharedByFriends
+                articlesSharedByFriends : this.props.articlesSharedByFriends,
+                articlesSharedToFriends : this.props.articlesSharedToFriends
             }
         })
 
