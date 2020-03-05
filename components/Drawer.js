@@ -1,4 +1,4 @@
-import Drawer from '@material-ui/core/Drawer';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
@@ -122,9 +122,9 @@ class MyDrawer extends Component {
             <>
             <span>
             <MenuIcon onClick={this.toggleDrawer('left', true)} />
-            <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
+            <SwipeableDrawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
                 {this.sideList('left')}
-            </Drawer>
+            </SwipeableDrawer>
             </span>
             </>
         );
