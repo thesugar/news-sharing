@@ -25,7 +25,7 @@ class MyDrawer extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             left: false,
-            getHeadline : true,
+            getHeadline : false,
             category : false,
             country : "jp",
             sortBy : "popularity",
@@ -50,6 +50,10 @@ class MyDrawer extends Component {
 
     getNews = async () => {
         console.log('drawerのgetNews')
+
+        // 以下の早期 return がないと、Drawerがレンダリングされるたびに、state（正確にはreduxのstore）に
+        // 保持する記事が書き換わって、特定のカテゴリーを選択しても裏で持ってる記事はつねにHeadlineになってしまう
+        if (!this.state.getHeadline && !this.state.category && !this.state.query) { return }
 
         let url;
         url = this.state.getHeadline ?
@@ -129,7 +133,3 @@ class MyDrawer extends Component {
 
 MyDrawer = connect((state) => state)(MyDrawer);
 export default MyDrawer;
-
-
-
-
