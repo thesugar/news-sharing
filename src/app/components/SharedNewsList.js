@@ -12,6 +12,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import { withStyles } from '@material-ui/core/styles';
 import { palette } from '@material-ui/system';
+import { Typography } from '@material-ui/core';
 
 /*
  MEMO: db.collection('share').where(<ShareTo に userid（要マッチング処理） が含まれる>) で，共有されたニュースを read する．
@@ -37,6 +38,7 @@ const style = theme => ({
         backgroundColor: theme.palette.background.paper, //リストの背景色いじる場合はここ
         padding: 0,
     },
+
 })
 
 class SharedNewsList extends Component {
@@ -149,9 +151,17 @@ class SharedNewsList extends Component {
 
         const msg = [];
         if (direction === 'from'){
+            
             sharedNewsForDisp.map(news => 
             msg.push(<ListItem key={news.key}>
-                {news['sharedFrom']}さんから：{<Link href="/share/[shareid]" as={`/share/${news.key}`}>{news['title'].split(' - ')[0]}</Link>}
+                    <ListItemText
+                    primary=
+                        {<Typography variant="body2" color='inherit'>
+                            <Link href="/share/[shareid]" as={`/share/${news.key}`}>{news['title'].split(' - ')[0]}</Link>
+                        </Typography>}
+                    secondary=
+                        {<Typography variant="body2" color='inherit'>{news['sharedFrom']}さんから</Typography>}>
+                    </ListItemText>
                 </ListItem>
                 )
             );
@@ -160,7 +170,14 @@ class SharedNewsList extends Component {
         if (direction === 'to'){
             sharedNewsForDisp.map(news => 
             msg.push(<ListItem key={news.key}>
-                {news['sharedTo'].map(value => value + 'さん ')}に：{<Link href="/share/[shareid]" as={`/share/${news.key}`}>{news['title'].split(' - ')[0]}</Link>}
+                    <ListItemText
+                    primary=
+                        {<Typography variant="body2" color='inherit'>
+                            <Link href="/share/[shareid]" as={`/share/${news.key}`}>{news['title'].split(' - ')[0]}</Link>
+                        </Typography>}
+                    secondary=
+                        {<Typography variant="body2" color='inherit'>{news['sharedTo'].map(value => value + 'さん ')}に</Typography>}>
+                    </ListItemText>
                 </ListItem>
                 )
             );

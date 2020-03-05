@@ -30,6 +30,7 @@ function Copyright() {
         <Box my={4}>
           <Typography variant="body" color="textPrimary" gutterBottom>
             <SharedNewsList />
+            <br />
             <NewsList />
           </Typography>
           <ProTip />
