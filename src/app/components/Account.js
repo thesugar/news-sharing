@@ -28,7 +28,8 @@ class Account extends Component {
                     userid : querySnapshot.docs[0].data().userid,
                     articles : this.props.articles,
                     itemList : this.props.itemList,
-                    articlesSharedByFriends: this.props.articlesSharedByFriends
+                    articlesSharedByFriends: this.props.articlesSharedByFriends,
+                    articlesSharedToFriends: this.props.articlesSharedToFriends
                 }
             });
         }).catch(error => {
@@ -57,13 +58,16 @@ class Account extends Component {
         this.props.dispatch({
             type: 'UPDATE_USER',
             value: {
-                login: false,
+                login : false,
+                articles : [],
                 userid : 'annonymous',
-                email: '',
-                articles: this.props.articles,
-                itemList : this.props.itemList
+                email : '',
+                itemList : [],
+                sharedNewsFromFriends: [],
+                sharedNewsToFriends: []
             }
         });
+        Router.push('/')
         //ログアウト後に処理を行いたい場合（トップページに戻るなど），以下コメントアウトを解除(onLogouted()を呼び出し元で定義したうえで)
         //this.props.onLogouted();
     }

@@ -48,7 +48,7 @@ class NewsList extends Component {
         let itemList = [];
         json.articles.map((article, index) => {
             itemList.push(
-                <Grid item xs={12} sm={4}><NewsCard title={article['title']} image={article['urlToImage']} description={article['description']} index={index} /></Grid>
+                <Grid item xs={12} sm={4}><NewsCard article={article} userid={this.props.userid} title={article['title']} image={article['urlToImage']} description={article['description']} index={index} /></Grid>
             );
         })
 
@@ -60,6 +60,7 @@ class NewsList extends Component {
                 userid : this.props.userid,
                 itemList : itemList,
                 articlesSharedByFriends : this.props.articlesSharedByFriends,
+                articlesSharedToFriends: this.props.articlesSharedToFriends
             }
         })
 

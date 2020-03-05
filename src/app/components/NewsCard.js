@@ -8,15 +8,17 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Link from 'next/link';
+import SelectWho from '../components/SelectWho'
+import SimpleModal from '../components/Modal'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 500,
   },
   media: {
     height: 300,
   },
-});
+}));
 
 export default function NewsCard(props) {
   const classes = useStyles();
@@ -39,11 +41,9 @@ export default function NewsCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
+        <SimpleModal buttonText="共有する" color='inherit' size='small' content={<SelectWho article={props.article} userid={props.userid}/>}/>
         <Link href="/p/[id]" as={`/p/${props.index}`}>
-        <Button size="small" color="primary">
+        <Button size="small">
           詳細を見る
         </Button>
         </Link>

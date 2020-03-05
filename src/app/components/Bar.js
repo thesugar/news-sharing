@@ -23,6 +23,7 @@ import MyDrawer from '../components/Drawer';
 
 const useStyles = makeStyles(theme => ({
 
+  offset: theme.mixins.toolbar,
   grow: {
     flexGrow: 1,
   },
@@ -257,6 +258,7 @@ const PrimarySearchAppBar = () => {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <div className={classes.offset} />
     </div>
   );
 }
