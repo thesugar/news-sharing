@@ -196,6 +196,9 @@ class SharedNewsList extends Component {
     }
     
     render() {
+        if (this.props.userid === 'annonymous') {
+            return null
+        }
         console.log('SharedNewsListのrender()');
         console.log('今のthis.propsは');
         console.log(this.props);
@@ -215,6 +218,7 @@ class SharedNewsList extends Component {
        }
 
         return (
+
             this.props.userid == 'annonymous' ? null :
             <div>
             <List className={this.props.classes.root} subheader={<li />}>

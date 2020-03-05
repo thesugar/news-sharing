@@ -60,6 +60,7 @@ class NewsList extends Component {
                 userid : this.props.userid,
                 itemList : itemList,
                 articlesSharedByFriends : this.props.articlesSharedByFriends,
+                articlesSharedToFriends: this.props.articlesSharedToFriends
             }
         })
 
