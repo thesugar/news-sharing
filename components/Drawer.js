@@ -2,12 +2,8 @@ import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from "firebase";
@@ -30,7 +26,7 @@ class MyDrawer extends Component {
             country : "jp",
             sortBy : "popularity",
             pageSize : 100,
-            fetch : true,
+            fetch : false,
             query : ""
         }
     }
@@ -46,6 +42,7 @@ class MyDrawer extends Component {
     handleSubmit = event => {
         event.preventDefault();
         this.setState({query: this.state.value, value: '', getHeadline:false, category: false, fetch:true, ['left']: false})
+        Router.push('/')
     }
 
     getNews = async () => {
@@ -70,7 +67,7 @@ class MyDrawer extends Component {
         let itemList = [];
         json.articles.map((article, index) => {
             itemList.push(
-                <Grid item xs={12} sm={4}><NewsCard title={article['title']} image={article['urlToImage']} description={article['description']} index={index} /></Grid>
+                <Grid item xs={12} sm={4}><NewsCard article={article} title={article['title']} image={article['urlToImage']} description={article['description']} index={index} /></Grid>
             );
         })
 
@@ -82,7 +79,9 @@ class MyDrawer extends Component {
                 userid : this.props.userid,
                 itemList : itemList,
                 articlesSharedByFriends : this.props.articlesSharedByFriends,
-                articlesSharedToFriends : this.props.articlesSharedToFriends
+                articlesSharedToFriends : this.props.articlesSharedToFriends,
+                fetchSharedBy : this.props.fetchSharedBy,
+                fetchSharedTo : this.props.fetchSharedTo
             }
         })
 
@@ -107,6 +106,7 @@ class MyDrawer extends Component {
               <ListItem button key={text}>
                 <ListItemText primary={text} onClick={()=>
                     this.setState({category :text, getHeadline: false, fetch: true, query: '', [side]: false})
+                    || Router.push('/')
                 }/>
               </ListItem>
             ))}
@@ -115,8 +115,6 @@ class MyDrawer extends Component {
     );
     
     render(){
-        console.log('drawerのrender')
-        console.log(this.state)
         this.state.fetch && this.getNews();
 
         return (

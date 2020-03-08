@@ -56,24 +56,32 @@ class SharedNewsList extends Component {
         .get().then((querySnapshot) => {
             // success
             let sharedObject = {};
+            querySnapshot.docs.map(doc => {
+                sharedObject[doc.id] = doc.data()
+            });
 
+            this.props.dispatch({
+                type: 'UPDATE_USER',
+                value: {
+                    login: this.props.login,
+                    userid : this.props.userid,
+                    articles : this.props.articles,
+                    itemList : this.props.itemList,
+                    articlesSharedByFriends : sharedObject,
+                    articlesSharedToFriends : this.props.articlesSharedToFriends,
+                    fetchSharedBy : false,
+                    fetchSharedTo : this.props.fetchSharedTo 
+                }
+            });
+
+            /*
             querySnapshot.forEach(doc => {
                 // はまりポイント: ここでObejct.assign({}, JSON...)とやらないと，reduxがstateの変更を検知してくれない．
                 // 参考：https://redux.js.org/faq/immutable-data/
                 sharedObject = Object.assign({}, JSON.parse(JSON.stringify(sharedObject)), {[doc.id] : JSON.parse(JSON.stringify(doc.data()))});
-
-                this.props.dispatch({
-                    type: 'UPDATE_USER',
-                    value: {
-                        login: this.props.login,
-                        userid : this.props.userid,
-                        articles : this.props.articles,
-                        itemList : this.props.itemList,
-                        articlesSharedByFriends : sharedObject,
-                        articlesSharedToFriends : this.props.articlesSharedToFriends
-                    }
-                });
             })
+            */
+
         }).catch(error => {
             console.log(error);
         })
@@ -87,24 +95,31 @@ class SharedNewsList extends Component {
         .get().then((querySnapshot) => {
             // success
             let sharedObject = {};
-
+            querySnapshot.docs.map(doc => {
+                sharedObject[doc.id] = doc.data()
+            });
+            /*
             querySnapshot.forEach(doc => {
                 // はまりポイント: ここでObejct.assign({}, JSON...)とやらないと，reduxがstateの変更を検知してくれない．
                 // 参考：https://redux.js.org/faq/immutable-data/
+                
                 sharedObject = Object.assign({}, JSON.parse(JSON.stringify(sharedObject)), {[doc.id] : JSON.parse(JSON.stringify(doc.data()))});
-
-                this.props.dispatch({
-                    type: 'UPDATE_USER',
-                    value: {
-                        login: this.props.login,
-                        userid : this.props.userid,
-                        articles : this.props.articles,
-                        itemList : this.props.itemList,
-                        articlesSharedByFriends : this.props.articlesSharedByFriends,
-                        articlesSharedToFriends : sharedObject
-                    }
-                });
             })
+            */
+
+            this.props.dispatch({
+                type: 'UPDATE_USER',
+                value: {
+                    login: this.props.login,
+                    userid : this.props.userid,
+                    articles : this.props.articles,
+                    itemList : this.props.itemList,
+                    articlesSharedByFriends : this.props.articlesSharedByFriends,
+                    articlesSharedToFriends : sharedObject,
+                    fetchSharedBy : this.props.fetchSharedBy,
+                    fetchSharedTo : false 
+                }
+            });
         }).catch(error => {
             console.log(error);
         })
@@ -199,11 +214,9 @@ class SharedNewsList extends Component {
         if (this.props.userid === 'annonymous') {
             return null
         }
-        console.log('SharedNewsListのrender()');
-        console.log('今のthis.propsは');
-        console.log(this.props);
-        (this.props.articlesSharedByFriends === undefined || this.props.articlesSharedByFriends.length === 0) && this.getNewsSharedByFriends();
-        (this.props.articlesSharedToFriends === undefined || this.props.articlesSharedToFriends.length === 0) && this.getNewsSharedToFriends();
+
+        (this.props.fetchSharedBy) && this.getNewsSharedByFriends();
+        (this.props.fetchSharedTo) && this.getNewsSharedToFriends();
 
        let sharedNews = this.props.articlesSharedByFriends;
        let sharedNewsToFriends = this.props.articlesSharedToFriends;

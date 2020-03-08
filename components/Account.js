@@ -6,7 +6,6 @@ import Router from "next/router";
 class Account extends Component {
 
     constructor(props){
-        console.log('Account.jsのconstructor')
         super(props);
         this.login_check = this.login_check.bind(this);
         this.match_user = this.match_user.bind(this);
@@ -29,7 +28,9 @@ class Account extends Component {
                     articles : this.props.articles,
                     itemList : this.props.itemList,
                     articlesSharedByFriends: this.props.articlesSharedByFriends,
-                    articlesSharedToFriends: this.props.articlesSharedToFriends
+                    articlesSharedToFriends: this.props.articlesSharedToFriends,
+                    fetchSharedBy : true,
+                    fetchSharedTo : true
                 }
             });
         }).catch(error => {
@@ -64,7 +65,9 @@ class Account extends Component {
                 email : '',
                 itemList : [],
                 sharedNewsFromFriends: [],
-                sharedNewsToFriends: []
+                sharedNewsToFriends: [],
+                fetchSharedBy : this.props.fetchSharedBy,
+                fetchSharedTo : this.props.fetchSharedTo
             }
         });
         Router.push('/')
