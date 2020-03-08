@@ -25,7 +25,7 @@ class NewsList extends Component {
             country : "jp",
             sortBy : "popularity",
             pageSize : 100,
-            fetch : true,
+            fetch : false,
             query : ""
         }
 
@@ -48,7 +48,7 @@ class NewsList extends Component {
         let itemList = [];
         json.articles.map((article, index) => {
             itemList.push(
-                <Grid item xs={12} sm={4}><NewsCard article={article} userid={this.props.userid} title={article['title']} image={article['urlToImage']} description={article['description']} index={index} /></Grid>
+                <Grid item xs={12} sm={4} key={index}><NewsCard article={article} userid={this.props.userid} title={article['title']} image={article['urlToImage']} description={article['description']} index={index} /></Grid>
             );
         })
 
@@ -60,7 +60,9 @@ class NewsList extends Component {
                 userid : this.props.userid,
                 itemList : itemList,
                 articlesSharedByFriends : this.props.articlesSharedByFriends,
-                articlesSharedToFriends: this.props.articlesSharedToFriends
+                articlesSharedToFriends: this.props.articlesSharedToFriends,
+                fetchSharedBy : this.props.fetchSharedBy,
+                fetchSharedTo : this.props.fetchSharedTo
             }
         })
 
@@ -83,20 +85,20 @@ class NewsList extends Component {
 
     render() {
 
-        this.state.fetch && this.getNews();
+        ((!this.state.query && this.props.itemList.length === 0) || this.state.fetch) && this.getNews();
 
         return (
             <>
             <div>
             <Hidden xsDown> {/* モバイル以下なら以下を隠す */}
             <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
-                <Grid item><Chip clickable color={this.state.getHeadline? "primary" : "inherit"} label="Headline" onClick={() =>this.setState({getHeadline:true, fetch:true, query: '', category: false})}/></Grid>
-                <Grid item><Chip clickable color={this.state.category === "technology" ? "primary" : "inherit"} label="Technology" onClick={() =>this.setState({category :'technology', getHeadline: false, fetch: true, query: ''})}/></Grid>
-                <Grid item><Chip clickable color={this.state.category === "business"   ? "primary" : "inherit"} label="Business" onClick={() =>this.setState({category :'business', getHeadline: false, fetch: true, query: ''})}/></Grid>
-                <Grid item><Chip clickable color={this.state.category === "entertainment" ? "primary" : "inherit"} label="Entertainment" onClick={() =>this.setState({category :'entertainment', getHeadline: false, fetch: true, query: ''})}/></Grid>
-                <Grid item><Chip clickable color={this.state.category === "sports" ? "primary" : "inherit"} label="Sports" onClick={() =>this.setState({category :'sports', getHeadline: false, fetch: true, query: ''})}/></Grid>
-                <Grid item><Chip clickable color={this.state.category === "science" ? "primary" : "inherit"} label="Science" onClick={() =>this.setState({category :'science', getHeadline: false, fetch: true, query: ''})}/></Grid>
-                <Grid item><Chip clickable color={this.state.query === "三菱UFJ" ? "primary" : "inherit"} label="MUFG" onClick={() =>this.setState({query:'三菱UFJ', getHeadline: false, category:false, fetch: true})}/></Grid>
+                <Grid item><Chip clickable color={this.state.getHeadline? "primary" : "default"} label="Headline" onClick={() =>this.setState({getHeadline:true, fetch:true, query: '', category: false})}/></Grid>
+                <Grid item><Chip clickable color={this.state.category === "technology" ? "primary" : "default"} label="Technology" onClick={() =>this.setState({category :'technology', getHeadline: false, fetch: true, query: ''})}/></Grid>
+                <Grid item><Chip clickable color={this.state.category === "business"   ? "primary" : "default"} label="Business" onClick={() =>this.setState({category :'business', getHeadline: false, fetch: true, query: ''})}/></Grid>
+                <Grid item><Chip clickable color={this.state.category === "entertainment" ? "primary" : "default"} label="Entertainment" onClick={() =>this.setState({category :'entertainment', getHeadline: false, fetch: true, query: ''})}/></Grid>
+                <Grid item><Chip clickable color={this.state.category === "sports" ? "primary" : "default"} label="Sports" onClick={() =>this.setState({category :'sports', getHeadline: false, fetch: true, query: ''})}/></Grid>
+                <Grid item><Chip clickable color={this.state.category === "science" ? "primary" : "default"} label="Science" onClick={() =>this.setState({category :'science', getHeadline: false, fetch: true, query: ''})}/></Grid>
+                <Grid item><Chip clickable color={this.state.query === "三菱UFJ" ? "primary" : "default"} label="MUFG" onClick={() =>this.setState({query:'三菱UFJ', getHeadline: false, category:false, fetch: true})}/></Grid>
                 <Grid item>
                 <div>
                     <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
@@ -117,7 +119,7 @@ class NewsList extends Component {
             <div>
                 <Typography variant="body2" color='primary' gutterBottom>
                 <br />
-                {this.props.itemList === null || this.props.itemList === undefined || this.props.itemList.length === 0 ? this.state.query + "の検索結果はありませんでした":
+                {this.state.query && (this.props.itemList === null || this.props.itemList === undefined || this.props.itemList.length === 0) ? this.state.query + "の検索結果はありませんでした":
                 (this.state.query && this.state.query !== '三菱UFJ') ? this.state.query + "の検索結果を表示しています" : null}
                 </Typography>
                 <Grid container spacing={6}>{this.props.itemList}</Grid>

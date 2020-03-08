@@ -26,17 +26,19 @@ export default function NewsCard(props) {
   return (
     <Card className={classes.card}>
       <CardActionArea>
+      <Link href="/p/[id]" as={`/p/${props.index}`}>
         <CardMedia
           className={classes.media}
           image={props.image}
           title={props.title}
         />
+        </Link>
         <CardContent>
-          <Typography gutterBottom variant="body2" component="p">
+          <Typography gutterBottom variant="body2">
             {props.title}
           </Typography>
-          <Typography variant="body" color="textSecondary" component="p">
-            {props.description}
+          <Typography variant="body2" color="textSecondary">
+            {String(props.description).slice(0, 50)}…
           </Typography>
         </CardContent>
       </CardActionArea>

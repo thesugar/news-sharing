@@ -14,13 +14,18 @@ class ShareInfo extends Component {
 
     render(){
 
+        if (this.props.userid === undefined || this.props.userid === 'annonymous'){
+            Router.push('/')
+            return null
+        }
+
         return (
             //TODO: display comment + fromWho & ToWho (who can see their talk), make it possible to reply.
             <div>
                 <ul>
                     {
                     <div>
-                    <Typography gutterBottom variant="body2" component="p">
+                    <Typography gutterBottom variant="body2" component="body">
                     <h1>{(this.props.articlesSharedByFriends[this.props.shareId] || this.props.articlesSharedToFriends[this.props.shareId])['title']}</h1>
                     <img src={(this.props.articlesSharedByFriends[this.props.shareId] || this.props.articlesSharedToFriends[this.props.shareId])['image']} />
                     <p>{(this.props.articlesSharedByFriends[this.props.shareId] || this.props.articlesSharedToFriends[this.props.shareId])['description']}</p>

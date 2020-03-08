@@ -65,11 +65,6 @@ class SelectWho extends Component {
         const currentIndex = this.state.currentSelectedUsers.indexOf(userid);
         const newChecked = [...this.state.currentSelectedUsers];
     
-        console.log('inside HANDLETOGGLE')
-        console.log(currentIndex)
-        console.log(newChecked)
-        console.log('what is this.state?')
-        console.log(this.state);
         if (currentIndex === -1) {
           newChecked.push(userid);
         } else {
@@ -88,8 +83,6 @@ class SelectWho extends Component {
         .then(function(querySnapshot) {
             let userList = [];
             querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
             userList.push(
                 doc.id
             );

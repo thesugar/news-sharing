@@ -177,7 +177,7 @@ const PrimarySearchAppBar = () => {
         alignItems="center"
         spacing={1}
         >
-          <Grid item><AccountCircle fontSize="middle"/></Grid>
+          <Grid item><AccountCircle fontSize="inherit"/></Grid>
           <Grid item>
             <Typography variant="subtitle1" gutterBottom align="center">
               <Account />
@@ -204,7 +204,7 @@ const PrimarySearchAppBar = () => {
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             <Link href='/' color='inherit' underline='none'>
-              Shohan News App
+              <>Shohan News App</>
             </Link>
           </Typography>
 
@@ -234,7 +234,7 @@ const PrimarySearchAppBar = () => {
                 alignItems="center"
                 spacing={1}
               >
-                <Grid item><AccountCircle fontSize="middle"/></Grid>
+                <Grid item><AccountCircle fontSize="inherit"/></Grid>
                 <Grid item>
                   <Typography variant="subtitle1" gutterBottom align="center">
                     <Account />

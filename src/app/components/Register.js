@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 
 class Register extends Component {
 
@@ -48,7 +47,11 @@ class Register extends Component {
                     userid: userid,
                     email: firebase.auth().currentUser.email,
                     articles: this.props.articles,
-                    itemList : this.props.itemList
+                    itemList : this.props.itemList,
+                    articlesSharedByFriends : this.props.articlesSharedByFriends,
+                    articlesSharedToFriends: this.props.articlesSharedToFriends,
+                    fetchSharedBy : this.props.fetchSharedBy,
+                    fetchSharedTo : this.props.fetchSharedTo
                 }
             });
             setTimeout(() => {Router.push('/')}, 2000);
