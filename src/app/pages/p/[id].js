@@ -33,7 +33,7 @@ export default () => {
     <Container disableGutters={true} maxWidth='md'>
     <Bar />
     <Box my={4}>
-      <Typography variant="body" gutterBottom>
+      <Typography variant="inherit" gutterBottom>
         <NewsDetail newsIndex={router.query.id} />
         <Link href="/">
                 <Button variant="contained" color="secondary">back</Button>

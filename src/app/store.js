@@ -46,7 +46,9 @@ const initial = {
     articles : [],
     userid : 'annonymous',
     email : '',
-    itemList : []
+    itemList : [],
+    fetchSharedBy : true,
+    fetchSharedTo : true
 }
 
 const persistConfig = {
