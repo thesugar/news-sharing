@@ -31,9 +31,6 @@ class ShareNews extends Component {
 
     // データの登録処理
     doAction = (article, userid, e) => {    
-        console.log('doActionの中');
-        console.log('userid is');
-        console.log(userid);
         let db = firebase.firestore();
         // Firestore の登録処理
 

@@ -65,12 +65,20 @@ class Register extends Component {
 
     checkId = userId => {
 
-        console.log('I am in the checkId')
-        console.log('userId is')
-        console.log(userId)
         if (userId === '' || userId === undefined || userId === null){
             return null;
         }
+
+        if (!userId.match(/^[A-Za-z0-9]*$/)){
+            this.setState({message: 'ユーザーIDには半角英数字のみ利用できます。', ok:false})
+            return null
+        }
+
+        if (userId.length > 15){
+            this.setState({message: 'ユーザーIDは半角英数字で15字以内にしてください。', ok:false})
+            return null
+        }
+
         let db = firebase.firestore();
         
         // 入力のたびに Firestore に照会行くのやばい？
@@ -102,6 +110,9 @@ class Register extends Component {
                 </Grid>
                 <br />
                 <Typography variant="body1" color="primary" gutterBottom>このアプリで使うIDを登録しよう！</Typography>
+                <br />
+                <Typography variant="body2" color="primary" gutterBottom>登録したIDは他のユーザーにも表示されます。<br/>
+                メールアドレスは他のユーザーには表示されません。</Typography>
                 <br />
                 <Grid container spacing={8} alignItems="center">
                     <Grid item>
