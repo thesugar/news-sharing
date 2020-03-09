@@ -75,7 +75,6 @@ class SelectWho extends Component {
     };
 
     getUserList = (self = this) => {
-        console.log('now inside getUserList function.');
         let db = firebase.firestore(); // firestore のオブジェクト取得
     
         db.collection('news-user')
@@ -97,9 +96,7 @@ class SelectWho extends Component {
 
     // データの登録処理
     doAction = (article, userid, e) => {    
-        console.log('doActionの中');
-        console.log('userid is');
-        console.log(userid);
+
         let db = firebase.firestore();
         const date = firebase.firestore.Timestamp.fromDate(new Date());
         // Firestore の登録処理

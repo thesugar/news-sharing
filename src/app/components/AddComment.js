@@ -78,8 +78,6 @@ class AddComment extends Component {
         let db = firebase.firestore();
         
         db.collection("share").doc(shareId).onSnapshot(doc => {
-            console.log('inside sync func!');
-            console.log(doc.data());
             let commentRef = doc.data()['comment']
             const commentList = [];
             Object.keys(commentRef).map(key => 

@@ -55,8 +55,6 @@ class NewsDetail extends Component {
 
     render(){
 
-        console.log('this props is')
-        console.log(this.props);
         return (
             <div>
                 <div>

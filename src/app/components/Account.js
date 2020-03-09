@@ -19,7 +19,6 @@ class Account extends Component {
         db.collection("news-user")
         .where('email', '==', result.user.email).get().then((querySnapshot) => {
             // success
-            console.log(querySnapshot.docs[0].data());
             this.props.dispatch({
                 type: 'UPDATE_USER',
                 value: {
@@ -40,7 +39,6 @@ class Account extends Component {
     }
 
     login(){
-        console.log('Account.jsのlogin()')
         let provider = new firebase.auth.GoogleAuthProvider();
         let self = this;
         let db = firebase.firestore();
@@ -54,7 +52,6 @@ class Account extends Component {
     }
 
     logout(){
-        console.log("logout");
         firebase.auth().signOut();
         this.props.dispatch({
             type: 'UPDATE_USER',
@@ -77,7 +74,6 @@ class Account extends Component {
 
     // check if user is logged in or logged out
     login_check(){
-        console.log('Account.jsのlogin_check()');
         if (this.props.login === undefined || this.props.login == false){
             this.login();
         } else {
