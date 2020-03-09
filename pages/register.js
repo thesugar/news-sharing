@@ -27,9 +27,7 @@ function Copyright() {
       <Container disableGutters={true} maxWidth='lg'>
         <Bar />
         <Box my={4}>
-          <Typography variant="body" color="textPrimary" gutterBottom>
             <Register />
-          </Typography>
           <ProTip />
           <Copyright />
         </Box>

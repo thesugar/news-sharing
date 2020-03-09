@@ -46,7 +46,6 @@ class MyDrawer extends Component {
     }
 
     getNews = async () => {
-        console.log('drawerのgetNews')
 
         // 以下の早期 return がないと、Drawerがレンダリングされるたびに、state（正確にはreduxのstore）に
         // 保持する記事が書き換わって、特定のカテゴリーを選択しても裏で持ってる記事はつねにHeadlineになってしまう

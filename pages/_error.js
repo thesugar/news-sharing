@@ -13,37 +13,32 @@ import SharedNewsList from '../components/SharedNewsList';
 import { connect } from 'react-redux';
 import Head from 'next/head';
 
-const Page = ({ errorCode, stars }) => {
-  if (errorCode) {
-    return (
-        <Container disableGutters={true} maxWidth='lg'>
-        <Head><title>Shohan News App</title></Head>
-        <Bar />
-        <Box my={4}>
-          <Typography variant="inherit" color="textPrimary" gutterBottom>
-          <div>
-            <Error statusCode={errorCode} />
-            <p>申し訳ございません。何らかのエラーが発生しました。</p>
-            <MuiLink href='https://github.com/thesugar/news-sharing/issues'>
-                <a>バグ報告はこちらから</a>
-            </MuiLink>
-            </div>
-          </Typography>
-          <ProTip />
-          <Copyright />
-        </Box>
-      </Container>
-    );
+
+export default class Error extends React.Component {
+  static getInitialProps({ res, err }) {
+    const statusCode = res ? res.statusCode : err ? err.statusCode : null;
+    return { statusCode }
   }
 
+  render() {
+    return (
+      <Container disableGutters={true} maxWidth='lg'>
+      <Head><title>Shohan News App</title></Head>
+      <Bar />
+      <Box my={4}>
+        <Typography variant="inherit" color="textPrimary" gutterBottom>
+        <div>
+          <p>申し訳ございません。何らかのエラーが発生しました。</p>
+          {`エラーコード：${this.props.statusCode}`}
+          <MuiLink href='https://github.com/thesugar/news-sharing/issues'>
+              <a>バグ報告はこちらから</a>
+          </MuiLink>
+          </div>
+        </Typography>
+        <ProTip />
+        <Copyright />
+      </Box>
+    </Container>
+    )
+  }
 }
-
-Page.getInitialProps = async () => {
-  const res = await fetch('https://api.github.com/repos/zeit/next.js')
-  const errorCode = res.statusCode > 200 ? res.statusCode : false
-  const json = await res.json()
-
-  return { errorCode, stars: json.stargazers_count }
-}
-
-export default Page
