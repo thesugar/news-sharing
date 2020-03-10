@@ -9,7 +9,9 @@ export default class Error extends React.Component {
   render() {
     return (
       <p>
-        {`${this.props.statusCode}エラーが起こりました。`}
+        {`申し訳ありません。エラーが発生しました。エラーコード：${this.props.statusCode}`}
+        <br />
+        <a href='https://github.com/thesugar/news-sharing/issues' target="_blank">バグ報告はこちらから</a>
       </p>
     )
   }

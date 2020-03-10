@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Router from 'next/router';
-import firebase from "firebase";
+import firebase from "firebase/app"
+import "firebase/auth"
+import "firebase/firestore"
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';

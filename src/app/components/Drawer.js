@@ -6,7 +6,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import firebase from "firebase";
 import Router from "next/router";
 import Grid from '@material-ui/core/Grid';
 import NewsCard from '../components/NewsCard';
