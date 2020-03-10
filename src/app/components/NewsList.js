@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import Link from 'next/link';
 import NewsCard from '../components/NewsCard';
 import Account from '../components/Account';
-import firebase from "firebase";
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import { makeStyles } from '@material-ui/core/styles';
