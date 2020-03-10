@@ -6,7 +6,6 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import MuiLink from '@material-ui/core/Link';
-import ProTip from '../../src/ProTip';
 //import Link from '../../src/Link';
 import Bar from '../../components/Bar';
 import Button from '@material-ui/core/Button';
@@ -39,7 +38,6 @@ export default () => {
                 <Button variant="contained" color="secondary">back</Button>
         </Link>
       </Typography>
-      <ProTip />
       <Copyright />
     </Box>
   </Container>    
