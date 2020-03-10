@@ -3,7 +3,6 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import MuiLink from '@material-ui/core/Link';
-import ProTip from '../src/ProTip';
 import Link from '../src/Link';
 import NewsList from '../components/NewsList';
 import Bar from '../components/Bar';
@@ -28,7 +27,6 @@ function Copyright() {
         <Bar />
         <Box my={4}>
             <Register />
-          <ProTip />
           <Copyright />
         </Box>
       </Container>
