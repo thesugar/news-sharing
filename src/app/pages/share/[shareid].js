@@ -15,8 +15,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <MuiLink color="inherit" href="https://material-ui.com/">
-        Shohan Corporation.
+      <MuiLink color="inherit" href="https://twitter.com/_thesugar_">
+        thesugar
       </MuiLink>{' '}
       {new Date().getFullYear()}
       {'.'}

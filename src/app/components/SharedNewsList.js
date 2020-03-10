@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import Link from 'next/link';
 import NewsCard from '../components/NewsCard';
 import Account from '../components/Account';
-import firebase from "firebase";
+import firebase from "firebase/app"
+import "firebase/firestore"
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
