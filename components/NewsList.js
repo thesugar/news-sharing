@@ -98,7 +98,6 @@ class NewsList extends Component {
                 <Grid item><Chip clickable color={this.state.category === "entertainment" ? "primary" : "default"} label="Entertainment" onClick={() =>this.setState({category :'entertainment', getHeadline: false, fetch: true, query: ''})}/></Grid>
                 <Grid item><Chip clickable color={this.state.category === "sports" ? "primary" : "default"} label="Sports" onClick={() =>this.setState({category :'sports', getHeadline: false, fetch: true, query: ''})}/></Grid>
                 <Grid item><Chip clickable color={this.state.category === "science" ? "primary" : "default"} label="Science" onClick={() =>this.setState({category :'science', getHeadline: false, fetch: true, query: ''})}/></Grid>
-                <Grid item><Chip clickable color={this.state.query === "三菱UFJ" ? "primary" : "default"} label="MUFG" onClick={() =>this.setState({query:'三菱UFJ', getHeadline: false, category:false, fetch: true})}/></Grid>
                 <Grid item>
                 <div>
                     <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
@@ -119,8 +118,8 @@ class NewsList extends Component {
             <div>
                 <Typography variant="body2" color='primary' gutterBottom>
                 <br />
-                {this.state.query && (this.props.itemList === null || this.props.itemList === undefined || this.props.itemList.length === 0) ? this.state.query + "の検索結果はありませんでした":
-                (this.state.query && this.state.query !== '三菱UFJ') ? this.state.query + "の検索結果を表示しています" : null}
+                {(this.state.query !== "" || this.state.query) && (this.props.itemList === null || this.props.itemList === undefined || this.props.itemList.length === 0) ? this.state.query + "の検索結果はありませんでした":
+                this.state.query !== "" ? this.state.query + "の検索結果を表示しています" : null}
                 </Typography>
                 <Grid container spacing={6}>{this.props.itemList}</Grid>
             </div>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import firebase from "firebase";
+import firebase from "firebase/app"
+import "firebase/auth"
+import "firebase/firestore"
 import Router from "next/router";
 
 class Account extends Component {
