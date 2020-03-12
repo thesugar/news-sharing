@@ -163,6 +163,8 @@ const PrimarySearchAppBar = () => {
         <p>Notifications</p>
       </MenuItem>
       */}
+      <Account />
+      
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -219,7 +221,8 @@ const PrimarySearchAppBar = () => {
               {//</Badge>
               }
             </IconButton>
-            <IconButton
+          </div>
+          <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
@@ -242,7 +245,7 @@ const PrimarySearchAppBar = () => {
                 </Grid>
               </Grid>
             </IconButton>
-          </div>
+          {/*
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
@@ -254,10 +257,11 @@ const PrimarySearchAppBar = () => {
               <MoreIcon />
             </IconButton>
           </div>
+          */}
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+      {/*{renderMobileMenu}
+      {renderMenu}*/}
       <div className={classes.offset} />
     </div>
   );

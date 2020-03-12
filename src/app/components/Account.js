@@ -76,6 +76,7 @@ class Account extends Component {
 
     // check if user is logged in or logged out
     login_check(){
+        
         if (this.props.login === undefined || this.props.login == false){
             this.login();
         } else {
