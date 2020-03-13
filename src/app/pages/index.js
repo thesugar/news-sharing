@@ -25,7 +25,10 @@ function Copyright() {
  const Index = () => {
     return (
       <Container disableGutters={true} maxWidth='lg'>
-        <Head><title>Shohan News App</title></Head>
+        <Head>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=EB+Garamond:wght@500&display=swap" rel="stylesheet" />
+          <title>Shohan News App</title>
+          </Head>
         <Bar />
         <Box my={4}>
           <Typography variant="inherit" color="textPrimary" gutterBottom>
