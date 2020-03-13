@@ -36,6 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     display: 'block', // 'none'
+    fontFamily: "'EB Garamond', serif",
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -206,7 +207,7 @@ const PrimarySearchAppBar = () => {
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             <Link href='/' color='inherit' underline='none'>
-              <>Shohan News App</>
+              <>NewsThrower</>
             </Link>
           </Typography>
 
