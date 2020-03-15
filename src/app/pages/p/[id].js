@@ -9,6 +9,7 @@ import MuiLink from '@material-ui/core/Link';
 //import Link from '../../src/Link';
 import Bar from '../../components/Bar';
 import Button from '@material-ui/core/Button';
+import Head from 'next/head';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 
 function Copyright() {
@@ -30,6 +31,10 @@ export default () => {
   // 以下の title の部分は書き換えが必要（追加したやつがErrorになる）
   return (
     <Container disableGutters={true} maxWidth='md'>
+    <Head>
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet" />
+      <title>NewsThrower</title>
+      </Head>
     <Bar />
     <Box my={4}>
       <Typography variant="inherit" gutterBottom>
