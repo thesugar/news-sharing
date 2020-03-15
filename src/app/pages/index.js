@@ -27,12 +27,12 @@ function Copyright() {
       <Container disableGutters={true} maxWidth='lg'>
         <Head>
         <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet" />
-        <link rel="shortcut icon" href="https://news.thesugar.me/public/favicon.ico" />
+        <link rel="shortcut icon" href="https://news.thesugar.me/favicon.ico" />
         <html lang="ja" prefix="og: http://ogp.me/ns#"/>
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://news.thesugar.me" /> 
         <meta property="og:title" content="NewsThrower" /> 
-        <meta property="og:image" content="https://news.thesugar.me/public/twitter_header_photo_2.png" /> 
+        <meta property="og:image" content="https://news.thesugar.me/twitter_header_photo_2.png" /> 
         <meta property="og:description" content="気になるニュースを友達とシェアしてみんなでコメントしよう！" /> 
 
         <meta name="twitter:card" content="summary_large_image" /> 
