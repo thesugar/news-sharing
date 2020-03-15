@@ -26,8 +26,17 @@ function Copyright() {
     return (
       <Container disableGutters={true} maxWidth='lg'>
         <Head>
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=EB+Garamond:wght@500&display=swap" rel="stylesheet" />
-          <title>Shohan News App</title>
+        <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet" />
+        <html lang="ja" prefix="og: http://ogp.me/ns#"/>
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://news.thesugar.me" /> 
+        <meta property="og:title" content="NewsThrower" /> 
+        <meta property="og:image" content="https://news.thesugar.me/twitter_header_photo_2.png" /> 
+        <meta property="og:description" content="気になるニュースを友達とシェアしてみんなでコメントしよう！" /> 
+
+        <meta name="twitter:card" content="summary_large_image" /> 
+        <meta name="twitter:site" content="@_thesugar_" /> 
+          <title>NewsThrower</title>
           </Head>
         <Bar />
         <Box my={4}>

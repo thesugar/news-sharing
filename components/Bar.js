@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     display: 'block', // 'none'
-    fontFamily: "'EB Garamond', serif",
+    fontFamily: "'Megrim', cursive",
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
