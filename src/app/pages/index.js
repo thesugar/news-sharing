@@ -27,7 +27,6 @@ function Copyright() {
       <Container disableGutters={true} maxWidth='lg'>
         <Head>
         <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet" />
-        <link rel="shortcut icon" href="https://news.thesugar.me/favicon.ico" />
         <html lang="ja" prefix="og: http://ogp.me/ns#"/>
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://news.thesugar.me" /> 

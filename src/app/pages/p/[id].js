@@ -33,7 +33,6 @@ export default () => {
     <Container disableGutters={true} maxWidth='md'>
     <Head>
     <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet" />
-    <link rel="shortcut icon" href="https://news.thesugar.me/favicon.ico" />
       <title>NewsThrower</title>
       </Head>
     <Bar />
