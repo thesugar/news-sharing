@@ -117,25 +117,9 @@ const PrimarySearchAppBar = () => {
   };
 
   const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}><Account /></MenuItem>
-      {//メニューを追加するときはここを変更
-      //<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      //<MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      }
-    </Menu>
-  );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
+  // renderMobileMenu もただのコンポーネント
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -164,8 +148,8 @@ const PrimarySearchAppBar = () => {
         <p>Notifications</p>
       </MenuItem>
       */}
-      <Account />
       
+      {/* モバイルサイズで、アカウントサークルをクリックしたときに表示されるもの */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -180,10 +164,9 @@ const PrimarySearchAppBar = () => {
         alignItems="center"
         spacing={1}
         >
-          <Grid item><AccountCircle fontSize="inherit"/></Grid>
           <Grid item>
             <Typography variant="subtitle1" gutterBottom align="center">
-              <Account />
+              <Account onClick={handleMobileMenuClose}/>
             </Typography>
           </Grid>
         </Grid>
@@ -230,6 +213,7 @@ const PrimarySearchAppBar = () => {
               aria-haspopup="true"
               //onClick={handleProfileMenuOpen}
               color="inherit"
+              className={classes.sectionDesktop}
             >
               <Grid
                 container
@@ -238,7 +222,7 @@ const PrimarySearchAppBar = () => {
                 alignItems="center"
                 spacing={1}
               >
-                <Grid item><AccountCircle fontSize="inherit"/></Grid>
+                <Grid item><AccountCircle fontSize="small"/></Grid>
                 <Grid item>
                   <Typography variant="subtitle1" gutterBottom align="center">
                     <Account />
@@ -246,9 +230,9 @@ const PrimarySearchAppBar = () => {
                 </Grid>
               </Grid>
             </IconButton>
-          {/*
+          {/* here */}
           <div className={classes.sectionMobile}>
-            <IconButton
+            <AccountCircle
               aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
@@ -256,13 +240,13 @@ const PrimarySearchAppBar = () => {
               color="inherit"
             >
               <MoreIcon />
-            </IconButton>
+            </AccountCircle>
           </div>
-          */}
+          
         </Toolbar>
       </AppBar>
-      {/*{renderMobileMenu}
-      {renderMenu}*/}
+      {renderMobileMenu}
+
       <div className={classes.offset} />
     </div>
   );
