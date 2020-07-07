@@ -32,17 +32,8 @@ class NewsList extends Component {
 
     getNews = async () => {
 
-        let url;
-        url = this.state.getHeadline ?
-            "https://newsapi.org/v2/top-headlines?country="+this.state.country+"&apiKey=30d451b495234aae8b35d83d68082817&pageSize="+this.state.pageSize+"&sortBy="+this.state.sortBy:
-        (this.state.category) ?
-            // category 指定があるとき（Chipを選択したとき）
-            "https://newsapi.org/v2/top-headlines?country="+this.state.country+"&apiKey=30d451b495234aae8b35d83d68082817&pageSize="+this.state.pageSize+"&sortBy="+this.state.sortBy+"&category="+this.state.category:
-            // query指定あるとき（検索時）（country指定はできない）
-            "https://newsapi.org/v2/everything?q="+this.state.query+"&apiKey=30d451b495234aae8b35d83d68082817&pageSize="+this.state.pageSize+"&sortBy="+this.state.sortBy;
-        
-        const result = await fetch(url);
-        const json = await result.json();
+        const res = await fetch(`/api/getNews?getHeadline=${this.state.getHeadline}&country=${this.state.country}&category=${this.state.category}&pageSize=${this.state.pageSize}&sortBy=${this.state.sortBy}`)
+        const json = await res.json()
 
         let itemList = [];
         json.articles.map((article, index) => {
