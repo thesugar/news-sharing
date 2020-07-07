@@ -32,10 +32,14 @@ class NewsList extends Component {
 
     getNews = async () => {
 
-        const res = await fetch(`/api/getNews?getHeadline=${this.state.getHeadline}&country=${this.state.country}&category=${this.state.category}&pageSize=${this.state.pageSize}&sortBy=${this.state.sortBy}`)
+        const res = await fetch(`/api/getNews?getHeadline=${this.state.getHeadline}&country=${this.state.country}&category=${this.state.category}&pageSize=${this.state.pageSize}&sortBy=${this.state.sortBy}&query=${this.state.query}`)
         const json = await res.json()
 
         let itemList = [];
+        
+        if (json.articles === undefined) {
+            return
+        }
         json.articles.map((article, index) => {
             itemList.push(
                 <Grid item xs={12} sm={4} key={index}><NewsCard article={article} userid={this.props.userid} title={article['title']} image={article['urlToImage']} description={article['description']} index={index} /></Grid>
